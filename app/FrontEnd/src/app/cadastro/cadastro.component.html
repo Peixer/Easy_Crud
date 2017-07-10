@@ -1,13 +1,65 @@
 <div class="container">
     <div class="row"></div>
     <div class="row"></div>
-    <div class="row">
+    <form #f="ngForm">
         <div class="row">
-            <div class="input-field  col s6 center">
-                <input [(ngModel)]="candidato.email" [ngModelOptions]="{standalone: true}" placeholder="Endereço de e-mail" id="email" type="email"
-                    class="validate">
-                <label class="active" for="email" data-error="Precisa ser um endereço de e-mail válido">Email</label>
+            <div class="input-field col s12 m6">
+                <input [(ngModel)]="candidato.email" placeholder="Endereço de e-mail" id="email" name="email" type="email" class="validate">
+                <label class="active" for="email" data-error="Precisa ser um endereço de e-mail válido">Endereço de e-mail <span class="campoObrigatorio">*</span></label>
             </div>
         </div>
-    </div>
+        <div class="row">
+            <div class="input-field col s12 m6">
+                <input [(ngModel)]="candidato.nome" placeholder="Sua resposta" id="nome" name="nome" type="text" class="validate" required>
+                <label class="active" for="nome" data-error="Esta pergunta é obrigatória">Nome/Name:<span class="campoObrigatorio">*</span></label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12 m6">
+                <input [(ngModel)]="candidato.skype" placeholder="Sua resposta" id="skype" name="skype" type="text" class="validate" required>
+                <label class="active" for="skype" data-error="Esta pergunta é obrigatória">Skype: ( please create an account if you don't have yet / bom criar caso não tenha)<span class="campoObrigatorio">*</span> </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12 m6">
+                <input [(ngModel)]="candidato.telefone" placeholder="Sua resposta" id="telefone" name="telefone" type="text" class="validate"
+                    required>
+                <label class="active" for="telefone" data-error="Esta pergunta é obrigatória">Telefone/Phone (Whatsapp): <span class="campoObrigatorio">*</span> </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12 m6">
+                <input [(ngModel)]="candidato.linkedin" placeholder="Sua resposta" id="linkedin" name="linkedin" type="text">
+                <label class="active" for="linkedin">Linkedin: </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12 m6">
+                <input [(ngModel)]="candidato.cidade" placeholder="Sua resposta" id="cidade" name="cidade" type="text" class="validate" required>
+                <label class="active" for="cidade" data-error="Esta pergunta é obrigatória">Cidade / City <span class="campoObrigatorio">*</span> </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12 m6">
+                <input [(ngModel)]="candidato.estado" placeholder="Sua resposta" id="estado" name="estado" type="text" class="validate" required>
+                <label class="active" for="estado" data-error="Esta pergunta é obrigatória">Estado/ State <span class="campoObrigatorio">*</span> </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12 m6">
+
+                <input [(ngModel)]="candidato.portfolio" placeholder="Sua resposta" id="portfolio" name="portfolio" type="text">
+                <label class="active" for="portfolio">Linkedin: </label>
+            </div>
+        </div>
+        <div class="row">
+            <label >What is your willingness to work today? / Qual é sua disponibilidade para trabalhar hoje?<span class="campoObrigatorio">*</span> </label>
+            <p>
+                <input type="checkbox" [(ngModel)]="candidato.estado" id="ate4Horas" />
+                <label for="ate4Horas">Up to 4 hours per day / Até 4 horas por dia</label>
+            </p>
+        </div>
+
+        <button ng-submit="onEnviar()">Enviar</button>
+    </form>
 </div>
