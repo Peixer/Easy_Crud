@@ -1,0 +1,28 @@
+<div class="center">
+  <h1>
+    Relação de candidatos
+  </h1>
+</div>
+
+<div class="container">
+  <table class="striped">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Linkedin</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let candidato of candidatos" (click)="abrirCandidato(candidato.id)">
+        <td>{{candidato.nome}}</td>
+        <td>{{candidato.email}}</td>
+        <td>{{candidato.linkedin}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+  <router-outlet></router-outlet>
