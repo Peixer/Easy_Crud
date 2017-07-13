@@ -23,4 +23,8 @@ export class AdminComponent implements OnInit {
   abrirCandidato(id: number) {
     this.router.navigate(['/cadastro/' + id]);
   }
+
+  addCandidato() {
+    this.router.navigate(['/cadastro']);
+  }
 }
