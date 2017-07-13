@@ -80,7 +80,7 @@ namespace BackEnd.Data
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<ContaBancaria>()
-                .Property(s => s.Cnpj)
+                .Property(s => s.CPF)
                 .IsRequired();
 
             modelBuilder.Entity<ContaBancaria>()

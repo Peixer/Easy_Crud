@@ -3,7 +3,7 @@
     public class ContaBancaria
     {
         public int Id { get; set; }
-        public string Cnpj { get; set; }
+        public string CPF { get; set; }
         public string Nome { get; set; }
         public string Banco { get; set; }
         public string Agencia { get; set; }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Candidato } from '../candidato';
 import { CandidatoService } from '../service/candidato.service';
+import { Candidato } from '../candidato';
 
 @Component({
   selector: 'admin-root',

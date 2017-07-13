@@ -17,6 +17,7 @@ namespace BackEnd.Model
         public TipoHorarioDeTrabalho HorarioDeTrabalho { get; set; }
         public double PretensaoSalarial { get; set; }
         public string InformacoesBanco { get; set; }
+        public string ConhecimentoEmOutroFramework { get; set; }
         public string LinkCrud { get; set; }
 
         public int IdContaBancaria { get; set; }
@@ -47,6 +48,5 @@ namespace BackEnd.Model
         public TipoNivelConhecimento ConhecimentoEmPhotoshop { get; set; }
         public TipoNivelConhecimento ConhecimentoEmIllustrator { get; set; }
         public TipoNivelConhecimento ConhecimentoEmSEO { get; set; }
-        public TipoNivelConhecimento ConhecimentoEmOutroFramework{ get; set; }
     }
 }

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace BackEnd.Migrations
 {
-    public partial class initial : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,10 +15,10 @@ namespace BackEnd.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Agencia = table.Column<string>(nullable: true),
-                    Banco = table.Column<string>(nullable: true),
-                    Cnpj = table.Column<string>(nullable: true),
-                    Nome = table.Column<string>(nullable: true),
+                    Agencia = table.Column<string>(nullable: false),
+                    Banco = table.Column<string>(nullable: false),
+                    CPF = table.Column<string>(nullable: false),
+                    Nome = table.Column<string>(nullable: false),
                     Numero = table.Column<int>(nullable: false),
                     Tipo = table.Column<int>(nullable: false)
                 },
@@ -33,7 +33,7 @@ namespace BackEnd.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Cidade = table.Column<string>(nullable: true),
+                    Cidade = table.Column<string>(nullable: false),
                     ConhecimentoEmAndroid = table.Column<int>(nullable: false),
                     ConhecimentoEmAngularJS = table.Column<int>(nullable: false),
                     ConhecimentoEmAspNetMvc = table.Column<int>(nullable: false),
@@ -62,17 +62,17 @@ namespace BackEnd.Migrations
                     ConhecimentoEmWordpress = table.Column<int>(nullable: false),
                     Disponibilidade = table.Column<int>(nullable: false),
                     Email = table.Column<string>(nullable: false),
-                    Estado = table.Column<string>(nullable: true),
+                    Estado = table.Column<string>(nullable: false),
                     HorarioDeTrabalho = table.Column<int>(nullable: false),
                     IdContaBancaria = table.Column<int>(nullable: false),
-                    InformacoesBanco = table.Column<string>(nullable: true),
-                    LinkCrud = table.Column<string>(nullable: true),
-                    Linkedin = table.Column<string>(nullable: true),
+                    InformacoesBanco = table.Column<string>(nullable: false),
+                    LinkCrud = table.Column<string>(nullable: false),
+                    Linkedin = table.Column<string>(nullable: false),
                     Nome = table.Column<string>(nullable: false),
-                    Portfolio = table.Column<string>(nullable: true),
+                    Portfolio = table.Column<string>(nullable: false),
                     PretensaoSalarial = table.Column<double>(nullable: false),
-                    Skype = table.Column<string>(nullable: true),
-                    Telefone = table.Column<string>(nullable: true)
+                    Skype = table.Column<string>(nullable: false),
+                    Telefone = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {

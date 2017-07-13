@@ -10,8 +10,8 @@ using System;
 namespace BackEnd.Migrations
 {
     [DbContext(typeof(CandidatoContext))]
-    [Migration("20170708054650_initial")]
-    partial class initial
+    [Migration("20170712233500_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,7 +24,8 @@ namespace BackEnd.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Cidade");
+                    b.Property<string>("Cidade")
+                        .IsRequired();
 
                     b.Property<int>("ConhecimentoEmAndroid");
 
@@ -83,28 +84,35 @@ namespace BackEnd.Migrations
                     b.Property<string>("Email")
                         .IsRequired();
 
-                    b.Property<string>("Estado");
+                    b.Property<string>("Estado")
+                        .IsRequired();
 
                     b.Property<int>("HorarioDeTrabalho");
 
                     b.Property<int>("IdContaBancaria");
 
-                    b.Property<string>("InformacoesBanco");
+                    b.Property<string>("InformacoesBanco")
+                        .IsRequired();
 
-                    b.Property<string>("LinkCrud");
+                    b.Property<string>("LinkCrud")
+                        .IsRequired();
 
-                    b.Property<string>("Linkedin");
+                    b.Property<string>("Linkedin")
+                        .IsRequired();
 
                     b.Property<string>("Nome")
                         .IsRequired();
 
-                    b.Property<string>("Portfolio");
+                    b.Property<string>("Portfolio")
+                        .IsRequired();
 
                     b.Property<double>("PretensaoSalarial");
 
-                    b.Property<string>("Skype");
+                    b.Property<string>("Skype")
+                        .IsRequired();
 
-                    b.Property<string>("Telefone");
+                    b.Property<string>("Telefone")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -119,13 +127,17 @@ namespace BackEnd.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Agencia");
+                    b.Property<string>("Agencia")
+                        .IsRequired();
 
-                    b.Property<string>("Banco");
+                    b.Property<string>("Banco")
+                        .IsRequired();
 
-                    b.Property<string>("Cnpj");
+                    b.Property<string>("CPF")
+                        .IsRequired();
 
-                    b.Property<string>("Nome");
+                    b.Property<string>("Nome")
+                        .IsRequired();
 
                     b.Property<int>("Numero");
 

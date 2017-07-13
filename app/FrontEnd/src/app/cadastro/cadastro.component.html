@@ -1,65 +1,784 @@
 <div class="container">
     <div class="row"></div>
     <div class="row"></div>
-    <form #f="ngForm">
+
+    <form id="formulario_1" class="parte_formulario ">
         <div class="row">
-            <div class="input-field col s12 m6">
-                <input [(ngModel)]="candidato.email" placeholder="Endereço de e-mail" id="email" name="email" type="email" class="validate">
+            <div class="col s0 m1 l2"></div>
+            <div class="input-field col s12 m10 l8 l8">
+                <input [(ngModel)]="candidato.email" placeholder="Endereço de e-mail" id="email" name="email" type="email" required>
                 <label class="active" for="email" data-error="Precisa ser um endereço de e-mail válido">Endereço de e-mail <span class="campoObrigatorio">*</span></label>
             </div>
         </div>
+        <div class="row"></div>
+        <div class="row"></div>
+        <div class="row"></div>
+        <div class="row"></div>
+        <div class="row"></div>
+        <div class="row"></div>
+    </form>
+    <div id="formulario_2" class="parte_formulario hide">
         <div class="row">
-            <div class="input-field col s12 m6">
+            <div class="col s0 m1 l2"></div>
+            <div class="input-field col s12 m10 l8">
                 <input [(ngModel)]="candidato.nome" placeholder="Sua resposta" id="nome" name="nome" type="text" class="validate" required>
                 <label class="active" for="nome" data-error="Esta pergunta é obrigatória">Nome/Name:<span class="campoObrigatorio">*</span></label>
             </div>
         </div>
         <div class="row">
-            <div class="input-field col s12 m6">
+            <div class="col s0 m1 l2"></div>
+            <div class="input-field col s12 m10 l8">
                 <input [(ngModel)]="candidato.skype" placeholder="Sua resposta" id="skype" name="skype" type="text" class="validate" required>
                 <label class="active" for="skype" data-error="Esta pergunta é obrigatória">Skype: ( please create an account if you don't have yet / bom criar caso não tenha)<span class="campoObrigatorio">*</span> </label>
             </div>
         </div>
         <div class="row">
-            <div class="input-field col s12 m6">
+            <div class="col s0 m1 l2"></div>
+            <div class="input-field col s12 m10 l8">
                 <input [(ngModel)]="candidato.telefone" placeholder="Sua resposta" id="telefone" name="telefone" type="text" class="validate"
                     required>
                 <label class="active" for="telefone" data-error="Esta pergunta é obrigatória">Telefone/Phone (Whatsapp): <span class="campoObrigatorio">*</span> </label>
             </div>
         </div>
         <div class="row">
-            <div class="input-field col s12 m6">
+            <div class="col s0 m1 l2"></div>
+            <div class="input-field col s12 m10 l8">
                 <input [(ngModel)]="candidato.linkedin" placeholder="Sua resposta" id="linkedin" name="linkedin" type="text">
                 <label class="active" for="linkedin">Linkedin: </label>
             </div>
         </div>
         <div class="row">
-            <div class="input-field col s12 m6">
+            <div class="col s0 m1 l2"></div>
+            <div class="input-field col s12 m10 l8">
                 <input [(ngModel)]="candidato.cidade" placeholder="Sua resposta" id="cidade" name="cidade" type="text" class="validate" required>
                 <label class="active" for="cidade" data-error="Esta pergunta é obrigatória">Cidade / City <span class="campoObrigatorio">*</span> </label>
             </div>
         </div>
         <div class="row">
-            <div class="input-field col s12 m6">
+            <div class="col s0 m1 l2"></div>
+            <div class="input-field col s12 m10 l8">
                 <input [(ngModel)]="candidato.estado" placeholder="Sua resposta" id="estado" name="estado" type="text" class="validate" required>
                 <label class="active" for="estado" data-error="Esta pergunta é obrigatória">Estado/ State <span class="campoObrigatorio">*</span> </label>
             </div>
         </div>
         <div class="row">
-            <div class="input-field col s12 m6">
+            <div class="col s0 m1 l2"></div>
+            <div class="input-field col s12 m10 l8">
 
                 <input [(ngModel)]="candidato.portfolio" placeholder="Sua resposta" id="portfolio" name="portfolio" type="text">
                 <label class="active" for="portfolio">Linkedin: </label>
             </div>
         </div>
         <div class="row">
-            <label >What is your willingness to work today? / Qual é sua disponibilidade para trabalhar hoje?<span class="campoObrigatorio">*</span> </label>
-            <p>
-                <input type="checkbox" [(ngModel)]="candidato.estado" id="ate4Horas" />
-                <label for="ate4Horas">Up to 4 hours per day / Até 4 horas por dia</label>
-            </p>
+            <div class="col s0 m1 l2"></div>
+            <label>What is your willingness to work today? / Qual é sua disponibilidade para trabalhar hoje?<span class="campoObrigatorio">*</span> </label>
+            <div>
+                <div class="col s0 m1 l2"></div>
+                <input type="checkbox" [(ngModel)]="candidato.ateQuatroHoras" name="ateQuatroHoras" id="ateQuatroHoras" />
+                <label for="ateQuatroHoras">Up to 4 hours per day / Até 4 horas por dia</label>
+            </div>
+            <div>
+                <div class="col s0 m1 l2"></div>
+                <input type="checkbox" [(ngModel)]="candidato.ateSeisHoras" name="ateSeisHoras" id="ateSeisHoras" />
+                <label for="ateSeisHoras">4 to 6 hours per day / De 4 á 6 horas por dia</label>
+            </div>
+            <div>
+                <div class="col s0 m1 l2"></div>
+                <input type="checkbox" [(ngModel)]="candidato.ateOitoHoras" name="ateOitoHoras" id="ateOitoHoras" />
+                <label for="ateOitoHoras">6 to 8 hours per day /De 6 á 8 horas por dia</label>
+            </div>
+            <div>
+                <div class="col s0 m1 l2"></div>
+                <input type="checkbox" [(ngModel)]="candidato.maisDeOitoHoras" name="maisDeOitoHoras" id="maisDeOitoHoras" />
+                <label for="maisDeOitoHoras">Up to 8 hours a day (are you sure?) / Acima de 8 horas por dia (tem certeza?)</label>
+            </div>
+            <div>
+                <div class="col s0 m1 l2"></div>
+                <input type="checkbox" [(ngModel)]="candidato.finaisDeSemana" name="finaisDeSemana" id="finaisDeSemana" />
+                <label for="finaisDeSemana">Only weekends / Apenas finais de semana</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s0 m1 l2"></div>
+            <label>What's the best time to work for you? / Pra você qual é o melhor horário para trabalhar?<span class="campoObrigatorio">*</span> </label>
+            <div>
+                <div class="col s0 m1 l2"></div>
+                <input type="checkbox" [(ngModel)]="candidato.ateQuatroHoras" name="ateQuatroHoras" id="ateQuatroHoras" />
+                <label for="ateQuatroHoras">Morning (from 08:00 to 12:00) / Manhã (de 08:00 ás 12:00)</label>
+            </div>
+            <div>
+                <div class="col s0 m1 l2"></div>
+                <input type="checkbox" [(ngModel)]="candidato.ateSeisHoras" name="ateSeisHoras" id="ateSeisHoras" />
+                <label for="ateSeisHoras">4 to 6 hours per day / De 4 á 6 horas por dia</label>
+            </div>
+            <div>
+                <div class="col s0 m1 l2"></div>
+                <input type="checkbox" [(ngModel)]="candidato.ateOitoHoras" name="ateOitoHoras" id="ateOitoHoras" />
+                <label for="ateOitoHoras">6 to 8 hours per day /De 6 á 8 horas por dia</label>
+            </div>
+            <div>
+                <div class="col s0 m1 l2"></div>
+                <input type="checkbox" [(ngModel)]="candidato.maisDeOitoHoras" name="maisDeOitoHoras" id="maisDeOitoHoras" />
+                <label for="maisDeOitoHoras">Up to 8 hours a day (are you sure?) / Acima de 8 horas por dia (tem certeza?)</label>
+            </div>
+            <div>
+                <div class="col s0 m1 l2"></div>
+                <input type="checkbox" [(ngModel)]="candidato.finaisDeSemana" name="finaisDeSemana" id="finaisDeSemana" />
+                <label for="finaisDeSemana">Only weekends / Apenas finais de semana</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s0 m1 l2"></div>
+            <div class="input-field col s12 m10 l8">
+
+                <input [(ngModel)]="candidato.pretensaoSalarial" placeholder="Sua resposta" id="pretensaoSalarial" name="pretensaoSalarial"
+                    type="number">
+                <label class="active" for="pretensaoSalarial">What is your hourly salary requirements? / Qual sua pretensão salarial por hora? <span class="campoObrigatorio">*</span> </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s0 m1 l2"></div>
+            <div class="input-field col s12 m10 l8">
+
+                <input [(ngModel)]="candidato.informacoesBanco" placeholder="Sua resposta" id="informacoesBanco" name="informacoesBanco"
+                    type="text">
+                <label class="active" for="informacoesBanco">Bank Information / Paypal / Itau etc</label>
+            </div>
+        </div>
+    </div>
+
+    <div id="formulario_3" class="parte_formulario hide">
+        <div class="row">
+            <div class="col s0 m1 l2"></div>
+            <div class="input-field col s12 m10 l8">
+
+                <input [(ngModel)]="candidato.contaBancaria.Nome" placeholder="Sua resposta" id="contaBancaria.Nome" name="contaBancaria.Nome"
+                    type="text">
+                <label class="active" for="contaBancaria.Nome">Name / Nome</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s0 m1 l2"></div>
+            <div class="input-field col s12 m10 l8">
+
+                <input [(ngModel)]="candidato.contaBancaria.CPF" placeholder="Sua resposta" id="contaBancaria.CPF" name="contaBancaria.CPF"
+                    type="text">
+                <label class="active" for="contaBancaria.CPF">Only for Brazilians / CPF</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s0 m1 l2"></div>
+            <div class="input-field col s12 m10 l8">
+
+                <input [(ngModel)]="candidato.contaBancaria.Banco" placeholder="Sua resposta" id="contaBancaria.Banco" name="contaBancaria.Banco"
+                    type="number">
+                <label class="active" for="contaBancaria.Banco">Bank / Banco ( Itau, Bradesco, ect..)</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s0 m1 l2"></div>
+            <div class="input-field col s12 m10 l8">
+
+                <input [(ngModel)]="candidato.contaBancaria.Agencia" placeholder="Sua resposta" id="contaBancaria.Agencia" name="contaBancaria.Agencia"
+                    type="number">
+                <label class="active" for="contaBancaria.Agencia">Agency / Agencia</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s0 m1 l2"></div>
+            <label>Account Type / Tipo de conta </label>
+            <div>
+                <div class="col s0 m1 l2"></div>
+                <input type="checkbox" [(ngModel)]="candidato.contaBancaria.Tipo" name="contaBancaria.Tipo" id="contaBancaria.Tipo1" />
+                <label for="contaBancaria.Tipo">Chain / Corrente</label>
+            </div>
+            <div>
+                <div class="col s0 m1 l2"></div>
+                <input type="checkbox" [(ngModel)]="candidato.contaBancaria.Tipo" name="contaBancaria.Tipo" id="contaBancaria.Tipo2" />
+                <label for="contaBancaria.Tipo">Savings / Poupança</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s0 m1 l2"></div>
+            <div class="input-field col s12 m10 l8">
+
+                <input [(ngModel)]="candidato.contaBancaria.Numero" placeholder="Sua resposta" id="contaBancaria.Numero" name="contaBancaria.Numero"
+                    type="number">
+                <label class="active" for="contaBancaria.Numero">Account Number / Número da conta</label>
+            </div>
+        </div>
+    </div>
+
+    <div id="formulario_4" class="parte_formulario hide">
+        <div class="row">
+            <div class="col s0 m1 l2"></div>
+            <label class="labelHabilidade">Ionic <span class="campoObrigatorio">*</span> </label>
+            <div>
+                <div class="col s0 m1 l2"></div>
+                <label class="habilidadeEsquerda">Nao conheco / I don't know</label>
+                <input name="groupIonic" type="radio" id="ionic0" />
+                <label class="numeracao" for="ionic0">0</label>
+                <input name="groupIonic" type="radio" id="ionic1" />
+                <label class="numeracao" for="ionic1">1</label>
+                <input name="groupIonic" type="radio" id="ionic2" />
+                <label class="numeracao" for="ionic2">2</label>
+                <input name="groupIonic" type="radio" id="ionic3" />
+                <label class="numeracao" for="ionic3">3</label>
+                <input name="groupIonic" type="radio" id="ionic4" />
+                <label class="numeracao" for="ionic4">4</label>
+                <input name="groupIonic" type="radio" id="ionic5" />
+                <label class="numeracao" for="ionic5">5</label>
+                <label class="habilidadeDireita">Senior</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s0 m1 l2"></div>
+            <label class="labelHabilidade">Android <span class="campoObrigatorio">*</span> </label>
+            <div>
+                <div class="col s0 m1 l2"></div>
+                <label class="habilidadeEsquerda">Nao conheco / I don't know</label>
+                <input name="groupAndroid" type="radio" id="android0" />
+                <label class="numeracao" for="android0">0</label>
+                <input name="groupAndroid" type="radio" id="android1" />
+                <label class="numeracao" for="android1">1</label>
+                <input name="groupAndroid" type="radio" id="android2" />
+                <label class="numeracao" for="android2">2</label>
+                <input name="groupAndroid" type="radio" id="android3" />
+                <label class="numeracao" for="android3">3</label>
+                <input name="groupAndroid" type="radio" id="android4" />
+                <label class="numeracao" for="android4">4</label>
+                <input name="groupAndroid" type="radio" id="android5" />
+                <label class="numeracao" for="android5">5</label>
+                <label class="habilidadeDireita">Senior</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s0 m1 l2"></div>
+            <label class="labelHabilidade">IOS <span class="campoObrigatorio">*</span> </label>
+            <div>
+                <div class="col s0 m1 l2"></div>
+                <label class="habilidadeEsquerda">Nao conheco / I don't know</label>
+                <input name="groupIOS" type="radio" id="ios0" />
+                <label class="numeracao" for="ios0">0</label>
+                <input name="groupIOS" type="radio" id="ios1" />
+                <label class="numeracao" for="ios1">1</label>
+                <input name="groupIOS" type="radio" id="ios2" />
+                <label class="numeracao" for="ios2">2</label>
+                <input name="groupIOS" type="radio" id="ios3" />
+                <label class="numeracao" for="ios3">3</label>
+                <input name="groupIOS" type="radio" id="ios4" />
+                <label class="numeracao" for="ios4">4</label>
+                <input name="groupIOS" type="radio" id="ios5" />
+                <label class="numeracao" for="ios5">5</label>
+                <label class="habilidadeDireita">Senior</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s0 m1 l2"></div>
+            <label class="labelHabilidade">HTML </label>
+            <div>
+                <div class="col s0 m1 l2"></div>
+                <label class="habilidadeEsquerda">Nao conheco / I don't know</label>
+                <input name="groupHTML" type="radio" id="html0" />
+                <label class="numeracao" for="html0">0</label>
+                <input name="groupHTML" type="radio" id="html1" />
+                <label class="numeracao" for="html1">1</label>
+                <input name="groupHTML" type="radio" id="html2" />
+                <label class="numeracao" for="html2">2</label>
+                <input name="groupHTML" type="radio" id="html3" />
+                <label class="numeracao" for="html3">3</label>
+                <input name="groupHTML" type="radio" id="html4" />
+                <label class="numeracao" for="html4">4</label>
+                <input name="groupHTML" type="radio" id="html5" />
+                <label class="numeracao" for="html5">5</label>
+                <label class="habilidadeDireita">Senior</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s0 m1 l2"></div>
+            <label class="labelHabilidade">CSS </label>
+            <div>
+                <div class="col s0 m1 l2"></div>
+                <label class="habilidadeEsquerda">Nao conheco / I don't know</label>
+                <input name="groupCSS" type="radio" id="css0" />
+                <label class="numeracao" for="css0">0</label>
+                <input name="groupCSS" type="radio" id="css1" />
+                <label class="numeracao" for="css1">1</label>
+                <input name="groupCSS" type="radio" id="css2" />
+                <label class="numeracao" for="css2">2</label>
+                <input name="groupCSS" type="radio" id="css3" />
+                <label class="numeracao" for="css3">3</label>
+                <input name="groupCSS" type="radio" id="css4" />
+                <label class="numeracao" for="css4">4</label>
+                <input name="groupCSS" type="radio" id="css5" />
+                <label class="numeracao" for="css5">5</label>
+                <label class="habilidadeDireita">Senior</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s0 m1 l2"></div>
+            <label class="labelHabilidade">Bootstrap <span class="campoObrigatorio">*</span> </label>
+            <div>
+                <div class="col s0 m1 l2"></div>
+                <label class="habilidadeEsquerda">Nao conheco / I don't know</label>
+                <input name="groupBootstrap" type="radio" id="bootstrap0" />
+                <label class="numeracao" for="bootstrap0">0</label>
+                <input name="groupBootstrap" type="radio" id="bootstrap1" />
+                <label class="numeracao" for="bootstrap1">1</label>
+                <input name="groupBootstrap" type="radio" id="bootstrap2" />
+                <label class="numeracao" for="bootstrap2">2</label>
+                <input name="groupBootstrap" type="radio" id="bootstrap3" />
+                <label class="numeracao" for="bootstrap3">3</label>
+                <input name="groupBootstrap" type="radio" id="bootstrap4" />
+                <label class="numeracao" for="bootstrap4">4</label>
+                <input name="groupBootstrap" type="radio" id="bootstrap5" />
+                <label class="numeracao" for="bootstrap5">5</label>
+                <label class="habilidadeDireita">Senior</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s0 m1 l2"></div>
+            <label class="labelHabilidade">Jquery <span class="campoObrigatorio">*</span> </label>
+            <div>
+                <div class="col s0 m1 l2"></div>
+                <label class="habilidadeEsquerda">Nao conheco / I don't know</label>
+                <input name="groupBootstrap" type="radio" id="bootstrap0" />
+                <label class="numeracao" for="jquery0">0</label>
+                <input name="groupjquery" type="radio" id="jquery1" />
+                <label class="numeracao" for="jquery1">1</label>
+                <input name="groupjquery" type="radio" id="jquery2" />
+                <label class="numeracao" for="jquery2">2</label>
+                <input name="groupjquery" type="radio" id="jquery3" />
+                <label class="numeracao" for="jquery3">3</label>
+                <input name="groupjquery" type="radio" id="jquery4" />
+                <label class="numeracao" for="jquery4">4</label>
+                <input name="groupjquery" type="radio" id="jquery5" />
+                <label class="numeracao" for="jquery5">5</label>
+                <label class="habilidadeDireita">Senior</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s0 m1 l2"></div>
+            <label class="labelHabilidade">AngularJS <span class="campoObrigatorio">*</span> </label>
+            <div>
+                <div class="col s0 m1 l2"></div>
+                <label class="habilidadeEsquerda">Nao conheco / I don't know</label>
+                <input name="groupangularJS" type="radio" id="angularJS0" />
+                <label class="numeracao" for="angularJS0">0</label>
+                <input name="groupangularJS" type="radio" id="angularJS1" />
+                <label class="numeracao" for="angularJS1">1</label>
+                <input name="groupangularJS" type="radio" id="angularJS2" />
+                <label class="numeracao" for="angularJS2">2</label>
+                <input name="groupangularJS" type="radio" id="angularJS3" />
+                <label class="numeracao" for="angularJS3">3</label>
+                <input name="groupangularJS" type="radio" id="angularJS4" />
+                <label class="numeracao" for="angularJS4">4</label>
+                <input name="groupangularJS" type="radio" id="angularJS5" />
+                <label class="numeracao" for="angularJS5">5</label>
+                <label class="habilidadeDireita">Senior</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s0 m1 l2"></div>
+            <label class="labelHabilidade">Java </label>
+            <div>
+                <div class="col s0 m1 l2"></div>
+                <label class="habilidadeEsquerda">Nao conheco / I don't know</label>
+                <input name="groupjava" type="radio" id="java0" />
+                <label class="numeracao" for="java0">0</label>
+                <input name="groupjava" type="radio" id="java1" />
+                <label class="numeracao" for="java1">1</label>
+                <input name="groupjava" type="radio" id="java2" />
+                <label class="numeracao" for="java2">2</label>
+                <input name="groupjava" type="radio" id="java3" />
+                <label class="numeracao" for="java3">3</label>
+                <input name="groupjava" type="radio" id="java4" />
+                <label class="numeracao" for="java4">4</label>
+                <input name="groupjava" type="radio" id="java5" />
+                <label class="numeracao" for="java5">5</label>
+                <label class="habilidadeDireita">Senior</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s0 m1 l2"></div>
+            <label class="labelHabilidade">Asp.Net MVC <span class="campoObrigatorio">*</span> </label>
+            <div>
+                <div class="col s0 m1 l2"></div>
+                <label class="habilidadeEsquerda">Nao conheco / I don't know</label>
+                <input name="groupaspNet" type="radio" id="aspNet0" />
+                <label class="numeracao" for="aspNet0">0</label>
+                <input name="groupaspNet" type="radio" id="aspNet1" />
+                <label class="numeracao" for="aspNet1">1</label>
+                <input name="groupaspNet" type="radio" id="aspNet2" />
+                <label class="numeracao" for="aspNet2">2</label>
+                <input name="groupaspNet" type="radio" id="aspNet3" />
+                <label class="numeracao" for="aspNet3">3</label>
+                <input name="groupaspNet" type="radio" id="aspNet4" />
+                <label class="numeracao" for="aspNet4">4</label>
+                <input name="groupaspNet" type="radio" id="aspNet5" />
+                <label class="numeracao" for="aspNet5">5</label>
+                <label class="habilidadeDireita">Senior</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s0 m1 l2"></div>
+            <label class="labelHabilidade">C </label>
+            <div>
+                <div class="col s0 m1 l2"></div>
+                <label class="habilidadeEsquerda">Nao conheco / I don't know</label>
+                <input name="groupc" type="radio" id="c0" />
+                <label class="numeracao" for="c0">0</label>
+                <input name="groupc" type="radio" id="c1" />
+                <label class="numeracao" for="c1">1</label>
+                <input name="groupc" type="radio" id="c2" />
+                <label class="numeracao" for="c2">2</label>
+                <input name="groupc" type="radio" id="c3" />
+                <label class="numeracao" for="c3">3</label>
+                <input name="groupc" type="radio" id="c4" />
+                <label class="numeracao" for="c4">4</label>
+                <input name="groupc" type="radio" id="c5" />
+                <label class="numeracao" for="c5">5</label>
+                <label class="habilidadeDireita">Senior</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s0 m1 l2"></div>
+            <label class="labelHabilidade">C++ </label>
+            <div>
+                <div class="col s0 m1 l2"></div>
+                <label class="habilidadeEsquerda">Nao conheco / I don't know</label>
+                <input name="groupcplusplus" type="radio" id="cplusplus0" />
+                <label class="numeracao" for="cplusplus0">0</label>
+                <input name="groupcplusplus" type="radio" id="cplusplus1" />
+                <label class="numeracao" for="cplusplus1">1</label>
+                <input name="groupcplusplus" type="radio" id="cplusplus2" />
+                <label class="numeracao" for="cplusplus2">2</label>
+                <input name="groupcplusplus" type="radio" id="cplusplus3" />
+                <label class="numeracao" for="cplusplus3">3</label>
+                <input name="groupcplusplus" type="radio" id="cplusplus4" />
+                <label class="numeracao" for="cplusplus4">4</label>
+                <input name="groupcplusplus" type="radio" id="cplusplus5" />
+                <label class="numeracao" for="cplusplus5">5</label>
+                <label class="habilidadeDireita">Senior</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s0 m1 l2"></div>
+            <label class="labelHabilidade">Cake </label>
+            <div>
+                <div class="col s0 m1 l2"></div>
+                <label class="habilidadeEsquerda">Nao conheco / I don't know</label>
+                <input name="groupcake" type="radio" id="cake0" />
+                <label class="numeracao" for="cake0">0</label>
+                <input name="groupcake" type="radio" id="cake1" />
+                <label class="numeracao" for="cake1">1</label>
+                <input name="groupcake" type="radio" id="cake2" />
+                <label class="numeracao" for="cake2">2</label>
+                <input name="groupcake" type="radio" id="cake3" />
+                <label class="numeracao" for="cake3">3</label>
+                <input name="groupcake" type="radio" id="cake4" />
+                <label class="numeracao" for="cake4">4</label>
+                <input name="groupcake" type="radio" id="cake5" />
+                <label class="numeracao" for="cake5">5</label>
+                <label class="habilidadeDireita">Senior</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s0 m1 l2"></div>
+            <label class="labelHabilidade">Django </label>
+            <div>
+                <div class="col s0 m1 l2"></div>
+                <label class="habilidadeEsquerda">Nao conheco / I don't know</label>
+                <input name="groupdjango" type="radio" id="django0" />
+                <label class="numeracao" for="django0">0</label>
+                <input name="groupdjango" type="radio" id="django1" />
+                <label class="numeracao" for="django1">1</label>
+                <input name="groupdjango" type="radio" id="django2" />
+                <label class="numeracao" for="django2">2</label>
+                <input name="groupdjango" type="radio" id="django3" />
+                <label class="numeracao" for="django3">3</label>
+                <input name="groupdjango" type="radio" id="django4" />
+                <label class="numeracao" for="django4">4</label>
+                <input name="groupdjango" type="radio" id="django5" />
+                <label class="numeracao" for="django5">5</label>
+                <label class="habilidadeDireita">Senior</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s0 m1 l2"></div>
+            <label class="labelHabilidade">Majento </label>
+            <div>
+                <div class="col s0 m1 l2"></div>
+                <label class="habilidadeEsquerda">Nao conheco / I don't know</label>
+                <input name="groupmajento" type="radio" id="majento0" />
+                <label class="numeracao" for="majento0">0</label>
+                <input name="groupmajento" type="radio" id="majento1" />
+                <label class="numeracao" for="majento1">1</label>
+                <input name="groupmajento" type="radio" id="majento2" />
+                <label class="numeracao" for="majento2">2</label>
+                <input name="groupmajento" type="radio" id="majento3" />
+                <label class="numeracao" for="majento3">3</label>
+                <input name="groupmajento" type="radio" id="majento4" />
+                <label class="numeracao" for="majento4">4</label>
+                <input name="groupmajento" type="radio" id="majento5" />
+                <label class="numeracao" for="majento5">5</label>
+                <label class="habilidadeDireita">Senior</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s0 m1 l2"></div>
+            <label class="labelHabilidade">PHP </label>
+            <div>
+                <div class="col s0 m1 l2"></div>
+                <label class="habilidadeEsquerda">Nao conheco / I don't know</label>
+                <input name="groupphp" type="radio" id="php0" />
+                <label class="numeracao" for="php0">0</label>
+                <input name="groupphp" type="radio" id="php1" />
+                <label class="numeracao" for="php1">1</label>
+                <input name="groupphp" type="radio" id="php2" />
+                <label class="numeracao" for="php2">2</label>
+                <input name="groupphp" type="radio" id="php3" />
+                <label class="numeracao" for="php3">3</label>
+                <input name="groupphp" type="radio" id="php4" />
+                <label class="numeracao" for="php4">4</label>
+                <input name="groupphp" type="radio" id="php5" />
+                <label class="numeracao" for="php5">5</label>
+                <label class="habilidadeDireita">Senior</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s0 m1 l2"></div>
+            <label class="labelHabilidade">Wordpress </label>
+            <div>
+                <div class="col s0 m1 l2"></div>
+                <label class="habilidadeEsquerda">Nao conheco / I don't know</label>
+                <input name="groupwordpress" type="radio" id="wordpress0" />
+                <label class="numeracao" for="wordpress0">0</label>
+                <input name="groupwordpress" type="radio" id="wordpress1" />
+                <label class="numeracao" for="wordpress1">1</label>
+                <input name="groupwordpress" type="radio" id="wordpress2" />
+                <label class="numeracao" for="wordpress2">2</label>
+                <input name="groupwordpress" type="radio" id="wordpress3" />
+                <label class="numeracao" for="wordpress3">3</label>
+                <input name="groupwordpress" type="radio" id="wordpress4" />
+                <label class="numeracao" for="wordpress4">4</label>
+                <input name="groupwordpress" type="radio" id="wordpress5" />
+                <label class="numeracao" for="wordpress5">5</label>
+                <label class="habilidadeDireita">Senior</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s0 m1 l2"></div>
+            <label class="labelHabilidade">Phyton </label>
+            <div>
+                <div class="col s0 m1 l2"></div>
+                <label class="habilidadeEsquerda">Nao conheco / I don't know</label>
+                <input name="groupphyton" type="radio" id="phyton0" />
+                <label class="numeracao" for="phyton0">0</label>
+                <input name="groupphyton" type="radio" id="phyton1" />
+                <label class="numeracao" for="phyton1">1</label>
+                <input name="groupphyton" type="radio" id="phyton2" />
+                <label class="numeracao" for="phyton2">2</label>
+                <input name="groupphyton" type="radio" id="phyton3" />
+                <label class="numeracao" for="phyton3">3</label>
+                <input name="groupphyton" type="radio" id="phyton4" />
+                <label class="numeracao" for="phyton4">4</label>
+                <input name="groupphyton" type="radio" id="phyton5" />
+                <label class="numeracao" for="phyton5">5</label>
+                <label class="habilidadeDireita">Senior</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s0 m1 l2"></div>
+            <label class="labelHabilidade">Ruby </label>
+            <div>
+                <div class="col s0 m1 l2"></div>
+                <label class="habilidadeEsquerda">Nao conheco / I don't know</label>
+                <input name="groupruby" type="radio" id="ruby0" />
+                <label class="numeracao" for="ruby0">0</label>
+                <input name="groupruby" type="radio" id="ruby1" />
+                <label class="numeracao" for="ruby1">1</label>
+                <input name="groupruby" type="radio" id="ruby2" />
+                <label class="numeracao" for="ruby2">2</label>
+                <input name="groupruby" type="radio" id="ruby3" />
+                <label class="numeracao" for="ruby3">3</label>
+                <input name="groupruby" type="radio" id="ruby4" />
+                <label class="numeracao" for="ruby4">4</label>
+                <input name="groupruby" type="radio" id="ruby5" />
+                <label class="numeracao" for="ruby5">5</label>
+                <label class="habilidadeDireita">Senior</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s0 m1 l2"></div>
+            <label class="labelHabilidade">SQL Server </label>
+            <div>
+                <div class="col s0 m1 l2"></div>
+                <label class="habilidadeEsquerda">Nao conheco / I don't know</label>
+                <input name="groupsqlserver" type="radio" id="sqlserver0" />
+                <label class="numeracao" for="sqlserver0">0</label>
+                <input name="groupsqlserver" type="radio" id="sqlserver1" />
+                <label class="numeracao" for="sqlserver1">1</label>
+                <input name="groupsqlserver" type="radio" id="sqlserver2" />
+                <label class="numeracao" for="sqlserver2">2</label>
+                <input name="groupsqlserver" type="radio" id="sqlserver3" />
+                <label class="numeracao" for="sqlserver3">3</label>
+                <input name="groupsqlserver" type="radio" id="sqlserver4" />
+                <label class="numeracao" for="sqlserver4">4</label>
+                <input name="groupsqlserver" type="radio" id="sqlserver5" />
+                <label class="numeracao" for="sqlserver5">5</label>
+                <label class="habilidadeDireita">Senior</label>
+            </div>
         </div>
 
-        <button ng-submit="onEnviar()">Enviar</button>
-    </form>
+        <div class="row">
+            <div class="col s0 m1 l2"></div>
+            <label class="labelHabilidade">My SQL</label>
+            <div>
+                <div class="col s0 m1 l2"></div>
+                <label class="habilidadeEsquerda">Nao conheco / I don't know</label>
+                <input name="groupmysql" type="radio" id="mysql0" />
+                <label class="numeracao" for="mysql0">0</label>
+                <input name="groupmysql" type="radio" id="mysql1" />
+                <label class="numeracao" for="mysql1">1</label>
+                <input name="groupmysql" type="radio" id="mysql2" />
+                <label class="numeracao" for="mysql2">2</label>
+                <input name="groupmysql" type="radio" id="mysql3" />
+                <label class="numeracao" for="mysql3">3</label>
+                <input name="groupmysql" type="radio" id="mysql4" />
+                <label class="numeracao" for="mysql4">4</label>
+                <input name="groupmysql" type="radio" id="mysql5" />
+                <label class="numeracao" for="mysql5">5</label>
+                <label class="habilidadeDireita">Senior</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s0 m1 l2"></div>
+            <label class="labelHabilidade">Salesforce </label>
+            <div>
+                <div class="col s0 m1 l2"></div>
+                <label class="habilidadeEsquerda">Nao conheco / I don't know</label>
+                <input name="groupsalesforce" type="radio" id="salesforce0" />
+                <label class="numeracao" for="salesforce0">0</label>
+                <input name="groupsalesforce" type="radio" id="salesforce1" />
+                <label class="numeracao" for="salesforce1">1</label>
+                <input name="groupsalesforce" type="radio" id="salesforce2" />
+                <label class="numeracao" for="salesforce2">2</label>
+                <input name="groupsalesforce" type="radio" id="salesforce3" />
+                <label class="numeracao" for="salesforce3">3</label>
+                <input name="groupsalesforce" type="radio" id="salesforce4" />
+                <label class="numeracao" for="salesforce4">4</label>
+                <input name="groupsalesforce" type="radio" id="salesforce5" />
+                <label class="numeracao" for="salesforce5">5</label>
+                <label class="habilidadeDireita">Senior</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s0 m1 l2"></div>
+            <label class="labelHabilidade">Photoshop </label>
+            <div>
+                <div class="col s0 m1 l2"></div>
+                <label class="habilidadeEsquerda">Nao conheco / I don't know</label>
+                <input name="groupphotoshop" type="radio" id="photoshop0" />
+                <label class="numeracao" for="photoshop0">0</label>
+                <input name="groupphotoshop" type="radio" id="photoshop1" />
+                <label class="numeracao" for="photoshop1">1</label>
+                <input name="groupphotoshop" type="radio" id="photoshop2" />
+                <label class="numeracao" for="photoshop2">2</label>
+                <input name="groupphotoshop" type="radio" id="photoshop3" />
+                <label class="numeracao" for="photoshop3">3</label>
+                <input name="groupphotoshop" type="radio" id="photoshop4" />
+                <label class="numeracao" for="photoshop4">4</label>
+                <input name="groupphotoshop" type="radio" id="photoshop5" />
+                <label class="numeracao" for="photoshop5">5</label>
+                <label class="habilidadeDireita">Senior</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s0 m1 l2"></div>
+            <label class="labelHabilidade">Illustrator </label>
+            <div>
+                <div class="col s0 m1 l2"></div>
+                <label class="habilidadeEsquerda">Nao conheco / I don't know</label>
+                <input name="groupillustrator" type="radio" id="illustrator0" />
+                <label class="numeracao" for="illustrator0">0</label>
+                <input name="groupillustrator" type="radio" id="illustrator1" />
+                <label class="numeracao" for="illustrator1">1</label>
+                <input name="groupillustrator" type="radio" id="illustrator2" />
+                <label class="numeracao" for="illustrator2">2</label>
+                <input name="groupillustrator" type="radio" id="illustrator3" />
+                <label class="numeracao" for="illustrator3">3</label>
+                <input name="groupillustrator" type="radio" id="illustrator4" />
+                <label class="numeracao" for="illustrator4">4</label>
+                <input name="groupillustrator" type="radio" id="illustrator5" />
+                <label class="numeracao" for="illustrator5">5</label>
+                <label class="habilidadeDireita">Senior</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s0 m1 l2"></div>
+            <label class="labelHabilidade">SEO </label>
+            <div>
+                <div class="col s0 m1 l2"></div>
+                <label class="habilidadeEsquerda">Nao conheco / I don't know</label>
+                <input name="groupseo" type="radio" id="seo0" />
+                <label class="numeracao" for="seo0">0</label>
+                <input name="groupseo" type="radio" id="seo1" />
+                <label class="numeracao" for="seo1">1</label>
+                <input name="groupseo" type="radio" id="seo2" />
+                <label class="numeracao" for="seo2">2</label>
+                <input name="groupseo" type="radio" id="seo3" />
+                <label class="numeracao" for="seo3">3</label>
+                <input name="groupseo" type="radio" id="seo4" />
+                <label class="numeracao" for="seo4">4</label>
+                <input name="groupseo" type="radio" id="seo5" />
+                <label class="numeracao" for="seo5">5</label>
+                <label class="habilidadeDireita">Senior</label>
+            </div>
+        </div>
+        <div class="row"></div>
+        <div class="row"></div>
+        <div class="row"></div>
+        <div class="row"></div>
+        <div class="row">
+            <div class="col s0 m1 l2"></div>
+            <div class="input-field col s12 m10 l8 l8">
+                <input [(ngModel)]="candidato.conhecimentoEmOutroFramework" placeholder="Sua resposta" id="conhecimentoEmOutroFramework"
+                    name="conhecimentoEmOutroFramework" type="text" class="validate" required>
+                <label style="font-size: 15px;" class="active" for="conhecimentoEmOutroFramework">Do you know any other language or framework that was not listed above? Tell us and evaluate yourself from 0 to 5. / Conhece mais alguma linguagem ou framework que não foi listado aqui em cima? Conte para nos e se auto avalie ainda de 0 a 5. </label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s0 m1 l2"></div>
+            <div class="input-field col s12 m10 l8 l8">
+                <input [(ngModel)]="candidato.linkCrud" placeholder="Sua resposta" id="linkCrud" name="linkCrud" type="text" class="validate"
+                    required>
+                <label class="active" for="linkCrud">Link CRUD<span class="campoObrigatorio">*</span></label>
+            </div>
+        </div>
+
+        <div class="row"></div>
+        <div class="row"></div>
+    </div>
+    <div class="row"> </div>
+
+    <div class="row">
+        <div class="col s0 m1 l2"></div>
+        <div>
+            <a class="btn-floating sinalizacaoDaParteDoFormulario blue"></a>
+            <a class="btn-floating sinalizacaoDaParteDoFormulario" style="margin-left:8ex;" [style.background-color]="contadorParteFormulario >= 2 ? '#2196F3': 'grey'"></a>
+            <a class="btn-floating sinalizacaoDaParteDoFormulario" style="margin-left:8ex;" [style.background-color]="contadorParteFormulario >= 3 ? '#2196F3': 'grey'"></a>
+            <a class="btn-floating sinalizacaoDaParteDoFormulario" style="margin-left:8ex;" [style.background-color]="contadorParteFormulario >= 4 ? '#2196F3': 'grey'"></a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s0 m1 l2"></div>
+        <button id="botaoAnterior" class="btn waves-effect waves-light left disabled" (click)="voltar()">Anterior</button>
+        <button id="botaoProximo" class="btn waves-effect waves-light" style="margin-left: 20px" (click)="proxima()">Próximo </button>
+        <button id="botaoEnviar" class="btn waves-effect waves-light blue hide" style="margin-left: 20px" (click)="enviar()">Enviar
+            <i class="material-icons right">send</i>
+        </button>
+    </div>
+    <div class="row"></div>
 </div>

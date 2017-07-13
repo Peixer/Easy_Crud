@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Candidato } from '../candidato';
 import 'rxjs/add/operator/toPromise';
 
 import { Http } from '@angular/http'
 import { environment } from 'environments/environment';
+import { Candidato } from '../candidato';
 
 @Injectable()
 export class CandidatoService {
