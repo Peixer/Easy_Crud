@@ -5,10 +5,10 @@ namespace BackEnd.Model
     [Flags]
     public enum TipoDisponibilidade
     {
-        AteQuatroHoras = 0,
-        AteSeisHoras = 1,
-        AteOitoHoras = 2,
-        MaisDeOitoHoras = 3,
-        FinaisDeSemana = 4,
+        AteQuatroHoras = 2,
+        AteSeisHoras = 4,
+        AteOitoHoras = 8,
+        MaisDeOitoHoras = 16,
+        FinaisDeSemana = 32,
     }
 }

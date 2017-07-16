@@ -16,8 +16,20 @@ namespace BackEnd.ViewModel
         public string Cidade { get; set; }
         public string Estado { get; set; }
         public string Portfolio { get; set; }
-        public TipoDisponibilidade Disponibilidade { get; set; }
-        public TipoHorarioDeTrabalho HorarioDeTrabalho { get; set; }
+
+        //Disponibilidade
+        public bool AteQuatroHoras { get; set; }
+        public bool AteSeisHoras { get; set; }
+        public bool AteOitoHoras { get; set; }
+        public bool MaisDeOitoHoras { get; set; }
+        public bool FinaisDeSemana { get; set; }
+        //HorarioDeTrabalho
+        public bool Manha { get; set; }
+        public bool Tarde { get; set; }
+        public bool Noite { get; set; }
+        public bool Madrugada { get; set; }
+        public bool Comercial { get; set; }
+
         public double PretensaoSalarial { get; set; }
         public string InformacoesBanco { get; set; }
         public string LinkCrud { get; set; }
@@ -27,7 +39,7 @@ namespace BackEnd.ViewModel
         public TipoNivelConhecimento ConhecimentoEmIOS { get; set; }
         public TipoNivelConhecimento ConhecimentoEmHtml { get; set; }
         public TipoNivelConhecimento ConhecimentoEmCss { get; set; }
-        public TipoNivelConhecimento ConhecimentoEmBoostrap { get; set; }
+        public TipoNivelConhecimento ConhecimentoEmBootstrap { get; set; }
         public TipoNivelConhecimento ConhecimentoEmJQuery { get; set; }
         public TipoNivelConhecimento ConhecimentoEmAngularJS { get; set; }
         public TipoNivelConhecimento ConhecimentoEmJava { get; set; }
@@ -47,7 +59,7 @@ namespace BackEnd.ViewModel
         public TipoNivelConhecimento ConhecimentoEmPhotoshop { get; set; }
         public TipoNivelConhecimento ConhecimentoEmIllustrator { get; set; }
         public TipoNivelConhecimento ConhecimentoEmSEO { get; set; }
-        public TipoNivelConhecimento ConhecimentoEmOutroFramework { get; set; }
+        public string ConhecimentoEmOutroFramework { get; set; }
 
         public IEnumerable<ValidationResult> Validate(System.ComponentModel.DataAnnotations.ValidationContext validationContext)
         {

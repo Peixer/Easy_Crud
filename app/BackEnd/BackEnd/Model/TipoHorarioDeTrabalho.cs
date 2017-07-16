@@ -5,10 +5,10 @@ namespace BackEnd.Model
     [Flags]
     public enum TipoHorarioDeTrabalho
     {
-        Manha = 0,
-        Tarde = 1,
-        Noite = 2,
-        Madrugada = 3,
-        Comercial = 4,
+        Manha = 2,
+        Tarde = 4,
+        Noite = 8,
+        Madrugada = 16,
+        Comercial = 32,
     }
 }
