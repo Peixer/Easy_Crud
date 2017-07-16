@@ -17,4 +17,12 @@ export class CandidatoService {
     todos(): Promise<Candidato[]> {
         return this.httpService.get(environment.baseUrl + '/api/candidato').toPromise().then(response => response.json());
     }
+
+    salvar(candidato): Promise<Candidato> {
+        return this.httpService.post(environment.baseUrl + '/api/candidato', candidato).toPromise().then(response =>response.json());
+    }
+
+    atualizar(candidato): Promise<any> {
+        return this.httpService.put(environment.baseUrl + '/api/candidato', candidato).toPromise();
+    }
 }

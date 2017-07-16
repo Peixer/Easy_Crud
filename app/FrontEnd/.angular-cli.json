@@ -24,7 +24,9 @@
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",
-        "../node_modules/materialize-css/dist/js/materialize.min.js"
+        "../node_modules/materialize-css/dist/js/materialize.min.js",
+        "../node_modules/jquery-validation/dist/jquery.validate.js",
+        "../node_modules/jquery-validation/dist/additional-methods.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

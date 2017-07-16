@@ -1,3 +1,6 @@
+import { TipoDisponibilidade } from "app/TipoDisponibilidade";
+import { TipoHorarioTrabalho } from "app/TipoHorarioTrabalho";
+
 export class Candidato {
   id: number;
   nome: String = "";
@@ -5,37 +8,25 @@ export class Candidato {
   informacoesBanco: String = "";
   contaBancaria: ContaBancaria;
 
-  private _disponibilidade2: TipoDisponibilidade;
-  ateQuatroHoras: boolean;
-  ateSeisHoras: boolean;
-  ateOitoHoras: boolean;
-  maisDeOitoHoras: boolean;
-  finaisDeSemana: boolean;
+  ateQuatroHoras: boolean = false;
+  ateSeisHoras: boolean = false;
+  ateOitoHoras: boolean = false;
+  maisDeOitoHoras: boolean = false;
+  finaisDeSemana: boolean = false;
 
-  get disponibilidade() {
-    if (this.ateQuatroHoras)
-      this._disponibilidade2 |= TipoDisponibilidade.AteQuatroHoras;
+  manha: boolean = false;
+  tarde: boolean = false;
+  noite: boolean = false;
+  madrugada: boolean = false;
+  comercial: boolean = false;
 
-    if (this.ateSeisHoras)
-      this._disponibilidade2 |= TipoDisponibilidade.AteSeisHoras;
-
-    return this._disponibilidade2;
-  }
-
-  set disponibilidade(disponibilidade) {
-    if (disponibilidade & TipoDisponibilidade.AteQuatroHoras) {
-      this.ateQuatroHoras = true;
-    }
-    if (disponibilidade & TipoDisponibilidade.AteSeisHoras) {
-      this.ateSeisHoras = true;
-    }
-  }
+  conhecimentoEmIonic: number;
+  conhecimentoEmAndroid : number;
 
   constructor() {
     this.contaBancaria = new ContaBancaria();
   }
 }
-
 
 export class ContaBancaria {
   id: number;
@@ -45,4 +36,16 @@ export class ContaBancaria {
   agencia: String = "";
   Numero: Number = 0;
 
+
+  corrente: boolean;
+  poupanca: boolean;
+}
+
+export enum TipoNivelConhecimento {
+  Nenhum = 0,
+  MuitoBaixo = 1,
+  Baixo = 2,
+  Medio = 3,
+  Bom = 4,
+  Senior = 5,
 }

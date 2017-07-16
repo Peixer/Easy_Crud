@@ -4,24 +4,46 @@
 }
 
 .habilidadeEsquerda{
-    padding-right: 55px;
-    font-size: 20px;
+    font-size: 20px  !important;
 }
 
 .habilidadeDireita{
-    padding-left: 55px;
-    font-size: 20px;
+    font-size: 20px  !important;
 }
 .labelHabilidade{
-    font-size: 25px;
+    font-size: 25px  !important;
     font-weight: bold;
 }
 
 .numeracao{
-    padding-right: 30px;
+    padding-right: 2%;
 }
 
 .sinalizacaoDaParteDoFormulario{
     width: 15px !important;
     height: 15px !important;
+}
+
+label{
+    font-size: 15px !important;
+}
+
+
+@media only screen and (min-width: 1300px){
+    .habilidadeEsquerda {
+        width: auto !important;
+        padding-right: 40px;
+    }
+
+    .groupHabilidades {
+        width: 450px !important;        
+    }
+
+    .numeracao {
+        padding-right: 20px !important;    
+    }
+
+    .habilidadeDireita {
+        width: auto !important;
+    }
 }

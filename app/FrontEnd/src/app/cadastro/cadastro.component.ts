@@ -3,7 +3,9 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 
 import { CandidatoService } from '../service/candidato.service';
-import { Candidato } from '../candidato';
+import { Candidato, TipoNivelConhecimento } from '../candidato';
+import $ from 'jquery/dist/jquery';
+import "jquery-validation";
 
 @Component({
     selector: 'cadastro-root',
@@ -27,9 +29,58 @@ export class CadastroComponent implements OnInit {
                 });
         } else
             this.candidato = new Candidato();
+
+        this.adicionarMetodoJqueryValidate();
+    }
+
+    adicionarMetodoJqueryValidate() {
+        $.validator.addMethod("require_from_group", function (value, element, options) {
+            var $fields = $(options[1], element.form),
+                $fieldsFirst = $fields.eq(0),
+                validator = $fieldsFirst.data("valid_req_grp") ? $fieldsFirst.data("valid_req_grp") : $.extend({}, this),
+                isValid = $fields.filter(function () {
+                    return validator.elementValue(this);
+                }).length >= options[0];
+
+            // Store the cloned validator for future validation
+            $fieldsFirst.data("valid_req_grp", validator);
+
+            // If element isn't being validated, run each require_from_group field's validation rules
+            if (!$(element).data("being_validated")) {
+                $fields.data("being_validated", true);
+                $fields.each(function () {
+                    validator.element(this);
+                });
+                $fields.data("being_validated", false);
+            }
+            return isValid;
+        }, $.validator.format("Selecione ao menos {0} dos campos."));
+    }
+
+    enviar() {
+
+        if (!this.formularioEstaValido())
+            return;
+
+        if (this.route.snapshot.paramMap.has('id')) {
+            this.candidatoService.atualizar(this.candidato).then((mensagem) => {
+                debugger;
+                alert('Candidato Atualizado!');
+                this.router.navigate(['/admin']);
+            });
+        } else {
+            this.candidatoService.salvar(this.candidato).then((mensagem) => {
+                debugger;
+                alert('Candidato cadastrado!');
+                this.router.navigate(['/admin']);
+            });
+        }
     }
 
     proxima() {
+        if (!this.formularioEstaValido())
+            return;
+
         this.navegarEntreAsPartesDoFormulario(false);
     }
 
@@ -38,12 +89,12 @@ export class CadastroComponent implements OnInit {
     }
 
     navegarEntreAsPartesDoFormulario(estaVoltando: boolean) {
-        if (!this.podeNavegar(estaVoltando))
-            return;
-
         this.mostrarParteFormulario(estaVoltando);
         this.habilitarBotaoEnviar(this.contadorParteFormulario == this.PARTE_FINAL);
         this.habilitarBotaoAnterior(this.contadorParteFormulario != this.PARTE_INICIAL);
+
+        $('#formulario_' + this.contadorParteFormulario+" :input:first").focus(); 
+        $('#form-id :input:enabled:visible:first').focus();
     }
 
     habilitarBotaoAnterior(deveHabilitar: boolean) {
@@ -70,26 +121,165 @@ export class CadastroComponent implements OnInit {
     }
 
     mostrarParteFormulario(estaVoltando: boolean) {
-        let idParteFormularioParaEsconder = "formulario_" + this.contadorParteFormulario;
-        let element = document.getElementById(idParteFormularioParaEsconder);
 
-        element.classList.add('hide');
+        $('#formulario_' + this.contadorParteFormulario).addClass('hide');
 
         if (estaVoltando)
             this.contadorParteFormulario--;
         else
             this.contadorParteFormulario++;
 
-        idParteFormularioParaEsconder = "formulario_" + this.contadorParteFormulario;
-        element = document.getElementById(idParteFormularioParaEsconder);
-        element.classList.remove('hide');
+        $('#formulario_' + this.contadorParteFormulario).removeClass('hide').fadeIn(500);
     }
 
-    podeNavegar(estaVoltando: boolean): Boolean {
-        if (estaVoltando && this.contadorParteFormulario == this.PARTE_INICIAL)
-            return false;
-        if (!estaVoltando && this.contadorParteFormulario == this.PARTE_FINAL)
-            return false;
-        return true;
+    formularioEstaValido() {
+        return $('#formulario_' + this.contadorParteFormulario).validate({
+            rules: {
+                email: {
+                    required: true,
+                    email: true
+                },
+                nome: {
+                    required: true
+                },
+                skype: {
+                    required: true
+                },
+                telefone: {
+                    required: true
+                },
+                cidade: {
+                    required: true
+                },
+                estado: {
+                    required: true
+                },
+                pretensaoSalarial: {
+                    required: true
+                },
+                groupIonic: {
+                    required: true
+                },
+                groupAndroid: {
+                    required: true
+                },
+                groupIOS: {
+                    required: true
+                },
+                groupBootstrap: {
+                    required: true
+                },
+                groupjquery: {
+                    required: true
+                },
+                groupangularJS: {
+                    required: true
+                },
+                groupaspNet: {
+                    required: true
+                },
+                linkCrud: {
+                    required: true
+                },
+                ateQuatroHoras: {
+                    require_from_group: [1, ".disponibilidade-group"]
+                },
+                ateSeisHoras: {
+                    require_from_group: [1, ".disponibilidade-group"]
+                },
+                ateOitoHoras: {
+                    require_from_group: [1, ".disponibilidade-group"]
+                },
+                maisDeOitoHoras: {
+                    require_from_group: [1, ".disponibilidade-group"]
+                },
+                finaisDeSemana: {
+                    require_from_group: [1, ".disponibilidade-group"]
+                },
+                manha: {
+                    require_from_group: [1, ".horario-group"]
+
+                },
+                tarde: {
+                    require_from_group: [1, ".horario-group"]
+
+                },
+                noite: {
+                    require_from_group: [1, ".horario-group"]
+
+                },
+                madrugada: {
+                    require_from_group: [1, ".horario-group"]
+
+                },
+                comercial: {
+                    require_from_group: [1, ".horario-group"]
+
+                }
+            },
+            messages: {
+                email: {
+                    required: "Campo obrigatório",
+                    email: "Insira um endereço de e-mail válido"
+                },
+                nome: {
+                    required: "Campo obrigatório"
+                },
+                skype: {
+                    required: "Campo obrigatório"
+                },
+                telefone: {
+                    required: "Campo obrigatório"
+                },
+                cidade: {
+                    required: "Campo obrigatório"
+                },
+                estado: {
+                    required: "Campo obrigatório"
+                },
+                pretensaoSalarial: {
+                    required: "Campo obrigatório"
+                },
+                groupIonic: {
+                    required: "Campo obrigatório"
+                },
+                groupAndroid: {
+                    required: "Campo obrigatório"
+                },
+                groupIOS: {
+                    required: "Campo obrigatório"
+                },
+                groupBootstrap: {
+                    required: "Campo obrigatório"
+                },
+                groupjquery: {
+                    required: "Campo obrigatório"
+                },
+                groupangularJS: {
+                    required: "Campo obrigatório"
+                },
+                groupaspNet: {
+                    required: "Campo obrigatório"
+                },
+                linkCrud: {
+                    required: "Campo obrigatório"
+                },
+            },
+            errorElement: 'div',
+            errorPlacement: function (error, element) {
+                var placement = $(element).data('error');
+
+                error[0].style.color = 'red';
+
+                if (element[0].type == 'checkbox') {
+                    $(element[0].labels[0]).append(error);
+                }
+                else if (placement) {
+                    $(placement).append(error)
+                } else {
+                    error.insertAfter(element);
+                }
+            }
+        }).form();
     }
 }
