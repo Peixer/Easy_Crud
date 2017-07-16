@@ -10,7 +10,7 @@ export class CandidatoService {
 
     constructor(private httpService: Http) { }
 
-    obter(id: number): Promise<Candidato> {
+    obter(id: number): Promise<any> {
         return this.httpService.get(environment.baseUrl + '/api/candidato/' + id).toPromise().then(response => response.json());
     }
 
@@ -18,8 +18,8 @@ export class CandidatoService {
         return this.httpService.get(environment.baseUrl + '/api/candidato').toPromise().then(response => response.json());
     }
 
-    salvar(candidato): Promise<Candidato> {
-        return this.httpService.post(environment.baseUrl + '/api/candidato', candidato).toPromise().then(response =>response.json());
+    salvar(candidato): Promise<any> {
+        return this.httpService.post(environment.baseUrl + '/api/candidato', candidato).toPromise();
     }
 
     atualizar(candidato): Promise<any> {

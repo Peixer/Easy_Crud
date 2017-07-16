@@ -25,10 +25,12 @@ export class CadastroComponent implements OnInit {
         if (id != null) {
             this.candidatoService.obter(Number(id))
                 .then((candidato) => {
-                    this.candidato = candidato
+                    this.candidato = new Candidato(candidato);
+                }, (mensagem) => {
+                    alert('Erro ao atualizar candidato - ' + mensagem);
                 });
         } else
-            this.candidato = new Candidato();
+            this.candidato = new Candidato('');
 
         this.adicionarMetodoJqueryValidate();
     }
@@ -58,21 +60,22 @@ export class CadastroComponent implements OnInit {
     }
 
     enviar() {
-
         if (!this.formularioEstaValido())
             return;
 
         if (this.route.snapshot.paramMap.has('id')) {
             this.candidatoService.atualizar(this.candidato).then((mensagem) => {
-                debugger;
                 alert('Candidato Atualizado!');
                 this.router.navigate(['/admin']);
+            }, (mensagem) => {
+                alert('Erro ao atualizar candidato - ' + mensagem);
             });
         } else {
             this.candidatoService.salvar(this.candidato).then((mensagem) => {
-                debugger;
                 alert('Candidato cadastrado!');
                 this.router.navigate(['/admin']);
+            }, (mensagem) => {
+                alert('Erro ao cadastrar candidato' + mensagem);
             });
         }
     }
@@ -93,7 +96,7 @@ export class CadastroComponent implements OnInit {
         this.habilitarBotaoEnviar(this.contadorParteFormulario == this.PARTE_FINAL);
         this.habilitarBotaoAnterior(this.contadorParteFormulario != this.PARTE_INICIAL);
 
-        $('#formulario_' + this.contadorParteFormulario+" :input:first").focus(); 
+        $('#formulario_' + this.contadorParteFormulario + " :input:first").focus();
         $('#form-id :input:enabled:visible:first').focus();
     }
 
@@ -214,6 +217,14 @@ export class CadastroComponent implements OnInit {
                 },
                 comercial: {
                     require_from_group: [1, ".horario-group"]
+
+                },
+                poupanca: {
+                    require_from_group: [1, ".contaBancaria-group"]
+
+                },
+                corrente: {
+                    require_from_group: [1, ".contaBancaria-group"]
 
                 }
             },

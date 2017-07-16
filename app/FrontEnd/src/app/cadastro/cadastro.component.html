@@ -2,809 +2,818 @@
     <div class="row"></div>
     <div class="row"></div>
 
-    <form id="formulario_1" class="parte_formulario ">
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <div class="input-field col s12 m10 l8 l8">
-                <input class="validate" [ngModel]="candidato?.email" placeholder="Seu email" id="email" name="email" type="email" required>
-                <label class="active" for="email">Endereço de e-mail <span class="campoObrigatorio">*</span></label>
-            </div>
-        </div>
-        <div class="row"></div>
-        <div class="row"></div>
-    </form>
-
-    <form id="formulario_2" class="parte_formulario hide">
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <div class="input-field col s12 m10 l8">
-                <input [ngModel]="candidato?.nome" placeholder="Sua resposta" id="nome" name="nome" type="text" class="validate" required>
-                <label class="active" for="nome">Nome/Name:<span class="campoObrigatorio">*</span></label>
-            </div>
-        </div>
-        <div class="row"> </div>
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <div class="input-field col s12 m10 l8">
-                <input [ngModel]="candidato?.skype" placeholder="Sua resposta" id="skype" name="skype" type="text" class="validate" required>
-                <label class="active" for="skype">Skype: ( please create an account if you don't have yet / bom criar caso não tenha)<span class="campoObrigatorio">*</span> </label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <div class="input-field col s12 m10 l8">
-                <input [ngModel]="candidato?.telefone" placeholder="Sua resposta" id="telefone" name="telefone" type="text" class="validate"
-                    required>
-                <label class="active" for="telefone">Telefone/Phone (Whatsapp): <span class="campoObrigatorio">*</span> </label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <div class="input-field col s12 m10 l8">
-                <input [ngModel]="candidato?.linkedin" placeholder="Sua resposta" id="linkedin" name="linkedin" type="text">
-                <label class="active" for="linkedin">Linkedin: </label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <div class="input-field col s12 m10 l8">
-                <input [ngModel]="candidato?.cidade" placeholder="Sua resposta" id="cidade" name="cidade" type="text" class="validate" required>
-                <label class="active" for="cidade" data-error="Esta pergunta é obrigatória">Cidade / City <span class="campoObrigatorio">*</span> </label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <div class="input-field col s12 m10 l8">
-                <input [ngModel]="candidato?.estado" placeholder="Sua resposta" id="estado" name="estado" type="text" class="validate" required>
-                <label class="active" for="estado" data-error="Esta pergunta é obrigatória">Estado/ State <span class="campoObrigatorio">*</span> </label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <div class="input-field col s12 m10 l8">
-
-                <input [ngModel]="candidato?.portfolio" placeholder="Sua resposta" id="portfolio" name="portfolio" type="text">
-                <label class="active" for="portfolio">Portfolio: </label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <label>What is your willingness to work today? / Qual é sua disponibilidade para trabalhar hoje?<span class="campoObrigatorio">*</span> </label>
-            <div>
+    <div *ngIf="candidato">
+        <form id="formulario_1" class="parte_formulario ">
+            <div class="row">
                 <div class="col s0 m1 l2"></div>
-                <input class="disponibilidade-group" type="checkbox" [ngModel]="candidato?.ateQuatroHoras" name="ateQuatroHoras" id="ateQuatroHoras"
-                />
-                <label for="ateQuatroHoras">Up to 4 hours per day / Até 4 horas por dia                                       </label>
-            </div>
-            <div>
-                <div class="col s0 m1 l2"></div>
-                <input class="disponibilidade-group" type="checkbox" [ngModel]="candidato?.ateSeisHoras" name="ateSeisHoras" id="ateSeisHoras"
-                />
-                <label for="ateSeisHoras">4 to 6 hours per day / De 4 á 6 horas por dia                                       </label>
-            </div>
-            <div>
-                <div class="col s0 m1 l2"></div>
-                <input class="disponibilidade-group" type="checkbox" [ngModel]="candidato?.ateOitoHoras" name="ateOitoHoras" id="ateOitoHoras"
-                />
-                <label for="ateOitoHoras">6 to 8 hours per day /De 6 á 8 horas por dia                                       </label>
-            </div>
-            <div>
-                <div class="col s0 m1 l2"></div>
-                <input class="disponibilidade-group" type="checkbox" [ngModel]="candidato?.maisDeOitoHoras" name="maisDeOitoHoras" id="maisDeOitoHoras"
-                />
-                <label for="maisDeOitoHoras">Up to 8 hours a day (are you sure?) / Acima de 8 horas por dia (tem certeza?)</label>
-            </div>
-            <div>
-                <div class="col s0 m1 l2"></div>
-                <input class="disponibilidade-group" type="checkbox" [ngModel]="candidato?.finaisDeSemana" name="finaisDeSemana" id="finaisDeSemana"
-                />
-                <label for="finaisDeSemana">Only weekends / Apenas finais de semana                                       </label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <label>What's the best time to work for you? / Pra você qual é o melhor horário para trabalhar?<span class="campoObrigatorio">*</span> </label>
-            <div>
-                <div class="col m1 l2 .hide-on-med-and-up"></div>
-                <input class="horario-group" type="checkbox" [ngModel]="candidato?.manha" name="manha" id="manha" />
-                <label for="manha">Morning (from 08:00 to 12:00) / Manhã (de 08:00 ás 12:00)</label>
-            </div>
-            <div>
-                <div class="col s0 m1 l2 .hide-on-med-and-up"></div>
-                <input class="horario-group" type="checkbox" [ngModel]="candidato?.tarde" name="tarde" id="tarde" />
-                <label for="tarde">Afternoon (from 1:00 p.m. to 6:00 p.m.) / Tarde (de 13:00 ás 18:00)</label>
-            </div>
-            <div>
-                <div class="col s0 m1 l2 .hide-on-med-and-up"></div>
-                <input class="horario-group" type="checkbox" [ngModel]="candidato?.noite" name="noite" id="noite" />
-                <label for="noite">Night (7:00 p.m. to 10:00 p.m.) /Noite (de 19:00 as 22:00)</label>
-            </div>
-            <div>
-                <div class="col m1 l2 .hide-on-med-and-up"></div>
-                <input class="horario-group" type="checkbox" [ngModel]="candidato?.madrugada" name="madrugada" id="madrugada" />
-                <label for="madrugada">Dawn (from 10 p.m. onwards) / Madrugada (de 22:00 em diante)</label>
-            </div>
-            <div>
-                <div class="col s0 m1 l2 .hide-on-med-and-up"></div>
-                <input class="horario-group" type="checkbox" [ngModel]="candidato?.comercial" name="comercial" id="comercial" />
-                <label for="comercial">Business (from 08:00 a.m. to 06:00 p.m.) / Comercial (de 08:00 as 18:00)</label>
-            </div>
-        </div>
-        <div class="row"> </div>
-        <div class="row .hide-on-med-and-up"></div>
-        <div class="row .hide-on-med-and-up"></div>
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <div class="input-field col s12 m10 l8">
-
-                <input [ngModel]="candidato?.pretensaoSalarial" placeholder="Sua resposta" id="pretensaoSalarial" name="pretensaoSalarial"
-                    type="number">
-                <label class="active" for="pretensaoSalarial">What is your hourly salary requirements? / Qual sua pretensão salarial por hora? <span class="campoObrigatorio">*</span> </label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <div class="input-field col s12 m10 l8">
-
-                <input [ngModel]="candidato?.informacoesBanco" placeholder="Sua resposta" id="informacoesBanco" name="informacoesBanco" type="text">
-                <label class="active" for="informacoesBanco">Bank Information / Paypal / Itau etc</label>
-            </div>
-        </div>
-    </form>
-
-    <form id="formulario_3" class="parte_formulario hide">
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <div class="input-field col s12 m10 l8">
-
-                <input [ngModel]="candidato?.contaBancaria?.Nome" placeholder="Sua resposta" id="contaBancaria.Nome" name="contaBancaria.Nome"
-                    type="text">
-                <label class="active" for="contaBancaria.Nome">Name / Nome</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <div class="input-field col s12 m10 l8">
-
-                <input [ngModel]="candidato?.contaBancaria?.CPF" placeholder="Sua resposta" id="contaBancaria.CPF" name="contaBancaria.CPF"
-                    type="text">
-                <label class="active" for="contaBancaria.CPF">Only for Brazilians / CPF</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <div class="input-field col s12 m10 l8">
-
-                <input [ngModel]="candidato?.contaBancaria?.Banco" placeholder="Sua resposta" id="contaBancaria.Banco" name="contaBancaria.Banco"
-                    type="number">
-                <label class="active" for="contaBancaria.Banco">Bank / Banco ( Itau, Bradesco, ect..)</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <div class="input-field col s12 m10 l8">
-
-                <input [ngModel]="candidato?.contaBancaria?.Agencia" placeholder="Sua resposta" id="contaBancaria.Agencia" name="contaBancaria.Agencia"
-                    type="number">
-                <label class="active" for="contaBancaria.Agencia">Agency / Agencia</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <label>Account Type / Tipo de conta </label>
-            <div>
-                <div class="col s0 m1 l2"></div>
-                <input type="checkbox" [ngModel]="candidato?.contaBancaria?.corrente" name="contaBancaria.corrente" id="contaBancaria.corrente"
-                />
-                <label for="contaBancaria.corrente">Chain / Corrente</label>
-            </div>
-            <div>
-                <div class="col s0 m1 l2"></div>
-                <input type="checkbox" [ngModel]="candidato?.contaBancaria?.poupanca" name="contaBancaria.poupanca" id="contaBancaria.poupanca"
-                />
-                <label for="contaBancaria.poupanca">Savings / Poupança</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <div class="input-field col s12 m10 l8">
-
-                <input [ngModel]="candidato?.contaBancaria?.Numero" placeholder="Sua resposta" id="contaBancaria.Numero" name="contaBancaria.Numero"
-                    type="number">
-                <label class="active" for="contaBancaria.Numero">Account Number / Número da conta</label>
-            </div>
-        </div>
-    </form>
-
-    <form id="formulario_4" class="parte_formulario hide">
-        <div class="row">
-            <div class="col m1 l0 xl2"></div>
-            <label class="labelHabilidade col s12 m12 l12 xl10">Ionic <span class="campoObrigatorio">*</span> </label>
-            <div>
-                <div class="col l12 xl2"></div>
-                <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
-                <div class="groupHabilidades col s12 m9 l6 xl5">
-                    <input name="groupIonic" type="radio" [ngModel]="candidato?.conhecimentoEmIonic" [value]="0" id="ionic0" />
-                    <label class="numeracao" for="ionic0">0</label>
-                    <input name="groupIonic" type="radio" [ngModel]="candidato?.conhecimentoEmIonic" [value]="1" id="ionic1" />
-                    <label class="numeracao" for="ionic1">1</label>
-                    <input name="groupIonic" type="radio" [ngModel]="candidato?.conhecimentoEmIonic" [value]="2" id="ionic2" />
-                    <label class="numeracao" for="ionic2">2</label>
-                    <input name="groupIonic" type="radio" [ngModel]="candidato?.conhecimentoEmIonic" [value]="3" id="ionic3" />
-                    <label class="numeracao" for="ionic3">3</label>
-                    <input name="groupIonic" type="radio" [ngModel]="candidato?.conhecimentoEmIonic" [value]="4" id="ionic4" />
-                    <label class="numeracao" for="ionic4">4</label>
-                    <input name="groupIonic" type="radio" [ngModel]="candidato?.conhecimentoEmIonic" [value]="5" id="ionic5" />
-                    <label class="numeracao" for="ionic5">5</label>
-                </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col m1 l0 xl2"></div>
-            <label class="labelHabilidade col s12 m12 l12 xl10">Android <span class="campoObrigatorio">*</span> </label>
-            <div>
-                <div class="col s0 m1 l2"></div>
-                <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
-                <div class="groupHabilidades col s12 m9 l6 xl5">
-                    <input name="groupAndroid" type="radio" [ngModel]="candidato?.conhecimentoEmAndroid" [value]="0" id="android0" />
-                    <label class="numeracao" for="android0">0</label>
-                    <input name="groupAndroid" type="radio" [ngModel]="candidato?.conhecimentoEmAndroid" [value]="1" id="android1" />
-                    <label class="numeracao" for="android1">1</label>
-                    <input name="groupAndroid" type="radio" [ngModel]="candidato?.conhecimentoEmAndroid" [value]="2" id="android2" />
-                    <label class="numeracao" for="android2">2</label>
-                    <input name="groupAndroid" type="radio" [ngModel]="candidato?.conhecimentoEmAndroid" [value]="3" id="android3" />
-                    <label class="numeracao" for="android3">3</label>
-                    <input name="groupAndroid" type="radio" [ngModel]="candidato?.conhecimentoEmAndroid" [value]="4" id="android4" />
-                    <label class="numeracao" for="android4">4</label>
-                    <input name="groupAndroid" type="radio" [ngModel]="candidato?.conhecimentoEmAndroid" [value]="5" id="android5" />
-                    <label class="numeracao" for="android5">5</label>
-                </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <label class="labelHabilidade col s12 m12 l12 xl10">IOS <span class="campoObrigatorio">*</span> </label>
-            <div>
-                <div class="col s0 m1 l2"></div>
-                <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
-                <div class="groupHabilidades col s12 m9 l6 xl5">
-                    <input name="groupIOS" type="radio" [ngModel]="candidato?.conhecimentoEmIOS" [value]="0" id="ios0" />
-                    <label class="numeracao" for="ios0">0</label>
-                    <input name="groupIOS" type="radio" [ngModel]="candidato?.conhecimentoEmIOS" [value]="1" id="ios1" />
-                    <label class="numeracao" for="ios1">1</label>
-                    <input name="groupIOS" type="radio" [ngModel]="candidato?.conhecimentoEmIOS" [value]="2" id="ios2" />
-                    <label class="numeracao" for="ios2">2</label>
-                    <input name="groupIOS" type="radio" [ngModel]="candidato?.conhecimentoEmIOS" [value]="3" id="ios3" />
-                    <label class="numeracao" for="ios3">3</label>
-                    <input name="groupIOS" type="radio" [ngModel]="candidato?.conhecimentoEmIOS" [value]="4" id="ios4" />
-                    <label class="numeracao" for="ios4">4</label>
-                    <input name="groupIOS" type="radio" [ngModel]="candidato?.conhecimentoEmIOS" [value]="5" id="ios5" />
-                    <label class="numeracao" for="ios5">5</label>
-                </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <label class="labelHabilidade col s12 m12 l12 xl10">HTML </label>
-            <div>
-                <div class="col s0 m1 l2"></div>
-                <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
-                <div class="groupHabilidades col s12 m9 l6 xl5">
-                    <input name="groupHTML" type="radio" [ngModel]="candidato?.conhecimentoEmHtml" [value]="0" id="html0" />
-                    <label class="numeracao" for="html0">0</label>
-                    <input name="groupHTML" type="radio" [ngModel]="candidato?.conhecimentoEmHtml" [value]="1" id="html1" />
-                    <label class="numeracao" for="html1">1</label>
-                    <input name="groupHTML" type="radio" [ngModel]="candidato?.conhecimentoEmHtml" [value]="2" id="html2" />
-                    <label class="numeracao" for="html2">2</label>
-                    <input name="groupHTML" type="radio" [ngModel]="candidato?.conhecimentoEmHtml" [value]="3" id="html3" />
-                    <label class="numeracao" for="html3">3</label>
-                    <input name="groupHTML" type="radio" [ngModel]="candidato?.conhecimentoEmHtml" [value]="4" id="html4" />
-                    <label class="numeracao" for="html4">4</label>
-                    <input name="groupHTML" type="radio" [ngModel]="candidato?.conhecimentoEmHtml" [value]="5" id="html5" />
-                    <label class="numeracao" for="html5">5</label>
-                </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <label class="labelHabilidade col s12 m12 l12 xl10">CSS </label>
-            <div>
-                <div class="col s0 m1 l2"></div>
-                <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
-                <div class="groupHabilidades col s12 m9 l6 xl5">
-                    <input name="groupCSS" type="radio" [ngModel]="candidato?.conhecimentoEmCss" [value]="0" id="css0" />
-                    <label class="numeracao" for="css0">0</label>
-                    <input name="groupCSS" type="radio" [ngModel]="candidato?.conhecimentoEmCss" [value]="1" id="css1" />
-                    <label class="numeracao" for="css1">1</label>
-                    <input name="groupCSS" type="radio" [ngModel]="candidato?.conhecimentoEmCss" [value]="2" id="css2" />
-                    <label class="numeracao" for="css2">2</label>
-                    <input name="groupCSS" type="radio" [ngModel]="candidato?.conhecimentoEmCss" [value]="3" id="css3" />
-                    <label class="numeracao" for="css3">3</label>
-                    <input name="groupCSS" type="radio" [ngModel]="candidato?.conhecimentoEmCss" [value]="4" id="css4" />
-                    <label class="numeracao" for="css4">4</label>
-                    <input name="groupCSS" type="radio" [ngModel]="candidato?.conhecimentoEmCss" [value]="5" id="css5" />
-                    <label class="numeracao" for="css5">5</label>
-                </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <label class="labelHabilidade col s12 m12 l12 xl10">Bootstrap <span class="campoObrigatorio">*</span> </label>
-            <div>
-                <div class="col s0 m1 l2"></div>
-                <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
-                <div class="groupHabilidades col s12 m9 l6 xl5">
-                    <input name="groupBootstrap" type="radio" [ngModel]="candidato?.conhecimentoEmBootstrap" [value]="0" id="bootstrap0" />
-                    <label class="numeracao" for="bootstrap0">0</label>
-                    <input name="groupBootstrap" type="radio" [ngModel]="candidato?.conhecimentoEmBootstrap" [value]="1" id="bootstrap1" />
-                    <label class="numeracao" for="bootstrap1">1</label>
-                    <input name="groupBootstrap" type="radio" [ngModel]="candidato?.conhecimentoEmBootstrap" [value]="2" id="bootstrap2" />
-                    <label class="numeracao" for="bootstrap2">2</label>
-                    <input name="groupBootstrap" type="radio" [ngModel]="candidato?.conhecimentoEmBootstrap" [value]="3" id="bootstrap3" />
-                    <label class="numeracao" for="bootstrap3">3</label>
-                    <input name="groupBootstrap" type="radio" [ngModel]="candidato?.conhecimentoEmBootstrap" [value]="4" id="bootstrap4" />
-                    <label class="numeracao" for="bootstrap4">4</label>
-                    <input name="groupBootstrap" type="radio" [ngModel]="candidato?.conhecimentoEmBootstrap" [value]="5" id="bootstrap5" />
-                    <label class="numeracao" for="bootstrap5">5</label>
-                </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <label class="labelHabilidade col s12 m12 l12 xl10">Jquery <span class="campoObrigatorio">*</span> </label>
-            <div>
-                <div class="col s0 m1 l2"></div>
-                <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
-                <div class="groupHabilidades col s12 m9 l6 xl5">
-                    <input name="groupjquery" type="radio" [ngModel]="candidato?.conhecimentoEmJQuery" [value]="0" id="jquery0" />
-                    <label class="numeracao" for="jquery0">0</label>
-                    <input name="groupjquery" type="radio" [ngModel]="candidato?.conhecimentoEmJQuery" [value]="1" id="jquery1" />
-                    <label class="numeracao" for="jquery1">1</label>
-                    <input name="groupjquery" type="radio" [ngModel]="candidato?.conhecimentoEmJQuery" [value]="2" id="jquery2" />
-                    <label class="numeracao" for="jquery2">2</label>
-                    <input name="groupjquery" type="radio" [ngModel]="candidato?.conhecimentoEmJQuery" [value]="3" id="jquery3" />
-                    <label class="numeracao" for="jquery3">3</label>
-                    <input name="groupjquery" type="radio" [ngModel]="candidato?.conhecimentoEmJQuery" [value]="4" id="jquery4" />
-                    <label class="numeracao" for="jquery4">4</label>
-                    <input name="groupjquery" type="radio" [ngModel]="candidato?.conhecimentoEmJQuery" [value]="5" id="jquery5" />
-                    <label class="numeracao" for="jquery5">5</label>
-                </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <label class="labelHabilidade col s12 m12 l12 xl10">AngularJS <span class="campoObrigatorio">*</span> </label>
-            <div>
-                <div class="col s0 m1 l2"></div>
-                <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
-                <div class="groupHabilidades col s12 m9 l6 xl5">
-                    <input name="groupangularJS" type="radio" [ngModel]="candidato?.conhecimentoEmAngularJS" [value]="0" id="angularJS0" />
-                    <label class="numeracao" for="angularJS0">0</label>
-                    <input name="groupangularJS" type="radio" [ngModel]="candidato?.conhecimentoEmAngularJS" [value]="1" id="angularJS1" />
-                    <label class="numeracao" for="angularJS1">1</label>
-                    <input name="groupangularJS" type="radio" [ngModel]="candidato?.conhecimentoEmAngularJS" [value]="2" id="angularJS2" />
-                    <label class="numeracao" for="angularJS2">2</label>
-                    <input name="groupangularJS" type="radio" [ngModel]="candidato?.conhecimentoEmAngularJS" [value]="3" id="angularJS3" />
-                    <label class="numeracao" for="angularJS3">3</label>
-                    <input name="groupangularJS" type="radio" [ngModel]="candidato?.conhecimentoEmAngularJS" [value]="4" id="angularJS4" />
-                    <label class="numeracao" for="angularJS4">4</label>
-                    <input name="groupangularJS" type="radio" [ngModel]="candidato?.conhecimentoEmAngularJS" [value]="5" id="angularJS5" />
-                    <label class="numeracao" for="angularJS5">5</label>
-                </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <label class="labelHabilidade col s12 m12 l12 xl10">Java </label>
-            <div>
-                <div class="col s0 m1 l2"></div>
-                <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
-                <div class="groupHabilidades col s12 m9 l6 xl5">
-                    <input name="groupjava" type="radio" [ngModel]="candidato?.conhecimentoEmJava" [value]="0" id="java0" />
-                    <label class="numeracao" for="java0">0</label>
-                    <input name="groupjava" type="radio" [ngModel]="candidato?.conhecimentoEmJava" [value]="1" id="java1" />
-                    <label class="numeracao" for="java1">1</label>
-                    <input name="groupjava" type="radio" [ngModel]="candidato?.conhecimentoEmJava" [value]="2" id="java2" />
-                    <label class="numeracao" for="java2">2</label>
-                    <input name="groupjava" type="radio" [ngModel]="candidato?.conhecimentoEmJava" [value]="3" id="java3" />
-                    <label class="numeracao" for="java3">3</label>
-                    <input name="groupjava" type="radio" [ngModel]="candidato?.conhecimentoEmJava" [value]="4" id="java4" />
-                    <label class="numeracao" for="java4">4</label>
-                    <input name="groupjava" type="radio" [ngModel]="candidato?.conhecimentoEmJava" [value]="5" id="java5" />
-                    <label class="numeracao" for="java5">5</label>
-                </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <label class="labelHabilidade col s12 m12 l12 xl10">Asp.Net MVC <span class="campoObrigatorio">*</span> </label>
-            <div>
-                <div class="col s0 m1 l2"></div>
-                <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
-                <div class="groupHabilidades col s12 m9 l6 xl5">
-                    <input name="groupaspNet" type="radio" [ngModel]="candidato?.conhecimentoEmAspNetMvc" [value]="0" id="aspNet0" />
-                    <label class="numeracao" for="aspNet0">0</label>
-                    <input name="groupaspNet" type="radio" [ngModel]="candidato?.conhecimentoEmAspNetMvc" [value]="1" id="aspNet1" />
-                    <label class="numeracao" for="aspNet1">1</label>
-                    <input name="groupaspNet" type="radio" [ngModel]="candidato?.conhecimentoEmAspNetMvc" [value]="2" id="aspNet2" />
-                    <label class="numeracao" for="aspNet2">2</label>
-                    <input name="groupaspNet" type="radio" [ngModel]="candidato?.conhecimentoEmAspNetMvc" [value]="3" id="aspNet3" />
-                    <label class="numeracao" for="aspNet3">3</label>
-                    <input name="groupaspNet" type="radio" [ngModel]="candidato?.conhecimentoEmAspNetMvc" [value]="4" id="aspNet4" />
-                    <label class="numeracao" for="aspNet4">4</label>
-                    <input name="groupaspNet" type="radio" [ngModel]="candidato?.conhecimentoEmAspNetMvc" [value]="5" id="aspNet5" />
-                    <label class="numeracao" for="aspNet5">5</label>
-                </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <label class="labelHabilidade col s12 m12 l12 xl10">C </label>
-            <div>
-                <div class="col s0 m1 l2"></div>
-                <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
-                <div class="groupHabilidades col s12 m9 l6 xl5">
-                    <input name="groupc" type="radio" [ngModel]="candidato?.conhecimentoEmC" [value]="0" id="c0" />
-                    <label class="numeracao" for="c0">0</label>
-                    <input name="groupc" type="radio" [ngModel]="candidato?.conhecimentoEmC" [value]="1" id="c1" />
-                    <label class="numeracao" for="c1">1</label>
-                    <input name="groupc" type="radio" [ngModel]="candidato?.conhecimentoEmC" [value]="2" id="c2" />
-                    <label class="numeracao" for="c2">2</label>
-                    <input name="groupc" type="radio" [ngModel]="candidato?.conhecimentoEmC" [value]="3" id="c3" />
-                    <label class="numeracao" for="c3">3</label>
-                    <input name="groupc" type="radio" [ngModel]="candidato?.conhecimentoEmC" [value]="4" id="c4" />
-                    <label class="numeracao" for="c4">4</label>
-                    <input name="groupc" type="radio" [ngModel]="candidato?.conhecimentoEmC" [value]="5" id="c5" />
-                    <label class="numeracao" for="c5">5</label>
-                </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <label class="labelHabilidade col s12 m12 l12 xl10">C++ </label>
-            <div>
-                <div class="col s0 m1 l2"></div>
-                <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
-                <div class="groupHabilidades col s12 m9 l6 xl5">
-                    <input name="groupcplusplus" type="radio" [ngModel]="candidato?.conhecimentoEmCPlusPlus" [value]="0" id="cplusplus0" />
-                    <label class="numeracao" for="cplusplus0">0</label>
-                    <input name="groupcplusplus" type="radio" [ngModel]="candidato?.conhecimentoEmCPlusPlus" [value]="1" id="cplusplus1" />
-                    <label class="numeracao" for="cplusplus1">1</label>
-                    <input name="groupcplusplus" type="radio" [ngModel]="candidato?.conhecimentoEmCPlusPlus" [value]="2" id="cplusplus2" />
-                    <label class="numeracao" for="cplusplus2">2</label>
-                    <input name="groupcplusplus" type="radio" [ngModel]="candidato?.conhecimentoEmCPlusPlus" [value]="3" id="cplusplus3" />
-                    <label class="numeracao" for="cplusplus3">3</label>
-                    <input name="groupcplusplus" type="radio" [ngModel]="candidato?.conhecimentoEmCPlusPlus" [value]="4" id="cplusplus4" />
-                    <label class="numeracao" for="cplusplus4">4</label>
-                    <input name="groupcplusplus" type="radio" [ngModel]="candidato?.conhecimentoEmCPlusPlus" [value]="5" id="cplusplus5" />
-                    <label class="numeracao" for="cplusplus5">5</label>
-                </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <label class="labelHabilidade col s12 m12 l12 xl10">Cake </label>
-            <div>
-                <div class="col s0 m1 l2"></div>
-                <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
-                <div class="groupHabilidades col s12 m9 l6 xl5">
-                    <input name="groupcake" type="radio" [ngModel]="candidato?.conhecimentoEmCake" [value]="0" id="cake0" />
-                    <label class="numeracao" for="cake0">0</label>
-                    <input name="groupcake" type="radio" [ngModel]="candidato?.conhecimentoEmCake" [value]="1" id="cake1" />
-                    <label class="numeracao" for="cake1">1</label>
-                    <input name="groupcake" type="radio" [ngModel]="candidato?.conhecimentoEmCake" [value]="2" id="cake2" />
-                    <label class="numeracao" for="cake2">2</label>
-                    <input name="groupcake" type="radio" [ngModel]="candidato?.conhecimentoEmCake" [value]="3" id="cake3" />
-                    <label class="numeracao" for="cake3">3</label>
-                    <input name="groupcake" type="radio" [ngModel]="candidato?.conhecimentoEmCake" [value]="4" id="cake4" />
-                    <label class="numeracao" for="cake4">4</label>
-                    <input name="groupcake" type="radio" [ngModel]="candidato?.conhecimentoEmCake" [value]="5" id="cake5" />
-                    <label class="numeracao" for="cake5">5</label>
-                </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <label class="labelHabilidade col s12 m12 l12 xl10">Django </label>
-            <div>
-                <div class="col s0 m1 l2"></div>
-                <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
-                <div class="groupHabilidades col s12 m9 l6 xl5">
-                    <input name="groupdjango" type="radio" [ngModel]="candidato?.conhecimentoEmDJango" [value]="0" id="django0" />
-                    <label class="numeracao" for="django0">0</label>
-                    <input name="groupdjango" type="radio" [ngModel]="candidato?.conhecimentoEmDJango" [value]="1" id="django1" />
-                    <label class="numeracao" for="django1">1</label>
-                    <input name="groupdjango" type="radio" [ngModel]="candidato?.conhecimentoEmDJango" [value]="2" id="django2" />
-                    <label class="numeracao" for="django2">2</label>
-                    <input name="groupdjango" type="radio" [ngModel]="candidato?.conhecimentoEmDJango" [value]="3" id="django3" />
-                    <label class="numeracao" for="django3">3</label>
-                    <input name="groupdjango" type="radio" [ngModel]="candidato?.conhecimentoEmDJango" [value]="4" id="django4" />
-                    <label class="numeracao" for="django4">4</label>
-                    <input name="groupdjango" type="radio" [ngModel]="candidato?.conhecimentoEmDJango" [value]="5" id="django5" />
-                    <label class="numeracao" for="django5">5</label>
-                </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <label class="labelHabilidade col s12 m12 l12 xl10">Majento </label>
-            <div>
-                <div class="col s0 m1 l2"></div>
-                <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
-                <div class="groupHabilidades col s12 m9 l6 xl5">
-                    <input name="groupmajento" type="radio" [ngModel]="candidato?.conhecimentoEmMajento" [value]="0" id="majento0" />
-                    <label class="numeracao" for="majento0">0</label>
-                    <input name="groupmajento" type="radio" [ngModel]="candidato?.conhecimentoEmMajento" [value]="1" id="majento1" />
-                    <label class="numeracao" for="majento1">1</label>
-                    <input name="groupmajento" type="radio" [ngModel]="candidato?.conhecimentoEmMajento" [value]="2" id="majento2" />
-                    <label class="numeracao" for="majento2">2</label>
-                    <input name="groupmajento" type="radio" [ngModel]="candidato?.conhecimentoEmMajento" [value]="3" id="majento3" />
-                    <label class="numeracao" for="majento3">3</label>
-                    <input name="groupmajento" type="radio" [ngModel]="candidato?.conhecimentoEmMajento" [value]="4" id="majento4" />
-                    <label class="numeracao" for="majento4">4</label>
-                    <input name="groupmajento" type="radio" [ngModel]="candidato?.conhecimentoEmMajento" [value]="5" id="majento5" />
-                    <label class="numeracao" for="majento5">5</label>
-                </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <label class="labelHabilidade col s12 m12 l12 xl10">PHP </label>
-            <div>
-                <div class="col s0 m1 l2"></div>
-                <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
-                <div class="groupHabilidades col s12 m9 l6 xl5">
-                    <input name="groupphp" type="radio" [ngModel]="candidato?.conhecimentoEmPHP" [value]="0" id="php0" />
-                    <label class="numeracao" for="php0">0</label>
-                    <input name="groupphp" type="radio" [ngModel]="candidato?.conhecimentoEmPHP" [value]="1" id="php1" />
-                    <label class="numeracao" for="php1">1</label>
-                    <input name="groupphp" type="radio" [ngModel]="candidato?.conhecimentoEmPHP" [value]="2" id="php2" />
-                    <label class="numeracao" for="php2">2</label>
-                    <input name="groupphp" type="radio" [ngModel]="candidato?.conhecimentoEmPHP" [value]="3" id="php3" />
-                    <label class="numeracao" for="php3">3</label>
-                    <input name="groupphp" type="radio" [ngModel]="candidato?.conhecimentoEmPHP" [value]="4" id="php4" />
-                    <label class="numeracao" for="php4">4</label>
-                    <input name="groupphp" type="radio" [ngModel]="candidato?.conhecimentoEmPHP" [value]="5" id="php5" />
-                    <label class="numeracao" for="php5">5</label>
-                </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <label class="labelHabilidade col s12 m12 l12 xl10">Wordpress </label>
-            <div>
-                <div class="col s0 m1 l2"></div>
-                <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
-                <div class="groupHabilidades col s12 m9 l6 xl5">
-                    <input name="groupwordpress" type="radio" [ngModel]="candidato?.conhecimentoEmWordpress" [value]="0" id="wordpress0" />
-                    <label class="numeracao" for="wordpress0">0</label>
-                    <input name="groupwordpress" type="radio" [ngModel]="candidato?.conhecimentoEmWordpress" [value]="1" id="wordpress1" />
-                    <label class="numeracao" for="wordpress1">1</label>
-                    <input name="groupwordpress" type="radio" [ngModel]="candidato?.conhecimentoEmWordpress" [value]="2" id="wordpress2" />
-                    <label class="numeracao" for="wordpress2">2</label>
-                    <input name="groupwordpress" type="radio" [ngModel]="candidato?.conhecimentoEmWordpress" [value]="3" id="wordpress3" />
-                    <label class="numeracao" for="wordpress3">3</label>
-                    <input name="groupwordpress" type="radio" [ngModel]="candidato?.conhecimentoEmWordpress" [value]="4" id="wordpress4" />
-                    <label class="numeracao" for="wordpress4">4</label>
-                    <input name="groupwordpress" type="radio" [ngModel]="candidato?.conhecimentoEmWordpress" [value]="5" id="wordpress5" />
-                    <label class="numeracao" for="wordpress5">5</label>
-                </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <label class="labelHabilidade col s12 m12 l12 xl10">Python </label>
-            <div>
-                <div class="col s0 m1 l2"></div>
-                <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
-                <div class="groupHabilidades col s12 m9 l6 xl5">
-                    <input name="grouppython" type="radio" [ngModel]="candidato?.conhecimentoEmPython" [value]="0" id="python0" />
-                    <label class="numeracao" for="python0">0</label>
-                    <input name="grouppython" type="radio" [ngModel]="candidato?.conhecimentoEmPython" [value]="1" id="python1" />
-                    <label class="numeracao" for="python1">1</label>
-                    <input name="grouppython" type="radio" [ngModel]="candidato?.conhecimentoEmPython" [value]="2" id="python2" />
-                    <label class="numeracao" for="python2">2</label>
-                    <input name="grouppython" type="radio" [ngModel]="candidato?.conhecimentoEmPython" [value]="3" id="python3" />
-                    <label class="numeracao" for="python3">3</label>
-                    <input name="grouppython" type="radio" [ngModel]="candidato?.conhecimentoEmPython" [value]="4" id="python4" />
-                    <label class="numeracao" for="python4">4</label>
-                    <input name="grouppython" type="radio" [ngModel]="candidato?.conhecimentoEmPython" [value]="5" id="python5" />
-                    <label class="numeracao" for="python5">5</label>
-                </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <label class="labelHabilidade col s12 m12 l12 xl10">Ruby </label>
-            <div>
-                <div class="col s0 m1 l2"></div>
-                <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
-                <div class="groupHabilidades col s12 m9 l6 xl5">
-                    <input name="groupruby" type="radio" [ngModel]="candidato?.conhecimentoEmRuby" [value]="0" id="ruby0" />
-                    <label class="numeracao" for="ruby0">0</label>
-                    <input name="groupruby" type="radio" [ngModel]="candidato?.conhecimentoEmRuby" [value]="1" id="ruby1" />
-                    <label class="numeracao" for="ruby1">1</label>
-                    <input name="groupruby" type="radio" [ngModel]="candidato?.conhecimentoEmRuby" [value]="2" id="ruby2" />
-                    <label class="numeracao" for="ruby2">2</label>
-                    <input name="groupruby" type="radio" [ngModel]="candidato?.conhecimentoEmRuby" [value]="3" id="ruby3" />
-                    <label class="numeracao" for="ruby3">3</label>
-                    <input name="groupruby" type="radio" [ngModel]="candidato?.conhecimentoEmRuby" [value]="4" id="ruby4" />
-                    <label class="numeracao" for="ruby4">4</label>
-                    <input name="groupruby" type="radio" [ngModel]="candidato?.conhecimentoEmRuby" [value]="5" id="ruby5" />
-                    <label class="numeracao" for="ruby5">5</label>
-                </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <label class="labelHabilidade col s12 m12 l12 xl10">SQL Server </label>
-            <div>
-                <div class="col s0 m1 l2"></div>
-                <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
-                <div class="groupHabilidades col s12 m9 l6 xl5">
-                    <input name="groupsqlserver" type="radio" [ngModel]="candidato?.conhecimentoEmSQLServer" [value]="0" id="sqlserver0" />
-                    <label class="numeracao" for="sqlserver0">0</label>
-                    <input name="groupsqlserver" type="radio" [ngModel]="candidato?.conhecimentoEmSQLServer" [value]="1" id="sqlserver1" />
-                    <label class="numeracao" for="sqlserver1">1</label>
-                    <input name="groupsqlserver" type="radio" [ngModel]="candidato?.conhecimentoEmSQLServer" [value]="2" id="sqlserver2" />
-                    <label class="numeracao" for="sqlserver2">2</label>
-                    <input name="groupsqlserver" type="radio" [ngModel]="candidato?.conhecimentoEmSQLServer" [value]="3" id="sqlserver3" />
-                    <label class="numeracao" for="sqlserver3">3</label>
-                    <input name="groupsqlserver" type="radio" [ngModel]="candidato?.conhecimentoEmSQLServer" [value]="4" id="sqlserver4" />
-                    <label class="numeracao" for="sqlserver4">4</label>
-                    <input name="groupsqlserver" type="radio" [ngModel]="candidato?.conhecimentoEmSQLServer" [value]="5" id="sqlserver5" />
-                    <label class="numeracao" for="sqlserver5">5</label>
-                </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <label class="labelHabilidade col s12 m12 l12 xl10">My SQL</label>
-            <div>
-                <div class="col s0 m1 l2"></div>
-                <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
-                <div class="groupHabilidades col s12 m9 l6 xl5">
-                    <input name="groupmysql" type="radio" [ngModel]="candidato?.conhecimentoEmMySql" [value]="0" id="mysql0" />
-                    <label class="numeracao" for="mysql0">0</label>
-                    <input name="groupmysql" type="radio" [ngModel]="candidato?.conhecimentoEmMySql" [value]="1" id="mysql1" />
-                    <label class="numeracao" for="mysql1">1</label>
-                    <input name="groupmysql" type="radio" [ngModel]="candidato?.conhecimentoEmMySql" [value]="2" id="mysql2" />
-                    <label class="numeracao" for="mysql2">2</label>
-                    <input name="groupmysql" type="radio" [ngModel]="candidato?.conhecimentoEmMySql" [value]="3" id="mysql3" />
-                    <label class="numeracao" for="mysql3">3</label>
-                    <input name="groupmysql" type="radio" [ngModel]="candidato?.conhecimentoEmMySql" [value]="4" id="mysql4" />
-                    <label class="numeracao" for="mysql4">4</label>
-                    <input name="groupmysql" type="radio" [ngModel]="candidato?.conhecimentoEmMySql" [value]="5" id="mysql5" />
-                    <label class="numeracao" for="mysql5">5</label>
-                </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <label class="labelHabilidade col s12 m12 l12 xl10">Salesforce </label>
-            <div>
-                <div class="col s0 m1 l2"></div>
-                <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
-                <div class="groupHabilidades col s12 m9 l6 xl5">
-                    <input name="groupsalesforce" type="radio" [ngModel]="candidato?.conhecimentoEmSalesforce" [value]="0" id="salesforce0" />
-                    <label class="numeracao" for="salesforce0">0</label>
-                    <input name="groupsalesforce" type="radio" [ngModel]="candidato?.conhecimentoEmSalesforce" [value]="1" id="salesforce1" />
-                    <label class="numeracao" for="salesforce1">1</label>
-                    <input name="groupsalesforce" type="radio" [ngModel]="candidato?.conhecimentoEmSalesforce" [value]="2" id="salesforce2" />
-                    <label class="numeracao" for="salesforce2">2</label>
-                    <input name="groupsalesforce" type="radio" [ngModel]="candidato?.conhecimentoEmSalesforce" [value]="3" id="salesforce3" />
-                    <label class="numeracao" for="salesforce3">3</label>
-                    <input name="groupsalesforce" type="radio" [ngModel]="candidato?.conhecimentoEmSalesforce" [value]="4" id="salesforce4" />
-                    <label class="numeracao" for="salesforce4">4</label>
-                    <input name="groupsalesforce" type="radio" [ngModel]="candidato?.conhecimentoEmSalesforce" [value]="5" id="salesforce5" />
-                    <label class="numeracao" for="salesforce5">5</label>
-                </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <label class="labelHabilidade col s12 m12 l12 xl10">Photoshop </label>
-            <div>
-                <div class="col s0 m1 l2"></div>
-                <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
-                <div class="groupHabilidades col s12 m9 l6 xl5">
-                    <input name="groupphotoshop" type="radio" [ngModel]="candidato?.conhecimentoEmPhotoshop" [value]="0" id="photoshop0" />
-                    <label class="numeracao" for="photoshop0">0</label>
-                    <input name="groupphotoshop" type="radio" [ngModel]="candidato?.conhecimentoEmPhotoshop" [value]="1" id="photoshop1" />
-                    <label class="numeracao" for="photoshop1">1</label>
-                    <input name="groupphotoshop" type="radio" [ngModel]="candidato?.conhecimentoEmPhotoshop" [value]="2" id="photoshop2" />
-                    <label class="numeracao" for="photoshop2">2</label>
-                    <input name="groupphotoshop" type="radio" [ngModel]="candidato?.conhecimentoEmPhotoshop" [value]="3" id="photoshop3" />
-                    <label class="numeracao" for="photoshop3">3</label>
-                    <input name="groupphotoshop" type="radio" [ngModel]="candidato?.conhecimentoEmPhotoshop" [value]="4" id="photoshop4" />
-                    <label class="numeracao" for="photoshop4">4</label>
-                    <input name="groupphotoshop" type="radio" [ngModel]="candidato?.conhecimentoEmPhotoshop" [value]="5" id="photoshop5" />
-                    <label class="numeracao" for="photoshop5">5</label>
-                </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <label class="labelHabilidade col s12 m12 l12 xl10">Illustrator </label>
-            <div>
-                <div class="col s0 m1 l2"></div>
-                <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
-                <div class="groupHabilidades col s12 m9 l6 xl5">
-                    <input name="groupillustrator" type="radio" [ngModel]="candidato?.conhecimentoEmIllustrator" [value]="0" id="illustrator0"
-                    />
-                    <label class="numeracao" for="illustrator0">0</label>
-                    <input name="groupillustrator" type="radio" [ngModel]="candidato?.conhecimentoEmIllustrator" [value]="1" id="illustrator1"
-                    />
-                    <label class="numeracao" for="illustrator1">1</label>
-                    <input name="groupillustrator" type="radio" [ngModel]="candidato?.conhecimentoEmIllustrator" [value]="2" id="illustrator2"
-                    />
-                    <label class="numeracao" for="illustrator2">2</label>
-                    <input name="groupillustrator" type="radio" [ngModel]="candidato?.conhecimentoEmIllustrator" [value]="3" id="illustrator3"
-                    />
-                    <label class="numeracao" for="illustrator3">3</label>
-                    <input name="groupillustrator" type="radio" [ngModel]="candidato?.conhecimentoEmIllustrator" [value]="4" id="illustrator4"
-                    />
-                    <label class="numeracao" for="illustrator4">4</label>
-                    <input name="groupillustrator" type="radio" [ngModel]="candidato?.conhecimentoEmIllustrator" [value]="5" id="illustrator5"
-                    />
-                    <label class="numeracao" for="illustrator5">5</label>
-                </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <label class="labelHabilidade col s12 m12 l12 xl10">SEO </label>
-            <div>
-                <div class="col s0 m1 l2"></div>
-                <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
-                <div class="groupHabilidades col s12 m9 l6 xl5">
-                    <input name="groupseo" type="radio" [ngModel]="candidato?.conhecimentoEmSEO" [value]="0" id="seo0" />
-                    <label class="numeracao" for="seo0">0</label>
-                    <input name="groupseo" type="radio" [ngModel]="candidato?.conhecimentoEmSEO" [value]="1" id="seo1" />
-                    <label class="numeracao" for="seo1">1</label>
-                    <input name="groupseo" type="radio" [ngModel]="candidato?.conhecimentoEmSEO" [value]="2" id="seo2" />
-                    <label class="numeracao" for="seo2">2</label>
-                    <input name="groupseo" type="radio" [ngModel]="candidato?.conhecimentoEmSEO" [value]="3" id="seo3" />
-                    <label class="numeracao" for="seo3">3</label>
-                    <input name="groupseo" type="radio" [ngModel]="candidato?.conhecimentoEmSEO" [value]="4" id="seo4" />
-                    <label class="numeracao" for="seo4">4</label>
-                    <input name="groupseo" type="radio" [ngModel]="candidato?.conhecimentoEmSEO" [value]="5" id="seo5" />
-                    <label class="numeracao" for="seo5">5</label>
+                <div class="input-field col s12 m10 l8 l8">
+                    <input class="validate" [(ngModel)]="candidato.email" placeholder="Seu email" id="email" name="email"
+                        type="email" required>
+                    <label class="active" for="email">Endereço de e-mail <span class="campoObrigatorio">*</span></label>
                 </div>
-                <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
             </div>
-        </div>
-        <div class="row"></div>
-        <div class="row"></div>
-        <div class="row"></div>
-        <div class="row"></div>
-        <div class="row .hide-on-med-and-up"></div>
-        <div class="row .hide-on-med-and-up"></div>
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <div class="input-field col s12 m10 l8 l8">
-                <input [ngModel]="candidato?.conhecimentoEmOutroFramework" placeholder="Sua resposta" id="conhecimentoEmOutroFramework" name="conhecimentoEmOutroFramework"
-                    type="text" class="validate" required>
-                <label style="font-size: 15px;" class="active" for="conhecimentoEmOutroFramework">Do you know any other language or framework that was not listed above? Tell us and evaluate yourself from 0 to 5. / Conhece mais alguma linguagem ou framework que não foi listado aqui em cima? Conte para nos e se auto avalie ainda de 0 a 5. </label>
+            <div class="row"></div>
+            <div class="row"></div>
+        </form>
+
+        <form id="formulario_2" class="parte_formulario hide">
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <div class="input-field col s12 m10 l8">
+                    <input [(ngModel)]="candidato.nome" placeholder="Sua resposta" id="nome" name="nome" type="text" class="validate" required>
+                    <label class="active" for="nome">Nome/Name:<span class="campoObrigatorio">*</span></label>
+                </div>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col s0 m1 l2"></div>
-            <div class="input-field col s12 m10 l8 l8">
-                <input [ngModel]="candidato?.linkCrud" placeholder="Sua resposta" id="linkCrud" name="linkCrud" type="text" class="validate"
-                    required>
-                <label class="active" for="linkCrud">Link CRUD<span class="campoObrigatorio">*</span></label>
+            <div class="row"> </div>
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <div class="input-field col s12 m10 l8">
+                    <input [(ngModel)]="candidato.skype" placeholder="Sua resposta" id="skype" name="skype" type="text" class="validate" required>
+                    <label class="active" for="skype">Skype: ( please create an account if you don't have yet / bom criar caso não tenha)<span class="campoObrigatorio">*</span> </label>
+                </div>
             </div>
-        </div>
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <div class="input-field col s12 m10 l8">
+                    <input [(ngModel)]="candidato.telefone" placeholder="Sua resposta" id="telefone" name="telefone" type="text" class="validate"
+                        required>
+                    <label class="active" for="telefone">Telefone/Phone (Whatsapp): <span class="campoObrigatorio">*</span> </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <div class="input-field col s12 m10 l8">
+                    <input [(ngModel)]="candidato.linkedin" placeholder="Sua resposta" id="linkedin" name="linkedin" type="text">
+                    <label class="active" for="linkedin">Linkedin: </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <div class="input-field col s12 m10 l8">
+                    <input [(ngModel)]="candidato.cidade" placeholder="Sua resposta" id="cidade" name="cidade" type="text" class="validate" required>
+                    <label class="active" for="cidade" data-error="Esta pergunta é obrigatória">Cidade / City <span class="campoObrigatorio">*</span> </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <div class="input-field col s12 m10 l8">
+                    <input [(ngModel)]="candidato.estado" placeholder="Sua resposta" id="estado" name="estado" type="text" class="validate" required>
+                    <label class="active" for="estado" data-error="Esta pergunta é obrigatória">Estado/ State <span class="campoObrigatorio">*</span> </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <div class="input-field col s12 m10 l8">
 
-        <div class="row"></div>
-        <div class="row"></div>
-    </form>
-    <div class="row"> </div>
+                    <input [(ngModel)]="candidato.portfolio" placeholder="Sua resposta" id="portfolio" name="portfolio" type="text">
+                    <label class="active" for="portfolio">Portfolio: </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <label>What is your willingness to work today? / Qual é sua disponibilidade para trabalhar hoje?<span class="campoObrigatorio">*</span> </label>
+                <div>
+                    <div class="col s0 m1 l2"></div>
+                    <input class="disponibilidade-group" type="checkbox" [(ngModel)]="candidato.ateQuatroHoras" name="ateQuatroHoras" id="ateQuatroHoras"
+                    />
+                    <label for="ateQuatroHoras">Up to 4 hours per day / Até 4 horas por dia                                       </label>
+                </div>
+                <div>
+                    <div class="col s0 m1 l2"></div>
+                    <input class="disponibilidade-group" type="checkbox" [(ngModel)]="candidato.ateSeisHoras" name="ateSeisHoras" id="ateSeisHoras"
+                    />
+                    <label for="ateSeisHoras">4 to 6 hours per day / De 4 á 6 horas por dia                                       </label>
+                </div>
+                <div>
+                    <div class="col s0 m1 l2"></div>
+                    <input class="disponibilidade-group" type="checkbox" [(ngModel)]="candidato.ateOitoHoras" name="ateOitoHoras" id="ateOitoHoras"
+                    />
+                    <label for="ateOitoHoras">6 to 8 hours per day /De 6 á 8 horas por dia                                       </label>
+                </div>
+                <div>
+                    <div class="col s0 m1 l2"></div>
+                    <input class="disponibilidade-group" type="checkbox" [(ngModel)]="candidato.maisDeOitoHoras" name="maisDeOitoHoras" id="maisDeOitoHoras"
+                    />
+                    <label for="maisDeOitoHoras">Up to 8 hours a day (are you sure?) / Acima de 8 horas por dia (tem certeza?)</label>
+                </div>
+                <div>
+                    <div class="col s0 m1 l2"></div>
+                    <input class="disponibilidade-group" type="checkbox" [(ngModel)]="candidato.finaisDeSemana" name="finaisDeSemana" id="finaisDeSemana"
+                    />
+                    <label for="finaisDeSemana">Only weekends / Apenas finais de semana                                       </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <label>What's the best time to work for you? / Pra você qual é o melhor horário para trabalhar?<span class="campoObrigatorio">*</span> </label>
+                <div>
+                    <div class="col m1 l2 .hide-on-med-and-up"></div>
+                    <input class="horario-group" type="checkbox" [(ngModel)]="candidato.manha" name="manha" id="manha" />
+                    <label for="manha">Morning (from 08:00 to 12:00) / Manhã (de 08:00 ás 12:00)</label>
+                </div>
+                <div>
+                    <div class="col s0 m1 l2 .hide-on-med-and-up"></div>
+                    <input class="horario-group" type="checkbox" [(ngModel)]="candidato.tarde" name="tarde" id="tarde" />
+                    <label for="tarde">Afternoon (from 1:00 p.m. to 6:00 p.m.) / Tarde (de 13:00 ás 18:00)</label>
+                </div>
+                <div>
+                    <div class="col s0 m1 l2 .hide-on-med-and-up"></div>
+                    <input class="horario-group" type="checkbox" [(ngModel)]="candidato.noite" name="noite" id="noite" />
+                    <label for="noite">Night (7:00 p.m. to 10:00 p.m.) /Noite (de 19:00 as 22:00)</label>
+                </div>
+                <div>
+                    <div class="col m1 l2 .hide-on-med-and-up"></div>
+                    <input class="horario-group" type="checkbox" [(ngModel)]="candidato.madrugada" name="madrugada" id="madrugada" />
+                    <label for="madrugada">Dawn (from 10 p.m. onwards) / Madrugada (de 22:00 em diante)</label>
+                </div>
+                <div>
+                    <div class="col s0 m1 l2 .hide-on-med-and-up"></div>
+                    <input class="horario-group" type="checkbox" [(ngModel)]="candidato.comercial" name="comercial" id="comercial" />
+                    <label for="comercial">Business (from 08:00 a.m. to 06:00 p.m.) / Comercial (de 08:00 as 18:00)</label>
+                </div>
+            </div>
+            <div class="row"> </div>
+            <div class="row .hide-on-med-and-up"></div>
+            <div class="row .hide-on-med-and-up"></div>
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <div class="input-field col s12 m10 l8">
 
-    <!--<div class="row">
+                    <input [(ngModel)]="candidato.pretensaoSalarial" placeholder="Sua resposta" id="pretensaoSalarial" name="pretensaoSalarial"
+                        type="number">
+                    <label class="active" for="pretensaoSalarial">What is your hourly salary requirements? / Qual sua pretensão salarial por hora? <span class="campoObrigatorio">*</span> </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <div class="input-field col s12 m10 l8">
+
+                    <input [(ngModel)]="candidato.informacoesBanco" placeholder="Sua resposta" id="informacoesBanco" name="informacoesBanco"
+                        type="text">
+                    <label class="active" for="informacoesBanco">Bank Information / Paypal / Itau etc</label>
+                </div>
+            </div>
+        </form>
+
+        <form id="formulario_3" class="parte_formulario hide">
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <div class="input-field col s12 m10 l8">
+
+                    <input [(ngModel)]="candidato.contaBancaria.nome" placeholder="Sua resposta" id="contaBancaria.nome" name="contaBancaria.nome"
+                        type="text">
+                    <label class="active" for="contaBancaria.nome">Name / Nome</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <div class="input-field col s12 m10 l8">
+
+                    <input [(ngModel)]="candidato.contaBancaria.CPF" placeholder="Sua resposta" id="contaBancaria.CPF" name="contaBancaria.CPF"
+                        type="text">
+                    <label class="active" for="contaBancaria.CPF">Only for Brazilians / CPF</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <div class="input-field col s12 m10 l8">
+
+                    <input [(ngModel)]="candidato.contaBancaria.banco" placeholder="Sua resposta" id="contaBancaria.banco" name="contaBancaria.banco"
+                        type="number">
+                    <label class="active" for="contaBancaria.banco">Bank / Banco ( Itau, Bradesco, ect..)</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <div class="input-field col s12 m10 l8">
+
+                    <input [(ngModel)]="candidato.contaBancaria.agencia" placeholder="Sua resposta" id="contaBancaria.agencia" name="contaBancaria.agencia"
+                        type="number">
+                    <label class="active" for="contaBancaria.Agencia">Agency / Agencia</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <label>Account Type / Tipo de conta </label>
+                <div>
+                    <div class="col s0 m1 l2"></div>
+                    <input class="contaBancaria-group" type="checkbox" [(ngModel)]="candidato.contaBancaria.corrente" name="contaBancaria.corrente" id="contaBancaria.corrente"
+                    />
+                    <label for="contaBancaria.corrente">Chain / Corrente</label>
+                </div>
+                <div>
+                    <div class="col s0 m1 l2"></div>
+                    <input class="contaBancaria-group" type="checkbox" [(ngModel)]="candidato.contaBancaria.poupanca" name="contaBancaria.poupanca" id="contaBancaria.poupanca"
+                    />
+                    <label for="contaBancaria.poupanca">Savings / Poupança</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <div class="input-field col s12 m10 l8">
+
+                    <input [(ngModel)]="candidato.contaBancaria.numero" placeholder="Sua resposta" id="contaBancaria.numero" name="contaBancaria.numero"
+                        type="number">
+                    <label class="active" for="contaBancaria.numero">Account Number / Número da conta</label>
+                </div>
+            </div>
+        </form>
+
+        <form id="formulario_4" class="parte_formulario hide">
+            <div class="row">
+                <div class="col m1 l0 xl2"></div>
+                <label class="labelHabilidade col s12 m12 l12 xl10">Ionic <span class="campoObrigatorio">*</span> </label>
+                <div>
+                    <div class="col l12 xl2"></div>
+                    <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
+                    <div class="groupHabilidades col s12 m9 l6 xl5">
+                        <input name="groupIonic" type="radio" [(ngModel)]="candidato.conhecimentoEmIonic" [value]="0" id="ionic0" />
+                        <label class="numeracao" for="ionic0">0</label>
+                        <input name="groupIonic" type="radio" [(ngModel)]="candidato.conhecimentoEmIonic" [value]="1" id="ionic1" />
+                        <label class="numeracao" for="ionic1">1</label>
+                        <input name="groupIonic" type="radio" [(ngModel)]="candidato.conhecimentoEmIonic" [value]="2" id="ionic2" />
+                        <label class="numeracao" for="ionic2">2</label>
+                        <input name="groupIonic" type="radio" [(ngModel)]="candidato.conhecimentoEmIonic" [value]="3" id="ionic3" />
+                        <label class="numeracao" for="ionic3">3</label>
+                        <input name="groupIonic" type="radio" [(ngModel)]="candidato.conhecimentoEmIonic" [value]="4" id="ionic4" />
+                        <label class="numeracao" for="ionic4">4</label>
+                        <input name="groupIonic" type="radio" [(ngModel)]="candidato.conhecimentoEmIonic" [value]="5" id="ionic5" />
+                        <label class="numeracao" for="ionic5">5</label>
+                    </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col m1 l0 xl2"></div>
+                <label class="labelHabilidade col s12 m12 l12 xl10">Android <span class="campoObrigatorio">*</span> </label>
+                <div>
+                    <div class="col s0 m1 l2"></div>
+                    <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
+                    <div class="groupHabilidades col s12 m9 l6 xl5">
+                        <input name="groupAndroid" type="radio" [(ngModel)]="candidato.conhecimentoEmAndroid" [value]="0" id="android0" />
+                        <label class="numeracao" for="android0">0</label>
+                        <input name="groupAndroid" type="radio" [(ngModel)]="candidato.conhecimentoEmAndroid" [value]="1" id="android1" />
+                        <label class="numeracao" for="android1">1</label>
+                        <input name="groupAndroid" type="radio" [(ngModel)]="candidato.conhecimentoEmAndroid" [value]="2" id="android2" />
+                        <label class="numeracao" for="android2">2</label>
+                        <input name="groupAndroid" type="radio" [(ngModel)]="candidato.conhecimentoEmAndroid" [value]="3" id="android3" />
+                        <label class="numeracao" for="android3">3</label>
+                        <input name="groupAndroid" type="radio" [(ngModel)]="candidato.conhecimentoEmAndroid" [value]="4" id="android4" />
+                        <label class="numeracao" for="android4">4</label>
+                        <input name="groupAndroid" type="radio" [(ngModel)]="candidato.conhecimentoEmAndroid" [value]="5" id="android5" />
+                        <label class="numeracao" for="android5">5</label>
+                    </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <label class="labelHabilidade col s12 m12 l12 xl10">IOS <span class="campoObrigatorio">*</span> </label>
+                <div>
+                    <div class="col s0 m1 l2"></div>
+                    <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
+                    <div class="groupHabilidades col s12 m9 l6 xl5">
+                        <input name="groupIOS" type="radio" [(ngModel)]="candidato.conhecimentoEmIOS" [value]="0" id="ios0" />
+                        <label class="numeracao" for="ios0">0</label>
+                        <input name="groupIOS" type="radio" [(ngModel)]="candidato.conhecimentoEmIOS" [value]="1" id="ios1" />
+                        <label class="numeracao" for="ios1">1</label>
+                        <input name="groupIOS" type="radio" [(ngModel)]="candidato.conhecimentoEmIOS" [value]="2" id="ios2" />
+                        <label class="numeracao" for="ios2">2</label>
+                        <input name="groupIOS" type="radio" [(ngModel)]="candidato.conhecimentoEmIOS" [value]="3" id="ios3" />
+                        <label class="numeracao" for="ios3">3</label>
+                        <input name="groupIOS" type="radio" [(ngModel)]="candidato.conhecimentoEmIOS" [value]="4" id="ios4" />
+                        <label class="numeracao" for="ios4">4</label>
+                        <input name="groupIOS" type="radio" [(ngModel)]="candidato.conhecimentoEmIOS" [value]="5" id="ios5" />
+                        <label class="numeracao" for="ios5">5</label>
+                    </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <label class="labelHabilidade col s12 m12 l12 xl10">HTML </label>
+                <div>
+                    <div class="col s0 m1 l2"></div>
+                    <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
+                    <div class="groupHabilidades col s12 m9 l6 xl5">
+                        <input name="groupHTML" type="radio" [(ngModel)]="candidato.conhecimentoEmHtml" [value]="0" id="html0" />
+                        <label class="numeracao" for="html0">0</label>
+                        <input name="groupHTML" type="radio" [(ngModel)]="candidato.conhecimentoEmHtml" [value]="1" id="html1" />
+                        <label class="numeracao" for="html1">1</label>
+                        <input name="groupHTML" type="radio" [(ngModel)]="candidato.conhecimentoEmHtml" [value]="2" id="html2" />
+                        <label class="numeracao" for="html2">2</label>
+                        <input name="groupHTML" type="radio" [(ngModel)]="candidato.conhecimentoEmHtml" [value]="3" id="html3" />
+                        <label class="numeracao" for="html3">3</label>
+                        <input name="groupHTML" type="radio" [(ngModel)]="candidato.conhecimentoEmHtml" [value]="4" id="html4" />
+                        <label class="numeracao" for="html4">4</label>
+                        <input name="groupHTML" type="radio" [(ngModel)]="candidato.conhecimentoEmHtml" [value]="5" id="html5" />
+                        <label class="numeracao" for="html5">5</label>
+                    </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <label class="labelHabilidade col s12 m12 l12 xl10">CSS </label>
+                <div>
+                    <div class="col s0 m1 l2"></div>
+                    <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
+                    <div class="groupHabilidades col s12 m9 l6 xl5">
+                        <input name="groupCSS" type="radio" [(ngModel)]="candidato.conhecimentoEmCss" [value]="0" id="css0" />
+                        <label class="numeracao" for="css0">0</label>
+                        <input name="groupCSS" type="radio" [(ngModel)]="candidato.conhecimentoEmCss" [value]="1" id="css1" />
+                        <label class="numeracao" for="css1">1</label>
+                        <input name="groupCSS" type="radio" [(ngModel)]="candidato.conhecimentoEmCss" [value]="2" id="css2" />
+                        <label class="numeracao" for="css2">2</label>
+                        <input name="groupCSS" type="radio" [(ngModel)]="candidato.conhecimentoEmCss" [value]="3" id="css3" />
+                        <label class="numeracao" for="css3">3</label>
+                        <input name="groupCSS" type="radio" [(ngModel)]="candidato.conhecimentoEmCss" [value]="4" id="css4" />
+                        <label class="numeracao" for="css4">4</label>
+                        <input name="groupCSS" type="radio" [(ngModel)]="candidato.conhecimentoEmCss" [value]="5" id="css5" />
+                        <label class="numeracao" for="css5">5</label>
+                    </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <label class="labelHabilidade col s12 m12 l12 xl10">Bootstrap <span class="campoObrigatorio">*</span> </label>
+                <div>
+                    <div class="col s0 m1 l2"></div>
+                    <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
+                    <div class="groupHabilidades col s12 m9 l6 xl5">
+                        <input name="groupBootstrap" type="radio" [(ngModel)]="candidato.conhecimentoEmBootstrap" [value]="0" id="bootstrap0" />
+                        <label class="numeracao" for="bootstrap0">0</label>
+                        <input name="groupBootstrap" type="radio" [(ngModel)]="candidato.conhecimentoEmBootstrap" [value]="1" id="bootstrap1" />
+                        <label class="numeracao" for="bootstrap1">1</label>
+                        <input name="groupBootstrap" type="radio" [(ngModel)]="candidato.conhecimentoEmBootstrap" [value]="2" id="bootstrap2" />
+                        <label class="numeracao" for="bootstrap2">2</label>
+                        <input name="groupBootstrap" type="radio" [(ngModel)]="candidato.conhecimentoEmBootstrap" [value]="3" id="bootstrap3" />
+                        <label class="numeracao" for="bootstrap3">3</label>
+                        <input name="groupBootstrap" type="radio" [(ngModel)]="candidato.conhecimentoEmBootstrap" [value]="4" id="bootstrap4" />
+                        <label class="numeracao" for="bootstrap4">4</label>
+                        <input name="groupBootstrap" type="radio" [(ngModel)]="candidato.conhecimentoEmBootstrap" [value]="5" id="bootstrap5" />
+                        <label class="numeracao" for="bootstrap5">5</label>
+                    </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <label class="labelHabilidade col s12 m12 l12 xl10">Jquery <span class="campoObrigatorio">*</span> </label>
+                <div>
+                    <div class="col s0 m1 l2"></div>
+                    <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
+                    <div class="groupHabilidades col s12 m9 l6 xl5">
+                        <input name="groupjquery" type="radio" [(ngModel)]="candidato.conhecimentoEmJQuery" [value]="0" id="jquery0" />
+                        <label class="numeracao" for="jquery0">0</label>
+                        <input name="groupjquery" type="radio" [(ngModel)]="candidato.conhecimentoEmJQuery" [value]="1" id="jquery1" />
+                        <label class="numeracao" for="jquery1">1</label>
+                        <input name="groupjquery" type="radio" [(ngModel)]="candidato.conhecimentoEmJQuery" [value]="2" id="jquery2" />
+                        <label class="numeracao" for="jquery2">2</label>
+                        <input name="groupjquery" type="radio" [(ngModel)]="candidato.conhecimentoEmJQuery" [value]="3" id="jquery3" />
+                        <label class="numeracao" for="jquery3">3</label>
+                        <input name="groupjquery" type="radio" [(ngModel)]="candidato.conhecimentoEmJQuery" [value]="4" id="jquery4" />
+                        <label class="numeracao" for="jquery4">4</label>
+                        <input name="groupjquery" type="radio" [(ngModel)]="candidato.conhecimentoEmJQuery" [value]="5" id="jquery5" />
+                        <label class="numeracao" for="jquery5">5</label>
+                    </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <label class="labelHabilidade col s12 m12 l12 xl10">AngularJS <span class="campoObrigatorio">*</span> </label>
+                <div>
+                    <div class="col s0 m1 l2"></div>
+                    <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
+                    <div class="groupHabilidades col s12 m9 l6 xl5">
+                        <input name="groupangularJS" type="radio" [(ngModel)]="candidato.conhecimentoEmAngularJS" [value]="0" id="angularJS0" />
+                        <label class="numeracao" for="angularJS0">0</label>
+                        <input name="groupangularJS" type="radio" [(ngModel)]="candidato.conhecimentoEmAngularJS" [value]="1" id="angularJS1" />
+                        <label class="numeracao" for="angularJS1">1</label>
+                        <input name="groupangularJS" type="radio" [(ngModel)]="candidato.conhecimentoEmAngularJS" [value]="2" id="angularJS2" />
+                        <label class="numeracao" for="angularJS2">2</label>
+                        <input name="groupangularJS" type="radio" [(ngModel)]="candidato.conhecimentoEmAngularJS" [value]="3" id="angularJS3" />
+                        <label class="numeracao" for="angularJS3">3</label>
+                        <input name="groupangularJS" type="radio" [(ngModel)]="candidato.conhecimentoEmAngularJS" [value]="4" id="angularJS4" />
+                        <label class="numeracao" for="angularJS4">4</label>
+                        <input name="groupangularJS" type="radio" [(ngModel)]="candidato.conhecimentoEmAngularJS" [value]="5" id="angularJS5" />
+                        <label class="numeracao" for="angularJS5">5</label>
+                    </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <label class="labelHabilidade col s12 m12 l12 xl10">Java </label>
+                <div>
+                    <div class="col s0 m1 l2"></div>
+                    <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
+                    <div class="groupHabilidades col s12 m9 l6 xl5">
+                        <input name="groupjava" type="radio" [(ngModel)]="candidato.conhecimentoEmJava" [value]="0" id="java0" />
+                        <label class="numeracao" for="java0">0</label>
+                        <input name="groupjava" type="radio" [(ngModel)]="candidato.conhecimentoEmJava" [value]="1" id="java1" />
+                        <label class="numeracao" for="java1">1</label>
+                        <input name="groupjava" type="radio" [(ngModel)]="candidato.conhecimentoEmJava" [value]="2" id="java2" />
+                        <label class="numeracao" for="java2">2</label>
+                        <input name="groupjava" type="radio" [(ngModel)]="candidato.conhecimentoEmJava" [value]="3" id="java3" />
+                        <label class="numeracao" for="java3">3</label>
+                        <input name="groupjava" type="radio" [(ngModel)]="candidato.conhecimentoEmJava" [value]="4" id="java4" />
+                        <label class="numeracao" for="java4">4</label>
+                        <input name="groupjava" type="radio" [(ngModel)]="candidato.conhecimentoEmJava" [value]="5" id="java5" />
+                        <label class="numeracao" for="java5">5</label>
+                    </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <label class="labelHabilidade col s12 m12 l12 xl10">Asp.Net MVC <span class="campoObrigatorio">*</span> </label>
+                <div>
+                    <div class="col s0 m1 l2"></div>
+                    <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
+                    <div class="groupHabilidades col s12 m9 l6 xl5">
+                        <input name="groupaspNet" type="radio" [(ngModel)]="candidato.conhecimentoEmAspNetMvc" [value]="0" id="aspNet0" />
+                        <label class="numeracao" for="aspNet0">0</label>
+                        <input name="groupaspNet" type="radio" [(ngModel)]="candidato.conhecimentoEmAspNetMvc" [value]="1" id="aspNet1" />
+                        <label class="numeracao" for="aspNet1">1</label>
+                        <input name="groupaspNet" type="radio" [(ngModel)]="candidato.conhecimentoEmAspNetMvc" [value]="2" id="aspNet2" />
+                        <label class="numeracao" for="aspNet2">2</label>
+                        <input name="groupaspNet" type="radio" [(ngModel)]="candidato.conhecimentoEmAspNetMvc" [value]="3" id="aspNet3" />
+                        <label class="numeracao" for="aspNet3">3</label>
+                        <input name="groupaspNet" type="radio" [(ngModel)]="candidato.conhecimentoEmAspNetMvc" [value]="4" id="aspNet4" />
+                        <label class="numeracao" for="aspNet4">4</label>
+                        <input name="groupaspNet" type="radio" [(ngModel)]="candidato.conhecimentoEmAspNetMvc" [value]="5" id="aspNet5" />
+                        <label class="numeracao" for="aspNet5">5</label>
+                    </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <label class="labelHabilidade col s12 m12 l12 xl10">C </label>
+                <div>
+                    <div class="col s0 m1 l2"></div>
+                    <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
+                    <div class="groupHabilidades col s12 m9 l6 xl5">
+                        <input name="groupc" type="radio" [(ngModel)]="candidato.conhecimentoEmC" [value]="0" id="c0" />
+                        <label class="numeracao" for="c0">0</label>
+                        <input name="groupc" type="radio" [(ngModel)]="candidato.conhecimentoEmC" [value]="1" id="c1" />
+                        <label class="numeracao" for="c1">1</label>
+                        <input name="groupc" type="radio" [(ngModel)]="candidato.conhecimentoEmC" [value]="2" id="c2" />
+                        <label class="numeracao" for="c2">2</label>
+                        <input name="groupc" type="radio" [(ngModel)]="candidato.conhecimentoEmC" [value]="3" id="c3" />
+                        <label class="numeracao" for="c3">3</label>
+                        <input name="groupc" type="radio" [(ngModel)]="candidato.conhecimentoEmC" [value]="4" id="c4" />
+                        <label class="numeracao" for="c4">4</label>
+                        <input name="groupc" type="radio" [(ngModel)]="candidato.conhecimentoEmC" [value]="5" id="c5" />
+                        <label class="numeracao" for="c5">5</label>
+                    </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <label class="labelHabilidade col s12 m12 l12 xl10">C++ </label>
+                <div>
+                    <div class="col s0 m1 l2"></div>
+                    <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
+                    <div class="groupHabilidades col s12 m9 l6 xl5">
+                        <input name="groupcplusplus" type="radio" [(ngModel)]="candidato.conhecimentoEmCPlusPlus" [value]="0" id="cplusplus0" />
+                        <label class="numeracao" for="cplusplus0">0</label>
+                        <input name="groupcplusplus" type="radio" [(ngModel)]="candidato.conhecimentoEmCPlusPlus" [value]="1" id="cplusplus1" />
+                        <label class="numeracao" for="cplusplus1">1</label>
+                        <input name="groupcplusplus" type="radio" [(ngModel)]="candidato.conhecimentoEmCPlusPlus" [value]="2" id="cplusplus2" />
+                        <label class="numeracao" for="cplusplus2">2</label>
+                        <input name="groupcplusplus" type="radio" [(ngModel)]="candidato.conhecimentoEmCPlusPlus" [value]="3" id="cplusplus3" />
+                        <label class="numeracao" for="cplusplus3">3</label>
+                        <input name="groupcplusplus" type="radio" [(ngModel)]="candidato.conhecimentoEmCPlusPlus" [value]="4" id="cplusplus4" />
+                        <label class="numeracao" for="cplusplus4">4</label>
+                        <input name="groupcplusplus" type="radio" [(ngModel)]="candidato.conhecimentoEmCPlusPlus" [value]="5" id="cplusplus5" />
+                        <label class="numeracao" for="cplusplus5">5</label>
+                    </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <label class="labelHabilidade col s12 m12 l12 xl10">Cake </label>
+                <div>
+                    <div class="col s0 m1 l2"></div>
+                    <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
+                    <div class="groupHabilidades col s12 m9 l6 xl5">
+                        <input name="groupcake" type="radio" [(ngModel)]="candidato.conhecimentoEmCake" [value]="0" id="cake0" />
+                        <label class="numeracao" for="cake0">0</label>
+                        <input name="groupcake" type="radio" [(ngModel)]="candidato.conhecimentoEmCake" [value]="1" id="cake1" />
+                        <label class="numeracao" for="cake1">1</label>
+                        <input name="groupcake" type="radio" [(ngModel)]="candidato.conhecimentoEmCake" [value]="2" id="cake2" />
+                        <label class="numeracao" for="cake2">2</label>
+                        <input name="groupcake" type="radio" [(ngModel)]="candidato.conhecimentoEmCake" [value]="3" id="cake3" />
+                        <label class="numeracao" for="cake3">3</label>
+                        <input name="groupcake" type="radio" [(ngModel)]="candidato.conhecimentoEmCake" [value]="4" id="cake4" />
+                        <label class="numeracao" for="cake4">4</label>
+                        <input name="groupcake" type="radio" [(ngModel)]="candidato.conhecimentoEmCake" [value]="5" id="cake5" />
+                        <label class="numeracao" for="cake5">5</label>
+                    </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <label class="labelHabilidade col s12 m12 l12 xl10">Django </label>
+                <div>
+                    <div class="col s0 m1 l2"></div>
+                    <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
+                    <div class="groupHabilidades col s12 m9 l6 xl5">
+                        <input name="groupdjango" type="radio" [(ngModel)]="candidato.conhecimentoEmDJango" [value]="0" id="django0" />
+                        <label class="numeracao" for="django0">0</label>
+                        <input name="groupdjango" type="radio" [(ngModel)]="candidato.conhecimentoEmDJango" [value]="1" id="django1" />
+                        <label class="numeracao" for="django1">1</label>
+                        <input name="groupdjango" type="radio" [(ngModel)]="candidato.conhecimentoEmDJango" [value]="2" id="django2" />
+                        <label class="numeracao" for="django2">2</label>
+                        <input name="groupdjango" type="radio" [(ngModel)]="candidato.conhecimentoEmDJango" [value]="3" id="django3" />
+                        <label class="numeracao" for="django3">3</label>
+                        <input name="groupdjango" type="radio" [(ngModel)]="candidato.conhecimentoEmDJango" [value]="4" id="django4" />
+                        <label class="numeracao" for="django4">4</label>
+                        <input name="groupdjango" type="radio" [(ngModel)]="candidato.conhecimentoEmDJango" [value]="5" id="django5" />
+                        <label class="numeracao" for="django5">5</label>
+                    </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <label class="labelHabilidade col s12 m12 l12 xl10">Majento </label>
+                <div>
+                    <div class="col s0 m1 l2"></div>
+                    <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
+                    <div class="groupHabilidades col s12 m9 l6 xl5">
+                        <input name="groupmajento" type="radio" [(ngModel)]="candidato.conhecimentoEmMajento" [value]="0" id="majento0" />
+                        <label class="numeracao" for="majento0">0</label>
+                        <input name="groupmajento" type="radio" [(ngModel)]="candidato.conhecimentoEmMajento" [value]="1" id="majento1" />
+                        <label class="numeracao" for="majento1">1</label>
+                        <input name="groupmajento" type="radio" [(ngModel)]="candidato.conhecimentoEmMajento" [value]="2" id="majento2" />
+                        <label class="numeracao" for="majento2">2</label>
+                        <input name="groupmajento" type="radio" [(ngModel)]="candidato.conhecimentoEmMajento" [value]="3" id="majento3" />
+                        <label class="numeracao" for="majento3">3</label>
+                        <input name="groupmajento" type="radio" [(ngModel)]="candidato.conhecimentoEmMajento" [value]="4" id="majento4" />
+                        <label class="numeracao" for="majento4">4</label>
+                        <input name="groupmajento" type="radio" [(ngModel)]="candidato.conhecimentoEmMajento" [value]="5" id="majento5" />
+                        <label class="numeracao" for="majento5">5</label>
+                    </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <label class="labelHabilidade col s12 m12 l12 xl10">PHP </label>
+                <div>
+                    <div class="col s0 m1 l2"></div>
+                    <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
+                    <div class="groupHabilidades col s12 m9 l6 xl5">
+                        <input name="groupphp" type="radio" [(ngModel)]="candidato.conhecimentoEmPHP" [value]="0" id="php0" />
+                        <label class="numeracao" for="php0">0</label>
+                        <input name="groupphp" type="radio" [(ngModel)]="candidato.conhecimentoEmPHP" [value]="1" id="php1" />
+                        <label class="numeracao" for="php1">1</label>
+                        <input name="groupphp" type="radio" [(ngModel)]="candidato.conhecimentoEmPHP" [value]="2" id="php2" />
+                        <label class="numeracao" for="php2">2</label>
+                        <input name="groupphp" type="radio" [(ngModel)]="candidato.conhecimentoEmPHP" [value]="3" id="php3" />
+                        <label class="numeracao" for="php3">3</label>
+                        <input name="groupphp" type="radio" [(ngModel)]="candidato.conhecimentoEmPHP" [value]="4" id="php4" />
+                        <label class="numeracao" for="php4">4</label>
+                        <input name="groupphp" type="radio" [(ngModel)]="candidato.conhecimentoEmPHP" [value]="5" id="php5" />
+                        <label class="numeracao" for="php5">5</label>
+                    </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <label class="labelHabilidade col s12 m12 l12 xl10">Wordpress </label>
+                <div>
+                    <div class="col s0 m1 l2"></div>
+                    <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
+                    <div class="groupHabilidades col s12 m9 l6 xl5">
+                        <input name="groupwordpress" type="radio" [(ngModel)]="candidato.conhecimentoEmWordpress" [value]="0" id="wordpress0" />
+                        <label class="numeracao" for="wordpress0">0</label>
+                        <input name="groupwordpress" type="radio" [(ngModel)]="candidato.conhecimentoEmWordpress" [value]="1" id="wordpress1" />
+                        <label class="numeracao" for="wordpress1">1</label>
+                        <input name="groupwordpress" type="radio" [(ngModel)]="candidato.conhecimentoEmWordpress" [value]="2" id="wordpress2" />
+                        <label class="numeracao" for="wordpress2">2</label>
+                        <input name="groupwordpress" type="radio" [(ngModel)]="candidato.conhecimentoEmWordpress" [value]="3" id="wordpress3" />
+                        <label class="numeracao" for="wordpress3">3</label>
+                        <input name="groupwordpress" type="radio" [(ngModel)]="candidato.conhecimentoEmWordpress" [value]="4" id="wordpress4" />
+                        <label class="numeracao" for="wordpress4">4</label>
+                        <input name="groupwordpress" type="radio" [(ngModel)]="candidato.conhecimentoEmWordpress" [value]="5" id="wordpress5" />
+                        <label class="numeracao" for="wordpress5">5</label>
+                    </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <label class="labelHabilidade col s12 m12 l12 xl10">Python </label>
+                <div>
+                    <div class="col s0 m1 l2"></div>
+                    <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
+                    <div class="groupHabilidades col s12 m9 l6 xl5">
+                        <input name="grouppython" type="radio" [(ngModel)]="candidato.conhecimentoEmPython" [value]="0" id="python0" />
+                        <label class="numeracao" for="python0">0</label>
+                        <input name="grouppython" type="radio" [(ngModel)]="candidato.conhecimentoEmPython" [value]="1" id="python1" />
+                        <label class="numeracao" for="python1">1</label>
+                        <input name="grouppython" type="radio" [(ngModel)]="candidato.conhecimentoEmPython" [value]="2" id="python2" />
+                        <label class="numeracao" for="python2">2</label>
+                        <input name="grouppython" type="radio" [(ngModel)]="candidato.conhecimentoEmPython" [value]="3" id="python3" />
+                        <label class="numeracao" for="python3">3</label>
+                        <input name="grouppython" type="radio" [(ngModel)]="candidato.conhecimentoEmPython" [value]="4" id="python4" />
+                        <label class="numeracao" for="python4">4</label>
+                        <input name="grouppython" type="radio" [(ngModel)]="candidato.conhecimentoEmPython" [value]="5" id="python5" />
+                        <label class="numeracao" for="python5">5</label>
+                    </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <label class="labelHabilidade col s12 m12 l12 xl10">Ruby </label>
+                <div>
+                    <div class="col s0 m1 l2"></div>
+                    <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
+                    <div class="groupHabilidades col s12 m9 l6 xl5">
+                        <input name="groupruby" type="radio" [(ngModel)]="candidato.conhecimentoEmRuby" [value]="0" id="ruby0" />
+                        <label class="numeracao" for="ruby0">0</label>
+                        <input name="groupruby" type="radio" [(ngModel)]="candidato.conhecimentoEmRuby" [value]="1" id="ruby1" />
+                        <label class="numeracao" for="ruby1">1</label>
+                        <input name="groupruby" type="radio" [(ngModel)]="candidato.conhecimentoEmRuby" [value]="2" id="ruby2" />
+                        <label class="numeracao" for="ruby2">2</label>
+                        <input name="groupruby" type="radio" [(ngModel)]="candidato.conhecimentoEmRuby" [value]="3" id="ruby3" />
+                        <label class="numeracao" for="ruby3">3</label>
+                        <input name="groupruby" type="radio" [(ngModel)]="candidato.conhecimentoEmRuby" [value]="4" id="ruby4" />
+                        <label class="numeracao" for="ruby4">4</label>
+                        <input name="groupruby" type="radio" [(ngModel)]="candidato.conhecimentoEmRuby" [value]="5" id="ruby5" />
+                        <label class="numeracao" for="ruby5">5</label>
+                    </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <label class="labelHabilidade col s12 m12 l12 xl10">SQL Server </label>
+                <div>
+                    <div class="col s0 m1 l2"></div>
+                    <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
+                    <div class="groupHabilidades col s12 m9 l6 xl5">
+                        <input name="groupsqlserver" type="radio" [(ngModel)]="candidato.conhecimentoEmSQLServer" [value]="0" id="sqlserver0" />
+                        <label class="numeracao" for="sqlserver0">0</label>
+                        <input name="groupsqlserver" type="radio" [(ngModel)]="candidato.conhecimentoEmSQLServer" [value]="1" id="sqlserver1" />
+                        <label class="numeracao" for="sqlserver1">1</label>
+                        <input name="groupsqlserver" type="radio" [(ngModel)]="candidato.conhecimentoEmSQLServer" [value]="2" id="sqlserver2" />
+                        <label class="numeracao" for="sqlserver2">2</label>
+                        <input name="groupsqlserver" type="radio" [(ngModel)]="candidato.conhecimentoEmSQLServer" [value]="3" id="sqlserver3" />
+                        <label class="numeracao" for="sqlserver3">3</label>
+                        <input name="groupsqlserver" type="radio" [(ngModel)]="candidato.conhecimentoEmSQLServer" [value]="4" id="sqlserver4" />
+                        <label class="numeracao" for="sqlserver4">4</label>
+                        <input name="groupsqlserver" type="radio" [(ngModel)]="candidato.conhecimentoEmSQLServer" [value]="5" id="sqlserver5" />
+                        <label class="numeracao" for="sqlserver5">5</label>
+                    </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <label class="labelHabilidade col s12 m12 l12 xl10">My SQL</label>
+                <div>
+                    <div class="col s0 m1 l2"></div>
+                    <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
+                    <div class="groupHabilidades col s12 m9 l6 xl5">
+                        <input name="groupmysql" type="radio" [(ngModel)]="candidato.conhecimentoEmMySql" [value]="0" id="mysql0" />
+                        <label class="numeracao" for="mysql0">0</label>
+                        <input name="groupmysql" type="radio" [(ngModel)]="candidato.conhecimentoEmMySql" [value]="1" id="mysql1" />
+                        <label class="numeracao" for="mysql1">1</label>
+                        <input name="groupmysql" type="radio" [(ngModel)]="candidato.conhecimentoEmMySql" [value]="2" id="mysql2" />
+                        <label class="numeracao" for="mysql2">2</label>
+                        <input name="groupmysql" type="radio" [(ngModel)]="candidato.conhecimentoEmMySql" [value]="3" id="mysql3" />
+                        <label class="numeracao" for="mysql3">3</label>
+                        <input name="groupmysql" type="radio" [(ngModel)]="candidato.conhecimentoEmMySql" [value]="4" id="mysql4" />
+                        <label class="numeracao" for="mysql4">4</label>
+                        <input name="groupmysql" type="radio" [(ngModel)]="candidato.conhecimentoEmMySql" [value]="5" id="mysql5" />
+                        <label class="numeracao" for="mysql5">5</label>
+                    </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <label class="labelHabilidade col s12 m12 l12 xl10">Salesforce </label>
+                <div>
+                    <div class="col s0 m1 l2"></div>
+                    <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
+                    <div class="groupHabilidades col s12 m9 l6 xl5">
+                        <input name="groupsalesforce" type="radio" [(ngModel)]="candidato.conhecimentoEmSalesforce" [value]="0" id="salesforce0"
+                        />
+                        <label class="numeracao" for="salesforce0">0</label>
+                        <input name="groupsalesforce" type="radio" [(ngModel)]="candidato.conhecimentoEmSalesforce" [value]="1" id="salesforce1"
+                        />
+                        <label class="numeracao" for="salesforce1">1</label>
+                        <input name="groupsalesforce" type="radio" [(ngModel)]="candidato.conhecimentoEmSalesforce" [value]="2" id="salesforce2"
+                        />
+                        <label class="numeracao" for="salesforce2">2</label>
+                        <input name="groupsalesforce" type="radio" [(ngModel)]="candidato.conhecimentoEmSalesforce" [value]="3" id="salesforce3"
+                        />
+                        <label class="numeracao" for="salesforce3">3</label>
+                        <input name="groupsalesforce" type="radio" [(ngModel)]="candidato.conhecimentoEmSalesforce" [value]="4" id="salesforce4"
+                        />
+                        <label class="numeracao" for="salesforce4">4</label>
+                        <input name="groupsalesforce" type="radio" [(ngModel)]="candidato.conhecimentoEmSalesforce" [value]="5" id="salesforce5"
+                        />
+                        <label class="numeracao" for="salesforce5">5</label>
+                    </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <label class="labelHabilidade col s12 m12 l12 xl10">Photoshop </label>
+                <div>
+                    <div class="col s0 m1 l2"></div>
+                    <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
+                    <div class="groupHabilidades col s12 m9 l6 xl5">
+                        <input name="groupphotoshop" type="radio" [(ngModel)]="candidato.conhecimentoEmPhotoshop" [value]="0" id="photoshop0" />
+                        <label class="numeracao" for="photoshop0">0</label>
+                        <input name="groupphotoshop" type="radio" [(ngModel)]="candidato.conhecimentoEmPhotoshop" [value]="1" id="photoshop1" />
+                        <label class="numeracao" for="photoshop1">1</label>
+                        <input name="groupphotoshop" type="radio" [(ngModel)]="candidato.conhecimentoEmPhotoshop" [value]="2" id="photoshop2" />
+                        <label class="numeracao" for="photoshop2">2</label>
+                        <input name="groupphotoshop" type="radio" [(ngModel)]="candidato.conhecimentoEmPhotoshop" [value]="3" id="photoshop3" />
+                        <label class="numeracao" for="photoshop3">3</label>
+                        <input name="groupphotoshop" type="radio" [(ngModel)]="candidato.conhecimentoEmPhotoshop" [value]="4" id="photoshop4" />
+                        <label class="numeracao" for="photoshop4">4</label>
+                        <input name="groupphotoshop" type="radio" [(ngModel)]="candidato.conhecimentoEmPhotoshop" [value]="5" id="photoshop5" />
+                        <label class="numeracao" for="photoshop5">5</label>
+                    </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <label class="labelHabilidade col s12 m12 l12 xl10">Illustrator </label>
+                <div>
+                    <div class="col s0 m1 l2"></div>
+                    <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
+                    <div class="groupHabilidades col s12 m9 l6 xl5">
+                        <input name="groupillustrator" type="radio" [(ngModel)]="candidato.conhecimentoEmIllustrator" [value]="0" id="illustrator0"
+                        />
+                        <label class="numeracao" for="illustrator0">0</label>
+                        <input name="groupillustrator" type="radio" [(ngModel)]="candidato.conhecimentoEmIllustrator" [value]="1" id="illustrator1"
+                        />
+                        <label class="numeracao" for="illustrator1">1</label>
+                        <input name="groupillustrator" type="radio" [(ngModel)]="candidato.conhecimentoEmIllustrator" [value]="2" id="illustrator2"
+                        />
+                        <label class="numeracao" for="illustrator2">2</label>
+                        <input name="groupillustrator" type="radio" [(ngModel)]="candidato.conhecimentoEmIllustrator" [value]="3" id="illustrator3"
+                        />
+                        <label class="numeracao" for="illustrator3">3</label>
+                        <input name="groupillustrator" type="radio" [(ngModel)]="candidato.conhecimentoEmIllustrator" [value]="4" id="illustrator4"
+                        />
+                        <label class="numeracao" for="illustrator4">4</label>
+                        <input name="groupillustrator" type="radio" [(ngModel)]="candidato.conhecimentoEmIllustrator" [value]="5" id="illustrator5"
+                        />
+                        <label class="numeracao" for="illustrator5">5</label>
+                    </div> <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <label class="labelHabilidade col s12 m12 l12 xl10">SEO </label>
+                <div>
+                    <div class="col s0 m1 l2"></div>
+                    <label class="habilidadeEsquerda col s12 m12 l5 xl4">Nao conheco / I don't know</label>
+                    <div class="groupHabilidades col s12 m9 l6 xl5">
+                        <input name="groupseo" type="radio" [(ngModel)]="candidato.conhecimentoEmSEO" [value]="0" id="seo0" />
+                        <label class="numeracao" for="seo0">0</label>
+                        <input name="groupseo" type="radio" [(ngModel)]="candidato.conhecimentoEmSEO" [value]="1" id="seo1" />
+                        <label class="numeracao" for="seo1">1</label>
+                        <input name="groupseo" type="radio" [(ngModel)]="candidato.conhecimentoEmSEO" [value]="2" id="seo2" />
+                        <label class="numeracao" for="seo2">2</label>
+                        <input name="groupseo" type="radio" [(ngModel)]="candidato.conhecimentoEmSEO" [value]="3" id="seo3" />
+                        <label class="numeracao" for="seo3">3</label>
+                        <input name="groupseo" type="radio" [(ngModel)]="candidato.conhecimentoEmSEO" [value]="4" id="seo4" />
+                        <label class="numeracao" for="seo4">4</label>
+                        <input name="groupseo" type="radio" [(ngModel)]="candidato.conhecimentoEmSEO" [value]="5" id="seo5" />
+                        <label class="numeracao" for="seo5">5</label>
+                    </div>
+                    <label class="habilidadeDireita col s12 m3 l1 xl1">Senior</label>
+                </div>
+            </div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row .hide-on-med-and-up"></div>
+            <div class="row .hide-on-med-and-up"></div>
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <div class="input-field col s12 m10 l8 l8">
+                    <input [(ngModel)]="candidato.conhecimentoEmOutroFramework" placeholder="Sua resposta" id="conhecimentoEmOutroFramework"
+                        name="conhecimentoEmOutroFramework" type="text" class="validate">
+                    <label style="font-size: 15px;" class="active" for="conhecimentoEmOutroFramework">Do you know any other language or framework that was not listed above? Tell us and evaluate yourself from 0 to 5. / Conhece mais alguma linguagem ou framework que não foi listado aqui em cima? Conte para nos e se auto avalie ainda de 0 a 5. </label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s0 m1 l2"></div>
+                <div class="input-field col s12 m10 l8 l8">
+                    <input [(ngModel)]="candidato.linkCrud" placeholder="Sua resposta" id="linkCrud" name="linkCrud" type="text" class="validate"
+                        required>
+                    <label class="active" for="linkCrud">Link CRUD<span class="campoObrigatorio">*</span></label>
+                </div>
+            </div>
+
+            <div class="row"></div>
+            <div class="row"></div>
+        </form>
+        <div class="row"> </div>
+
+        <!--<div class="row">
         <div class="col s0 m1 l2"></div>
         <div>
             <a class="btn-floating sinalizacaoDaParteDoFormulario blue"></a>
@@ -813,14 +822,14 @@
             <a class="btn-floating sinalizacaoDaParteDoFormulario" style="margin-left:8ex;" [style.background-color]="contadorParteFormulario >= 4 ? '#2196F3': 'grey'"></a>
         </div>
     </div>-->
-    <div class="row">
-        <div class="col s0 m1 l2"></div>
-        <button id="botaoAnterior" class="btn waves-effect waves-light left disabled" (click)="voltar()">Anterior</button>
-        <button id="botaoProximo" class="btn waves-effect waves-light" style="margin-left: 20px" (click)="proxima()">Próximo </button>
-        <button id="botaoEnviar" class="btn waves-effect waves-light blue hide" style="margin-left: 20px" (click)="enviar()">Enviar
+        <div class="row">
+            <div class="col s0 m1 l2"></div>
+            <button id="botaoAnterior" class="btn waves-effect waves-light left disabled" (click)="voltar()">Anterior</button>
+            <button id="botaoProximo" class="btn waves-effect waves-light" style="margin-left: 20px" (click)="proxima()">Próximo </button>
+            <button id="botaoEnviar" class="btn waves-effect waves-light blue hide" style="margin-left: 20px" (click)="enviar()">Enviar
             <i class="material-icons right hide">send</i>
         </button>
+        </div>
     </div>
-
     <div class="row"></div>
 </div>

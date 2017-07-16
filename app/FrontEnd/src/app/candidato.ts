@@ -1,12 +1,10 @@
 import { TipoDisponibilidade } from "app/TipoDisponibilidade";
 import { TipoHorarioTrabalho } from "app/TipoHorarioTrabalho";
+import $ from 'jquery/dist/jquery';
 
 export class Candidato {
   id: number;
-  nome: String = "";
-  email: String = "";
-  informacoesBanco: String = "";
-  contaBancaria: ContaBancaria;
+  contaBancaria: ContaBancaria = new ContaBancaria();
 
   ateQuatroHoras: boolean = false;
   ateSeisHoras: boolean = false;
@@ -20,25 +18,25 @@ export class Candidato {
   madrugada: boolean = false;
   comercial: boolean = false;
 
-  conhecimentoEmIonic: number;
-  conhecimentoEmAndroid : number;
+  constructor(json: any) {
+    if (json != '')
+      $.extend(this, json);
 
-  constructor() {
-    this.contaBancaria = new ContaBancaria();
+    if (this.contaBancaria == null)
+      this.contaBancaria = new ContaBancaria();
   }
 }
 
 export class ContaBancaria {
   id: number;
-  CPF: String = "";
-  nome: String = "";
-  banco: String = "";
-  agencia: String = "";
-  Numero: Number = 0;
+  CPF: string = "";
+  nome: string = "";
+  banco: string = "";
+  agencia: string = "";
+  numero: Number = 0;
 
-
-  corrente: boolean;
-  poupanca: boolean;
+  corrente: boolean = false;;
+  poupanca: boolean = false;;
 }
 
 export enum TipoNivelConhecimento {

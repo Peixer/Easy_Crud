@@ -7,7 +7,7 @@
       <tr>
         <th>Nome</th>
         <th>Email</th>
-        <th>Linkedin</th>
+        <th>Skype</th>
       </tr>
     </thead>
 
@@ -15,7 +15,7 @@
       <tr *ngFor="let candidato of candidatos" (click)="abrirCandidato(candidato.id)">
         <td>{{candidato.nome}}</td>
         <td>{{candidato.email}}</td>
-        <td>{{candidato.linkedin}}</td>
+        <td>{{candidato.skype}}</td>
       </tr>
     </tbody>
   </table>
