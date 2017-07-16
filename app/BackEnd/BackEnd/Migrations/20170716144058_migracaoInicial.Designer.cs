@@ -10,7 +10,7 @@ using System;
 namespace BackEnd.Migrations
 {
     [DbContext(typeof(CandidatoContext))]
-    [Migration("20170714234713_migracaoInicial")]
+    [Migration("20170716144058_migracaoInicial")]
     partial class migracaoInicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -91,20 +91,17 @@ namespace BackEnd.Migrations
 
                     b.Property<int?>("IdContaBancaria");
 
-                    b.Property<string>("InformacoesBanco")
-                        .IsRequired();
+                    b.Property<string>("InformacoesBanco");
 
                     b.Property<string>("LinkCrud")
                         .IsRequired();
 
-                    b.Property<string>("Linkedin")
-                        .IsRequired();
+                    b.Property<string>("Linkedin");
 
                     b.Property<string>("Nome")
                         .IsRequired();
 
-                    b.Property<string>("Portfolio")
-                        .IsRequired();
+                    b.Property<string>("Portfolio");
 
                     b.Property<double>("PretensaoSalarial");
 
@@ -128,17 +125,13 @@ namespace BackEnd.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Agencia")
-                        .IsRequired();
+                    b.Property<string>("Agencia");
 
-                    b.Property<string>("Banco")
-                        .IsRequired();
+                    b.Property<string>("Banco");
 
-                    b.Property<string>("CPF")
-                        .IsRequired();
+                    b.Property<string>("CPF");
 
-                    b.Property<string>("Nome")
-                        .IsRequired();
+                    b.Property<string>("Nome");
 
                     b.Property<int>("Numero");
 

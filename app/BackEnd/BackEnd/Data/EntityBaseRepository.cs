@@ -61,7 +61,7 @@ namespace BackEnd.Data
         {
             return context.Set<T>().Where(predicate);
         }
-
+        
         public virtual void Add(T entity)
         {
             EntityEntry dbEntityEntry = context.Entry<T>(entity);

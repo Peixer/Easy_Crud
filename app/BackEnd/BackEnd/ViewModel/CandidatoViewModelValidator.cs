@@ -12,7 +12,8 @@ namespace BackEnd.ViewModel
             RuleFor(s => s.Telefone).NotEmpty().WithMessage("Telefone precisa ser informado");
             RuleFor(s => s.Cidade).NotEmpty().WithMessage("Cidade precisa ser informado");
             RuleFor(s => s.Estado).NotEmpty().WithMessage("Estado precisa ser informado");
-            RuleFor(s => s.PretensaoSalarial).NotEmpty().WithMessage("Pretensão salarial precisa ser informado");                      
+            RuleFor(s => s.PretensaoSalarial).NotEmpty().WithMessage("Pretensão salarial precisa ser informado");
+            RuleFor(s => s.LinkCrud).NotEmpty().WithMessage("Link do CRUD precisa ser informado");
         }
     }
 }

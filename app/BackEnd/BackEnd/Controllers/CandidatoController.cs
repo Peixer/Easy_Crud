@@ -51,17 +51,17 @@ namespace BackEnd.Controllers
 
             Response.AddPagination(pagina, tamanhoPagina, totalCandidatos, totalPaginas);
 
-            var candidatosVM = Mapper.Map<IEnumerable<Candidato>, IEnumerable<CandidatoViewModel>>(candidatos);
+            var candidatosResumidoViewModel = Mapper.Map<IEnumerable<Candidato>, IEnumerable<CandidatoResumidoViewModel>>(candidatos);
 
-            return new OkObjectResult(candidatosVM);
+            return new OkObjectResult(candidatosResumidoViewModel);
         }
 
         [HttpGet("{id}")]
         public IActionResult ObterCandidato(int id)
         {
             var candidato = CandidatoRepository
-                .GetSingle(id);
-            
+                .GetSingle(x => x.Id == id, x => x.ContaBancaria);
+
             var candidatosVM = Mapper.Map<Candidato, CandidatoViewModel>(candidato);
 
             return new OkObjectResult(candidatosVM);

@@ -8,6 +8,13 @@ namespace BackEnd.ViewModel
     {
         public MappingProfile()
         {
+            CreateMap<ContaBancaria, ContaBancariaViewModel>()
+                .ForMember(x => x.Poupanca, expression => expression.MapFrom(model => model.Tipo.HasFlag(TipoContaBancaria.Poupanca)))
+                .ForMember(x => x.Corrente, expression => expression.MapFrom(model => model.Tipo.HasFlag(TipoContaBancaria.Corrente)));
+
+            CreateMap<ContaBancariaViewModel, ContaBancaria>()
+                .ForMember(x => x.Tipo, expression => expression.MapFrom(model => ConverterTipoContaBancaria(model)));
+
             CreateMap<Candidato, CandidatoViewModel>()
                 .ForMember(x => x.AteQuatroHoras, expression => expression.MapFrom(model => model.Disponibilidade.HasFlag(TipoDisponibilidade.AteQuatroHoras)))
                 .ForMember(x => x.AteSeisHoras, expression => expression.MapFrom(model => model.Disponibilidade.HasFlag(TipoDisponibilidade.AteSeisHoras)))
@@ -16,18 +23,22 @@ namespace BackEnd.ViewModel
                 .ForMember(x => x.FinaisDeSemana, expression => expression.MapFrom(model => model.Disponibilidade.HasFlag(TipoDisponibilidade.FinaisDeSemana)))
                 .ForMember(x => x.Manha, expression => expression.MapFrom(model => model.HorarioDeTrabalho.HasFlag(TipoHorarioDeTrabalho.Manha)))
                 .ForMember(x => x.Tarde, expression => expression.MapFrom(model => model.HorarioDeTrabalho.HasFlag(TipoHorarioDeTrabalho.Tarde)))
-                .ForMember(x => x.Noite, expression => expression.MapFrom(model => model.HorarioDeTrabalho.HasFlag(TipoHorarioDeTrabalho.Noite) ))
+                .ForMember(x => x.Noite, expression => expression.MapFrom(model => model.HorarioDeTrabalho.HasFlag(TipoHorarioDeTrabalho.Noite)))
                 .ForMember(x => x.Madrugada, expression => expression.MapFrom(model => model.HorarioDeTrabalho.HasFlag(TipoHorarioDeTrabalho.Madrugada)))
-                .ForMember(x => x.Comercial, expression => expression.MapFrom(model => model.HorarioDeTrabalho.HasFlag(TipoHorarioDeTrabalho.Comercial)));
+                .ForMember(x => x.Comercial, expression => expression.MapFrom(model => model.HorarioDeTrabalho.HasFlag(TipoHorarioDeTrabalho.Comercial)))
+                .ForMember(x => x.ContaBancaria, opt => opt.MapFrom(s => Mapper.Map<ContaBancaria, ContaBancariaViewModel>(s.ContaBancaria)));
 
             CreateMap<CandidatoViewModel, Candidato>()
                 .ForMember(x => x.Disponibilidade, expression => expression.MapFrom(model => ConverterTipoDisponibilidade(model)))
-                .ForMember(x => x.HorarioDeTrabalho, expression => expression.MapFrom(model => ConverterTipoHorarioDeTrabalho(model)));
+                .ForMember(x => x.HorarioDeTrabalho, expression => expression.MapFrom(model => ConverterTipoHorarioDeTrabalho(model)))
+            .ForMember(x => x.ContaBancaria, opt => opt.MapFrom(model => Mapper.Map<ContaBancariaViewModel, ContaBancaria>(model.ContaBancaria)));
+
+            CreateMap<Candidato, CandidatoResumidoViewModel>();
         }
 
         private TipoDisponibilidade ConverterTipoDisponibilidade(CandidatoViewModel model)
         {
-            var tipoDisponibilidade = (TipoDisponibilidade) 0;
+            var tipoDisponibilidade = (TipoDisponibilidade)0;
 
             if (model.AteQuatroHoras)
                 tipoDisponibilidade |= TipoDisponibilidade.AteQuatroHoras;
@@ -67,6 +78,19 @@ namespace BackEnd.ViewModel
                 tipoHorarioDeTrabalho |= TipoHorarioDeTrabalho.Comercial;
 
             return tipoHorarioDeTrabalho;
+        }
+
+        private TipoContaBancaria ConverterTipoContaBancaria(ContaBancariaViewModel model)
+        {
+            var tipoContaBancaria = (TipoContaBancaria)0;
+
+            if (model.Corrente)
+                tipoContaBancaria |= TipoContaBancaria.Corrente;
+
+            if (model.Poupanca)
+                tipoContaBancaria |= TipoContaBancaria.Poupanca;
+
+            return tipoContaBancaria;
         }
     }
 }

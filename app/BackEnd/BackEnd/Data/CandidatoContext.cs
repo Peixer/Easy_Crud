@@ -36,21 +36,13 @@ namespace BackEnd.Data
             modelBuilder.Entity<Candidato>()
                 .Property(s => s.Telefone)
                 .IsRequired();
-
-            modelBuilder.Entity<Candidato>()
-                .Property(s => s.Linkedin)
-                .IsRequired();
-
+            
             modelBuilder.Entity<Candidato>()
                 .Property(s => s.Cidade)
                 .IsRequired();
 
             modelBuilder.Entity<Candidato>()
                 .Property(s => s.Estado)
-                .IsRequired();
-
-            modelBuilder.Entity<Candidato>()
-                .Property(s => s.Portfolio)
                 .IsRequired();
 
             modelBuilder.Entity<Candidato>()
@@ -66,10 +58,6 @@ namespace BackEnd.Data
                 .IsRequired();
 
             modelBuilder.Entity<Candidato>()
-                .Property(s => s.InformacoesBanco)
-                .IsRequired();
-
-            modelBuilder.Entity<Candidato>()
                 .Property(s => s.LinkCrud)
                 .IsRequired();
 
@@ -78,30 +66,6 @@ namespace BackEnd.Data
                 .WithOne(x => x.Candidato)
                 .HasForeignKey<Candidato>(s => s.IdContaBancaria)
                 .OnDelete(DeleteBehavior.Cascade).IsRequired(false);
-
-            modelBuilder.Entity<ContaBancaria>()
-                .Property(s => s.CPF)
-                .IsRequired();
-
-            modelBuilder.Entity<ContaBancaria>()
-                .Property(s => s.Nome)
-                .IsRequired();
-
-            modelBuilder.Entity<ContaBancaria>()
-                .Property(s => s.Banco)
-                .IsRequired();
-
-            modelBuilder.Entity<ContaBancaria>()
-                .Property(s => s.Agencia)
-                .IsRequired();
-
-            modelBuilder.Entity<ContaBancaria>()
-                .Property(s => s.Tipo)
-                .IsRequired();
-
-            modelBuilder.Entity<ContaBancaria>()
-                .Property(s => s.Numero)
-                .IsRequired();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

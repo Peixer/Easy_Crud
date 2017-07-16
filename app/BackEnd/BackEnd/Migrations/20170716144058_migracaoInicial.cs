@@ -15,10 +15,10 @@ namespace BackEnd.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Agencia = table.Column<string>(nullable: false),
-                    Banco = table.Column<string>(nullable: false),
-                    CPF = table.Column<string>(nullable: false),
-                    Nome = table.Column<string>(nullable: false),
+                    Agencia = table.Column<string>(nullable: true),
+                    Banco = table.Column<string>(nullable: true),
+                    CPF = table.Column<string>(nullable: true),
+                    Nome = table.Column<string>(nullable: true),
                     Numero = table.Column<int>(nullable: false),
                     Tipo = table.Column<int>(nullable: false)
                 },
@@ -65,11 +65,11 @@ namespace BackEnd.Migrations
                     Estado = table.Column<string>(nullable: false),
                     HorarioDeTrabalho = table.Column<int>(nullable: false),
                     IdContaBancaria = table.Column<int>(nullable: true),
-                    InformacoesBanco = table.Column<string>(nullable: false),
+                    InformacoesBanco = table.Column<string>(nullable: true),
                     LinkCrud = table.Column<string>(nullable: false),
-                    Linkedin = table.Column<string>(nullable: false),
+                    Linkedin = table.Column<string>(nullable: true),
                     Nome = table.Column<string>(nullable: false),
-                    Portfolio = table.Column<string>(nullable: false),
+                    Portfolio = table.Column<string>(nullable: true),
                     PretensaoSalarial = table.Column<double>(nullable: false),
                     Skype = table.Column<string>(nullable: false),
                     Telefone = table.Column<string>(nullable: false)

@@ -33,6 +33,8 @@ namespace BackEnd.ViewModel
         public double PretensaoSalarial { get; set; }
         public string InformacoesBanco { get; set; }
         public string LinkCrud { get; set; }
+        public string ConhecimentoEmOutroFramework { get; set; }
+        public ContaBancariaViewModel ContaBancaria { get; set; }
 
         public TipoNivelConhecimento ConhecimentoEmIonic { get; set; }
         public TipoNivelConhecimento ConhecimentoEmAndroid { get; set; }
@@ -59,7 +61,6 @@ namespace BackEnd.ViewModel
         public TipoNivelConhecimento ConhecimentoEmPhotoshop { get; set; }
         public TipoNivelConhecimento ConhecimentoEmIllustrator { get; set; }
         public TipoNivelConhecimento ConhecimentoEmSEO { get; set; }
-        public string ConhecimentoEmOutroFramework { get; set; }
 
         public IEnumerable<ValidationResult> Validate(System.ComponentModel.DataAnnotations.ValidationContext validationContext)
         {
