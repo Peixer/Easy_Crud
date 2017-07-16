@@ -77,7 +77,7 @@ namespace BackEnd.Data
                 .HasOne(s => s.ContaBancaria)
                 .WithOne(x => x.Candidato)
                 .HasForeignKey<Candidato>(s => s.IdContaBancaria)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Cascade).IsRequired(false);
 
             modelBuilder.Entity<ContaBancaria>()
                 .Property(s => s.CPF)

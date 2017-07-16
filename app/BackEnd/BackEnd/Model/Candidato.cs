@@ -20,7 +20,7 @@ namespace BackEnd.Model
         public string ConhecimentoEmOutroFramework { get; set; }
         public string LinkCrud { get; set; }
 
-        public int IdContaBancaria { get; set; }
+        public int? IdContaBancaria { get; set; }
         public ContaBancaria ContaBancaria { get; set; }
 
         public TipoNivelConhecimento ConhecimentoEmIonic { get; set; }

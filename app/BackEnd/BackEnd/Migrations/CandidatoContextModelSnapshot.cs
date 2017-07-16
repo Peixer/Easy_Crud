@@ -60,7 +60,7 @@ namespace BackEnd.Migrations
 
                     b.Property<int>("ConhecimentoEmMySql");
 
-                    b.Property<int>("ConhecimentoEmOutroFramework");
+                    b.Property<string>("ConhecimentoEmOutroFramework");
 
                     b.Property<int>("ConhecimentoEmPHP");
 
@@ -88,7 +88,7 @@ namespace BackEnd.Migrations
 
                     b.Property<int>("HorarioDeTrabalho");
 
-                    b.Property<int>("IdContaBancaria");
+                    b.Property<int?>("IdContaBancaria");
 
                     b.Property<string>("InformacoesBanco")
                         .IsRequired();
@@ -116,7 +116,8 @@ namespace BackEnd.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("IdContaBancaria")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasAnnotation("SqlServer:Filter", "[IdContaBancaria] IS NOT NULL");
 
                     b.ToTable("Candidato");
                 });

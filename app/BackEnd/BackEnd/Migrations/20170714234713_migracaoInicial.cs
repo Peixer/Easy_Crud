@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace BackEnd.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class migracaoInicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -51,7 +51,7 @@ namespace BackEnd.Migrations
                     ConhecimentoEmJava = table.Column<int>(nullable: false),
                     ConhecimentoEmMajento = table.Column<int>(nullable: false),
                     ConhecimentoEmMySql = table.Column<int>(nullable: false),
-                    ConhecimentoEmOutroFramework = table.Column<int>(nullable: false),
+                    ConhecimentoEmOutroFramework = table.Column<string>(nullable: true),
                     ConhecimentoEmPHP = table.Column<int>(nullable: false),
                     ConhecimentoEmPhotoshop = table.Column<int>(nullable: false),
                     ConhecimentoEmPython = table.Column<int>(nullable: false),
@@ -64,7 +64,7 @@ namespace BackEnd.Migrations
                     Email = table.Column<string>(nullable: false),
                     Estado = table.Column<string>(nullable: false),
                     HorarioDeTrabalho = table.Column<int>(nullable: false),
-                    IdContaBancaria = table.Column<int>(nullable: false),
+                    IdContaBancaria = table.Column<int>(nullable: true),
                     InformacoesBanco = table.Column<string>(nullable: false),
                     LinkCrud = table.Column<string>(nullable: false),
                     Linkedin = table.Column<string>(nullable: false),
@@ -89,7 +89,8 @@ namespace BackEnd.Migrations
                 name: "IX_Candidato_IdContaBancaria",
                 table: "Candidato",
                 column: "IdContaBancaria",
-                unique: true);
+                unique: true,
+                filter: "[IdContaBancaria] IS NOT NULL");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
