@@ -44,8 +44,7 @@ namespace BackEnd.Controllers
         [HttpGet("{id}")]
         public IActionResult ObterCandidato(int id)
         {
-            var candidato = CandidatoRepository
-                .GetSingle(x => x.Id == id, x => x.ContaBancaria);
+            var candidato = CandidatoService.ObterCandidato(id);
 
             var candidatosVM = Mapper.Map<Candidato, CandidatoViewModel>(candidato);
 
@@ -69,8 +68,6 @@ namespace BackEnd.Controllers
         [HttpPut]
         public IActionResult Put([FromBody]CandidatoViewModel candidato)
         {
-            Thread.Sleep(5000);
-
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 

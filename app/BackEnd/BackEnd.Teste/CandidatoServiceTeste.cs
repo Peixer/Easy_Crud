@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using BackEnd.Data;
 using BackEnd.Model;
 using BackEnd.Service;
@@ -6,6 +7,7 @@ using FluentAssert;
 using Moq;
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace BackEnd.Teste
 {
@@ -35,9 +37,36 @@ namespace BackEnd.Teste
 
             var candidatoService = new CandidatoService(candidatoRepositorio.Object);
 
-            var candidatos = candidatoService.ObterCandidatos(null);
+            Paginacao paginacao = null;
+
+            var candidatos = candidatoService.ObterCandidatos(paginacao);
 
             candidatos.Count().ShouldBeEqualTo(4);
+
+            candidatos = candidatoService.ObterCandidatos(paginacao);
+
+            foreach (var candidato in candidatos)
+            {
+                Console.WriteLine(candidato.Id);
+            }
+
+            candidatos.Count().ShouldBeEqualTo(2);
+        }
+
+        [Test]
+        public void ObtendoCandidatoEspecifico()
+        {
+            var candidatoNoBanco = new Candidato() { Id = 3, Nome = "Glaicon" };
+
+            candidatoRepositorio.Setup(x => x.GetSingle(It.IsAny<Expression<Func<Candidato, bool>>>(), It.IsAny<Expression<Func<Candidato, object>>[]>())).Returns(candidatoNoBanco);
+
+            var candidatoService = new CandidatoService(candidatoRepositorio.Object);
+
+            var idCandidato = 3;
+            var candidato = candidatoService.ObterCandidato(idCandidato);
+
+            candidato.Nome.ShouldBeEqualTo("Glaicon");
+            candidato.Id.ShouldBeEqualTo(idCandidato);
         }
     }
 }

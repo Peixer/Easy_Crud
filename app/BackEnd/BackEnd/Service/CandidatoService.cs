@@ -36,5 +36,11 @@ namespace BackEnd.Service
                 .Take(TAMANHO_PAGINA)
                 .ToList();
         }
+
+        public Candidato ObterCandidato(int idCandidato)
+        {
+            return CandidatoRepository
+                .GetSingle(x => x.Id == idCandidato, x => x.ContaBancaria);
+        }
     }
 }
