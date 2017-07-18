@@ -1,17 +1,23 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BackEnd.Service;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 
 namespace BackEnd.Core
 {
     public static class Extensions
     {
-        public static void AddPagination(this HttpResponse response, int currentPage, int itemsPerPage, int totalItems, int totalPages)
+        public static void AdicionarPaginacao(this HttpResponse response, Paginacao paginacao)
         {
-            var paginationHeader = new PaginationHeader(currentPage, itemsPerPage, totalItems, totalPages);
+            response.Headers.Add("Paginacao", Newtonsoft.Json.JsonConvert.SerializeObject(paginacao));
 
-            response.Headers.Add("Pagination",
-               Newtonsoft.Json.JsonConvert.SerializeObject(paginationHeader));
+            response.Headers.Add("access-control-expose-headers", "Paginacao");
+        }
 
-            response.Headers.Add("access-control-expose-headers", "Pagination");
+        public static Paginacao ObterPaginacao(this HttpRequest request)
+        {
+            if (!string.IsNullOrEmpty(request.Headers["Paginacao"]))
+                return JsonConvert.DeserializeObject<Paginacao>(request.Headers["Paginacao"]);
+            return null;
         }
     }
 }

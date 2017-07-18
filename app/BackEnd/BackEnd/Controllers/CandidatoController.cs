@@ -8,6 +8,8 @@ using AutoMapper;
 using System;
 using System.Threading;
 using BackEnd.Core;
+using BackEnd.Service;
+using Newtonsoft.Json;
 
 namespace BackEnd.Controllers
 {
@@ -16,40 +18,23 @@ namespace BackEnd.Controllers
     {
         public ICandidatoRepository CandidatoRepository { get; }
         public IMapper Mapper { get; }
-        int pagina = 1;
-        int tamanhoPagina = 4;
-
-        public CandidatoController(ICandidatoRepository candidatoRepository, IMapper mapper)
+        public CandidatoService CandidatoService { get; }
+        
+        public CandidatoController(ICandidatoRepository candidatoRepository, IMapper mapper, CandidatoService candidatoService)
         {
             CandidatoRepository = candidatoRepository;
             Mapper = mapper;
+            CandidatoService = candidatoService;
         }
 
         [HttpGet]
         public IActionResult Get()
         {
-            var pagination = Request.Headers["Pagination"];
+            var paginacao = Request.ObterPaginacao();
 
-            if (!string.IsNullOrEmpty(pagination))
-            {
-                var informacoesPaginacao = pagination.ToString().Split(',');
-                int.TryParse(informacoesPaginacao[0], out pagina);
-                int.TryParse(informacoesPaginacao[1], out tamanhoPagina);
-            }
+            var candidatos = CandidatoService.ObterCandidatos(paginacao);
 
-            var paginaAtual = pagina;
-            var tamanhoPaginaAtual = tamanhoPagina;
-            var totalCandidatos = CandidatoRepository.Count();
-            var totalPaginas = (int)Math.Ceiling((double)totalCandidatos / tamanhoPagina);
-
-            IEnumerable<Candidato> candidatos = CandidatoRepository
-                .GetAll()
-                .OrderBy(s => s.Id)
-                .Skip((paginaAtual - 1) * tamanhoPaginaAtual)
-                .Take(tamanhoPaginaAtual)
-                .ToList();
-
-            Response.AddPagination(pagina, tamanhoPagina, totalCandidatos, totalPaginas);
+            Response.AdicionarPaginacao(paginacao);
 
             var candidatosResumidoViewModel = Mapper.Map<IEnumerable<Candidato>, IEnumerable<CandidatoResumidoViewModel>>(candidatos);
 

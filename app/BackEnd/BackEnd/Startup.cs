@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BackEnd.Data;
+using BackEnd.Service;
 using BackEnd.ViewModel;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -24,6 +25,7 @@ namespace BackEnd
             AutoMapperConfiguration.Configure();
 
             services.AddScoped<ICandidatoRepository, CandidatoRepository>();
+            services.AddScoped<CandidatoService, CandidatoService>();
 
             services.AddDbContext<CandidatoContext>(options =>
                 options.UseSqlServer(Configuration["Data:ConnectionString"]));
