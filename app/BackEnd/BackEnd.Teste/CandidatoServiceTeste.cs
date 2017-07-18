@@ -42,14 +42,9 @@ namespace BackEnd.Teste
             var candidatos = candidatoService.ObterCandidatos(paginacao);
 
             candidatos.Count().ShouldBeEqualTo(4);
-
+            
             candidatos = candidatoService.ObterCandidatos(paginacao);
-
-            foreach (var candidato in candidatos)
-            {
-                Console.WriteLine(candidato.Id);
-            }
-
+            
             candidatos.Count().ShouldBeEqualTo(2);
         }
 
