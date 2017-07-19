@@ -19,7 +19,7 @@ namespace BackEnd.Service
             CandidatoRepository = candidatoRepository;
         }
 
-        public IEnumerable<Candidato> ObterCandidatos(Paginacao paginacao)
+        public IEnumerable<Candidato> ObterCandidatos(ref Paginacao paginacao)
         {
             if (paginacao != null)
                 paginacao.Pagina++;

@@ -5,23 +5,22 @@ using BackEnd.Model;
 using BackEnd.Service;
 using FluentAssert;
 using Moq;
-using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using Xunit;
 
 namespace BackEnd.Teste
 {
     public class CandidatoServiceTeste
     {
-        private Mock<ICandidatoRepository> candidatoRepositorio;
-
-        [SetUp]
-        public void SetUp()
+        private readonly Mock<ICandidatoRepository> candidatoRepositorio;
+        
+        public CandidatoServiceTeste()
         {
             candidatoRepositorio = new Mock<ICandidatoRepository>();
         }
 
-        [Test]
+        [Fact]
         public void ObtendoCandidatosConformePaginacao()
         {
             var candidatosNoBanco = new List<Candidato>
@@ -34,21 +33,22 @@ namespace BackEnd.Teste
                 new Candidato() {Id = 6}
             };
             candidatoRepositorio.Setup(x => x.GetAll()).Returns(candidatosNoBanco);
+            candidatoRepositorio.Setup(x => x.Count()).Returns(candidatosNoBanco.Count);
 
             var candidatoService = new CandidatoService(candidatoRepositorio.Object);
 
             Paginacao paginacao = null;
 
-            var candidatos = candidatoService.ObterCandidatos(paginacao);
+            var candidatos = candidatoService.ObterCandidatos(ref paginacao);
 
             candidatos.Count().ShouldBeEqualTo(4);
             
-            candidatos = candidatoService.ObterCandidatos(paginacao);
+            candidatos = candidatoService.ObterCandidatos(ref paginacao);
             
             candidatos.Count().ShouldBeEqualTo(2);
         }
 
-        [Test]
+        [Fact]
         public void ObtendoCandidatoEspecifico()
         {
             var candidatoNoBanco = new Candidato() { Id = 3, Nome = "Glaicon" };

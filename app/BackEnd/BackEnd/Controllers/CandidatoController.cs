@@ -32,7 +32,7 @@ namespace BackEnd.Controllers
         {
             var paginacao = Request.ObterPaginacao();
 
-            var candidatos = CandidatoService.ObterCandidatos(paginacao);
+            var candidatos = CandidatoService.ObterCandidatos(ref paginacao);
 
             Response.AdicionarPaginacao(paginacao);
 
