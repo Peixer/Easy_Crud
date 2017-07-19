@@ -3,13 +3,9 @@ using BackEnd.Data;
 using BackEnd.Model;
 using BackEnd.ViewModel;
 using System.Collections.Generic;
-using System.Linq;
 using AutoMapper;
-using System;
-using System.Threading;
 using BackEnd.Core;
 using BackEnd.Service;
-using Newtonsoft.Json;
 
 namespace BackEnd.Controllers
 {
@@ -72,8 +68,7 @@ namespace BackEnd.Controllers
 
             var candidatoAtualizado = Mapper.Map<CandidatoViewModel, Candidato>(candidato);
 
-            CandidatoRepository.Update(candidatoAtualizado);
-            CandidatoRepository.Commit();
+            CandidatoService.AtualizarCandidato(candidatoAtualizado);
 
             return Ok();
         }

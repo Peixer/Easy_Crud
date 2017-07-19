@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using AutoMapper;
 using BackEnd.Data;
 using BackEnd.Model;
 
@@ -46,6 +45,12 @@ namespace BackEnd.Service
         public void SalvarCandidato(Candidato novoCandidato)
         {
             CandidatoRepository.Add(novoCandidato);
+            CandidatoRepository.Commit();
+        }
+
+        public void AtualizarCandidato(Candidato candidatoAtualizado)
+        {
+            CandidatoRepository.Update(candidatoAtualizado);
             CandidatoRepository.Commit();
         }
     }

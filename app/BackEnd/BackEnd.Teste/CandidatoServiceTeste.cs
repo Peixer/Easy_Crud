@@ -21,7 +21,7 @@ namespace BackEnd.Teste
         }
 
         [Fact]
-        public void deve_obter_candidatos_respeitando_a_paginacao()
+        public void deve_obter_candidatos()
         {
             var candidatosNoBanco = new List<Candidato>
             {
@@ -37,13 +37,32 @@ namespace BackEnd.Teste
 
             var candidatoService = new CandidatoService(candidatoRepositorio.Object);
 
-            Paginacao paginacao = null;
+            Paginacao paginacao = new Paginacao();
 
             var candidatos = candidatoService.ObterCandidatos(ref paginacao);
 
             candidatos.Count().ShouldBeEqualTo(4);
+        }
 
-            candidatos = candidatoService.ObterCandidatos(ref paginacao);
+        public void deve_obter_candidatos_a_partir_da_paginacao()
+        {
+            var candidatosNoBanco = new List<Candidato>
+            {
+                new Candidato() {Id = 1},
+                new Candidato() {Id = 2},
+                new Candidato() {Id = 3},
+                new Candidato() {Id = 4},
+                new Candidato() {Id = 5},
+                new Candidato() {Id = 6}
+            };
+            candidatoRepositorio.Setup(x => x.GetAll()).Returns(candidatosNoBanco);
+            candidatoRepositorio.Setup(x => x.Count()).Returns(candidatosNoBanco.Count);
+
+            var candidatoService = new CandidatoService(candidatoRepositorio.Object);
+
+            var paginacao = new Paginacao(1);
+
+            var candidatos = candidatoService.ObterCandidatos(ref paginacao);
 
             candidatos.Count().ShouldBeEqualTo(2);
         }
@@ -73,6 +92,18 @@ namespace BackEnd.Teste
             candidatoService.SalvarCandidato(candidato);
             
             candidatoRepositorio.Verify(x => x.Add(It.IsAny<Candidato>()), Times.Once);
+            candidatoRepositorio.Verify(x => x.Commit(), Times.Once);
+        }
+
+        [Fact]
+        public void deve_atualizar_candidato()
+        {
+            var candidatoService = new CandidatoService(candidatoRepositorio.Object);
+            Candidato candidato = new Candidato();
+
+            candidatoService.AtualizarCandidato(candidato);
+
+            candidatoRepositorio.Verify(x => x.Update(It.IsAny<Candidato>()), Times.Once);
             candidatoRepositorio.Verify(x => x.Commit(), Times.Once);
         }
     }
