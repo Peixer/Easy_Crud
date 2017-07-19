@@ -59,8 +59,7 @@ namespace BackEnd.Controllers
 
             var novoCandidato = Mapper.Map<CandidatoViewModel, Candidato>(candidato);
 
-            CandidatoRepository.Add(novoCandidato);
-            CandidatoRepository.Commit();
+            CandidatoService.SalvarCandidato(novoCandidato);
 
             return Ok();
         }

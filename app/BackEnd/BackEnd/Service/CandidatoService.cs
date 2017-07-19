@@ -28,7 +28,7 @@ namespace BackEnd.Service
 
             var totalCandidatos = CandidatoRepository.Count();
             paginacao.TotalPaginas = (int)Math.Ceiling((double)totalCandidatos / TAMANHO_PAGINA);
-            
+
             return CandidatoRepository
                 .GetAll()
                 .OrderBy(s => s.Id)
@@ -41,6 +41,12 @@ namespace BackEnd.Service
         {
             return CandidatoRepository
                 .GetSingle(x => x.Id == idCandidato, x => x.ContaBancaria);
+        }
+
+        public void SalvarCandidato(Candidato novoCandidato)
+        {
+            CandidatoRepository.Add(novoCandidato);
+            CandidatoRepository.Commit();
         }
     }
 }

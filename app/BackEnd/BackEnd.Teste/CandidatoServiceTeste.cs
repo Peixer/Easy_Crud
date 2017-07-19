@@ -14,14 +14,14 @@ namespace BackEnd.Teste
     public class CandidatoServiceTeste
     {
         private readonly Mock<ICandidatoRepository> candidatoRepositorio;
-        
+
         public CandidatoServiceTeste()
         {
             candidatoRepositorio = new Mock<ICandidatoRepository>();
         }
 
         [Fact]
-        public void ObtendoCandidatosConformePaginacao()
+        public void deve_obter_candidatos_respeitando_a_paginacao()
         {
             var candidatosNoBanco = new List<Candidato>
             {
@@ -42,14 +42,14 @@ namespace BackEnd.Teste
             var candidatos = candidatoService.ObterCandidatos(ref paginacao);
 
             candidatos.Count().ShouldBeEqualTo(4);
-            
+
             candidatos = candidatoService.ObterCandidatos(ref paginacao);
-            
+
             candidatos.Count().ShouldBeEqualTo(2);
         }
 
         [Fact]
-        public void ObtendoCandidatoEspecifico()
+        public void deve_obter_candidato_filtrando_por_id()
         {
             var candidatoNoBanco = new Candidato() { Id = 3, Nome = "Glaicon" };
 
@@ -62,6 +62,18 @@ namespace BackEnd.Teste
 
             candidato.Nome.ShouldBeEqualTo("Glaicon");
             candidato.Id.ShouldBeEqualTo(idCandidato);
+        }
+
+        [Fact]
+        public void deve_salvar_candidato()
+        {
+            var candidatoService = new CandidatoService(candidatoRepositorio.Object);
+            Candidato candidato = new Candidato();
+
+            candidatoService.SalvarCandidato(candidato);
+            
+            candidatoRepositorio.Verify(x => x.Add(It.IsAny<Candidato>()), Times.Once);
+            candidatoRepositorio.Verify(x => x.Commit(), Times.Once);
         }
     }
 }
