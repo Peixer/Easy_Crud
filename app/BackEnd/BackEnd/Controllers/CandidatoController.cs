@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using BackEnd.Data;
 using BackEnd.Model;
 using BackEnd.ViewModel;
 using System.Collections.Generic;
@@ -12,13 +11,11 @@ namespace BackEnd.Controllers
     [Route("api/[controller]")]
     public class CandidatoController : Controller
     {
-        public ICandidatoRepository CandidatoRepository { get; }
         public IMapper Mapper { get; }
         public CandidatoService CandidatoService { get; }
         
-        public CandidatoController(ICandidatoRepository candidatoRepository, IMapper mapper, CandidatoService candidatoService)
+        public CandidatoController(IMapper mapper, CandidatoService candidatoService)
         {
-            CandidatoRepository = candidatoRepository;
             Mapper = mapper;
             CandidatoService = candidatoService;
         }
