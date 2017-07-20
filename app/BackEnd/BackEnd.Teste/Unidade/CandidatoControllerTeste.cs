@@ -29,16 +29,17 @@ namespace BackEnd.Teste.Unidade
 
             candidatoRepository = new Mock<ICandidatoRepository>();
             var candidatoService = new Mock<CandidatoService>(candidatoRepository.Object);
-            var actionContext = ObterActionContext();
-            controller = new CandidatoController(Mapper.Instance, candidatoService.Object)
-            {
-                ControllerContext = new ControllerContext(actionContext)
-            };
+
+            controller = new CandidatoController(Mapper.Instance, candidatoService.Object);
         }
 
-        [Fact]
-        public void deve_obter_todos_os_candidatos()
+        [Theory]
+        [InlineData("", 4)]
+        [InlineData("{ Pagina : 1 }", 2)]
+        public void deve_obter_todos_os_candidatos(string paginacao, int candidatosEsperados)
         {
+            controller.ControllerContext = new ControllerContext(ObterActionContext(paginacao));
+
             var candidatosNoBanco = new List<Candidato>
             {
                 new Candidato() {Id = 1},
@@ -53,13 +54,14 @@ namespace BackEnd.Teste.Unidade
 
             var resultado = controller.Get() as OkObjectResult;
             var candidatosResumido = ((List<CandidatoResumidoViewModel>)resultado.Value);
-            candidatosResumido.Count().ShouldBeEqualTo(4);
+            
+            candidatosResumido.Count().ShouldBeEqualTo(candidatosEsperados);
         }
 
-        private static ActionContext ObterActionContext()
+        private static ActionContext ObterActionContext(string paginacao)
         {
             var request = new Mock<HttpRequest>();
-            var headerDictionary = new HeaderDictionary { { "Paginacao", "" } };
+            var headerDictionary = new HeaderDictionary { { "Paginacao", paginacao } };
             request.Setup(x => x.Headers).Returns(headerDictionary);
 
             var context = new Mock<HttpContext>();
