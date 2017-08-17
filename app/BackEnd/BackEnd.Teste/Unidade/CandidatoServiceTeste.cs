@@ -44,6 +44,7 @@ namespace BackEnd.Teste
             candidatos.Count().ShouldBeEqualTo(4);
         }
 
+        [Fact]
         public void deve_obter_candidatos_a_partir_da_paginacao()
         {
             var candidatosNoBanco = new List<Candidato>
@@ -90,7 +91,7 @@ namespace BackEnd.Teste
             Candidato candidato = new Candidato();
 
             candidatoService.SalvarCandidato(candidato);
-            
+
             candidatoRepositorio.Verify(x => x.Add(It.IsAny<Candidato>()), Times.Once);
             candidatoRepositorio.Verify(x => x.Commit(), Times.Once);
         }
@@ -104,6 +105,18 @@ namespace BackEnd.Teste
             candidatoService.AtualizarCandidato(candidato);
 
             candidatoRepositorio.Verify(x => x.Update(It.IsAny<Candidato>()), Times.Once);
+            candidatoRepositorio.Verify(x => x.Commit(), Times.Once);
+        }
+
+        [Fact]
+        public void deve_deletar_candidato()
+        {
+            var candidatoService = new CandidatoService(candidatoRepositorio.Object);
+            Candidato candidato = new Candidato();
+
+            candidatoService.DeletarCandidato(candidato.Id);
+
+            candidatoRepositorio.Verify(x => x.DeleteWhere(It.IsAny<Expression<Func<Candidato, bool>>>()), Times.Once);
             candidatoRepositorio.Verify(x => x.Commit(), Times.Once);
         }
     }

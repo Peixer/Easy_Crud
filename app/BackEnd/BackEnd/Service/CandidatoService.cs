@@ -53,5 +53,11 @@ namespace BackEnd.Service
             CandidatoRepository.Update(candidatoAtualizado);
             CandidatoRepository.Commit();
         }
+
+        public void DeletarCandidato(int idCandidato)
+        {
+            CandidatoRepository.DeleteWhere(candidato => candidato.Id == idCandidato);
+            CandidatoRepository.Commit();
+        }
     }
 }

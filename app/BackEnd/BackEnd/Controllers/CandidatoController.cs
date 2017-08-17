@@ -69,5 +69,13 @@ namespace BackEnd.Controllers
 
             return Ok();
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            CandidatoService.DeletarCandidato(id);
+            
+            return Ok();
+        }
     }
 }

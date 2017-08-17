@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Moq;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using BackEnd.ViewModel;
 using FluentAssert;
 using Microsoft.AspNetCore.Http.Internal;
@@ -61,15 +62,14 @@ namespace BackEnd.Teste.Unidade
             controller.ControllerContext = new ControllerContext(actionContext);
 
             var candidatosNoBanco = ObterCandidatos();
-            //candidatoRepository.Setup(x => x.GetSingle(It.IsAny<Expression<Func<T, bool>>>, It.IsAny<Expression<Func<T, object>>>)).Returns(candidatosNoBanco);
-            candidatoRepository.Setup(x => x.Count()).Returns(candidatosNoBanco.Count);
+            candidatoRepository.Setup(x => x.GetSingle(It.IsAny<Expression<Func<Candidato,bool>>>(), It.IsAny<Expression<Func<Candidato, object>>>())).Returns(candidatosNoBanco.First(y => y.Id == idCandidato));
 
             var resultadoObterCandidato = controller.ObterCandidato(idCandidato) as OkObjectResult;
             var candidato = ((CandidatoViewModel)resultadoObterCandidato.Value);
 
             candidato.Nome.ShouldBeEqualTo(nomeCandidatoEsperado);
         }
-
+        
         private static ActionContext ObterActionContext(string paginacao)
         {
             var request = new Mock<HttpRequest>();
