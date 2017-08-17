@@ -2,28 +2,29 @@
 </div>
 <div class="row"></div>
 <div class="container">
-  <table class="highlight">
-    <thead>
-      <tr>
-        <th>Nome</th>
-        <th>Email</th>
-        <th>Skype</th>
-      </tr>
-    </thead>
+    <table class="highlight">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Skype</th>
+            </tr>
+        </thead>
 
-    <tbody>
-      <tr *ngFor="let candidato of candidatos" (click)="abrirCandidato(candidato.id)">
-        <td>{{candidato.nome}}</td>
-        <td>{{candidato.email}}</td>
-        <td>{{candidato.skype}}</td>
-      </tr>
-    </tbody>
-  </table>
+        <tbody>
+            <tr *ngFor="let candidato of candidatos">
+                <td (click)="abrirCandidato(candidato.id)">{{candidato.nome}}</td>
+                <td (click)="abrirCandidato(candidato.id)">{{candidato.email}}</td>
+                <td (click)="abrirCandidato(candidato.id)">{{candidato.skype}}</td>
+                <td (click)="deletarCandidato(candidato.id)"><i class="material-icons">delete</i></td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 <div class="fixed-action-btn">
     <a class="btn-floating btn-large red" (click)="addCandidato()">
-      <i class="large material-icons">add</i>
+        <i class="large material-icons">add</i>
     </a>
-  </div>
-        
+</div>
+
 <router-outlet></router-outlet>

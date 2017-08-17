@@ -25,4 +25,8 @@ export class CandidatoService {
     atualizar(candidato): Promise<any> {
         return this.httpService.put(environment.baseUrl + '/api/candidato', candidato).toPromise();
     }
+
+    deletar(id: number): Promise<any> {
+        return this.httpService.delete(environment.baseUrl + '/api/candidato/' + id).toPromise();
+    }
 }

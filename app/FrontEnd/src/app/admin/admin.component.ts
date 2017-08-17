@@ -15,16 +15,30 @@ export class AdminComponent implements OnInit {
   candidatos: Candidato[] = [];
 
   ngOnInit() {
-    this.candidatoService.todos().then(values => {
-      this.candidatos = values;
-    });
+    this.obterCandidatos();
   }
 
   abrirCandidato(id: number) {
     this.router.navigate(['/cadastro/' + id]);
   }
 
+  deletarCandidato(id: number) {
+    debugger;
+    this.candidatoService.deletar(id).then((mensagem) => {
+      alert('Candidato Deletado!');
+      this.obterCandidatos();
+    }, (mensagem) => {
+      alert('Erro ao deletar candidato - ' + mensagem);
+    });
+  }
+
   addCandidato() {
     this.router.navigate(['/cadastro']);
+  }
+
+  obterCandidatos() {
+     this.candidatoService.todos().then(values => {
+      this.candidatos = values;
+    });
   }
 }
