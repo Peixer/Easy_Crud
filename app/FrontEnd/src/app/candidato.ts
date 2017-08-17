@@ -29,7 +29,7 @@ export class Candidato {
 
 export class ContaBancaria {
   id: number;
-  CPF: string = "";
+  cpf: string = "";
   nome: string = "";
   banco: string = "";
   agencia: string = "";
