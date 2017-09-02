@@ -27,4 +27,11 @@
     </a>
 </div>
 
+<div class="row"></div>
+<div class="row"></div>
+<div class="row"></div>
+
+<paginacao (navegar)="moverParaPagina($event)" (avancar)="avancarParaPagina()" (voltar)="voltarParaPagina()"
+         [pagina]="paginacao.Pagina" [totalPaginas]="paginacao.TotalPaginas"></paginacao>
+
 <router-outlet></router-outlet>

@@ -35,8 +35,8 @@ namespace BackEnd.Teste.Unidade
         }
 
         [Theory]
-        [InlineData("", 4)]
-        [InlineData("{ Pagina : 1 }", 2)]
+        [InlineData("", 6)]
+        [InlineData("{ Pagina : 2 }", 6)]
         public void deve_obter_todos_os_candidatos(string paginacao, int quantidadeCandidatosEsperados)
         {
             controller.ControllerContext = new ControllerContext(ObterActionContext(paginacao));

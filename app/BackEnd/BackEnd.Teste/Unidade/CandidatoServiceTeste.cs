@@ -1,15 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using BackEnd.Data;
 using BackEnd.Model;
 using BackEnd.Service;
 using FluentAssert;
 using Moq;
-using System.Collections.Generic;
-using System.Linq.Expressions;
 using Xunit;
 
-namespace BackEnd.Teste
+namespace BackEnd.Teste.Unidade
 {
     public class CandidatoServiceTeste
     {
@@ -36,12 +36,9 @@ namespace BackEnd.Teste
             candidatoRepositorio.Setup(x => x.Count()).Returns(candidatosNoBanco.Count);
 
             var candidatoService = new CandidatoService(candidatoRepositorio.Object);
+            var candidatos = candidatoService.ObterCandidatos(1);
 
-            Paginacao paginacao = new Paginacao();
-
-            var candidatos = candidatoService.ObterCandidatos(ref paginacao);
-
-            candidatos.Count().ShouldBeEqualTo(4);
+            candidatos.Item1.Count().ShouldBeEqualTo(6);
         }
 
         [Fact]
@@ -61,11 +58,10 @@ namespace BackEnd.Teste
 
             var candidatoService = new CandidatoService(candidatoRepositorio.Object);
 
-            var paginacao = new Paginacao(1);
+            var segundaPagina = 2;
+            var candidatos = candidatoService.ObterCandidatos(segundaPagina);
 
-            var candidatos = candidatoService.ObterCandidatos(ref paginacao);
-
-            candidatos.Count().ShouldBeEqualTo(2);
+            candidatos.Item1.Count().ShouldBeEqualTo(0);
         }
 
         [Fact]
@@ -112,7 +108,7 @@ namespace BackEnd.Teste
         public void deve_deletar_candidato()
         {
             var candidatoService = new CandidatoService(candidatoRepositorio.Object);
-            Candidato candidato = new Candidato();
+            var candidato = new Candidato();
 
             candidatoService.DeletarCandidato(candidato.Id);
 

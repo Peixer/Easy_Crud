@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { CandidatoService } from '../service/candidato.service';
 import { Candidato } from '../candidato';
+import { Paginacao } from '../paginacao';
 
 @Component({
   selector: 'admin-root',
@@ -13,6 +14,7 @@ export class AdminComponent implements OnInit {
 
   constructor(private candidatoService: CandidatoService, private router: Router) { }
   candidatos: Candidato[] = [];
+  paginacao: Paginacao = new Paginacao('');
 
   ngOnInit() {
     this.obterCandidatos();
@@ -23,7 +25,6 @@ export class AdminComponent implements OnInit {
   }
 
   deletarCandidato(id: number) {
-    debugger;
     this.candidatoService.deletar(id).then((mensagem) => {
       alert('Candidato Deletado!');
       this.obterCandidatos();
@@ -37,8 +38,28 @@ export class AdminComponent implements OnInit {
   }
 
   obterCandidatos() {
-     this.candidatoService.todos().then(values => {
-      this.candidatos = values;
+    this.candidatoService.todos().then(values => {
+      this.atualizarInformacoesPagina(values);
     });
+  }
+
+  moverParaPagina(pagina: number): void {
+    this.candidatoService.pagina(pagina).then(values => {
+      this.atualizarInformacoesPagina(values);
+    });
+  }
+
+  atualizarInformacoesPagina(values) {
+    let jsonPaginacao = JSON.parse(values.headers.get('paginacao'));
+    this.paginacao = new Paginacao(jsonPaginacao);
+    this.candidatos = values.json() as Candidato[];
+  }
+
+  avancarParaPagina(): void {
+    this.moverParaPagina(++this.paginacao.Pagina);
+  }
+
+  voltarParaPagina(): void {
+    this.moverParaPagina(--this.paginacao.Pagina)
   }
 }

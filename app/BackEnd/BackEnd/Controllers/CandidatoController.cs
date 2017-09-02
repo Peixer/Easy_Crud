@@ -21,15 +21,13 @@ namespace BackEnd.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Get(int pagina = 1)
         {
-            var paginacao = Request.ObterPaginacao();
+            var resultadoObterCandidatos = CandidatoService.ObterCandidatos(pagina);
 
-            var candidatos = CandidatoService.ObterCandidatos(ref paginacao);
+            Response.AdicionarPaginacao(resultadoObterCandidatos.Item2);
 
-            Response.AdicionarPaginacao(paginacao);
-
-            var candidatosResumidoViewModel = Mapper.Map<IEnumerable<Candidato>, IEnumerable<CandidatoResumidoViewModel>>(candidatos);
+            var candidatosResumidoViewModel = Mapper.Map<IEnumerable<Candidato>, IEnumerable<CandidatoResumidoViewModel>>(resultadoObterCandidatos.Item1);
 
             return new OkObjectResult(candidatosResumidoViewModel);
         }

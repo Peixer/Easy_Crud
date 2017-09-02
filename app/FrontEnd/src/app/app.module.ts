@@ -9,6 +9,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { CandidatoService } from './service/candidato.service';
+import { PaginacaoComponent } from './paginacao/paginacao.component';
 import { PaginaNaoEncontradaComponent } from './paginaNaoEncontrada.component';
 
 const appRoutes: Routes = [
@@ -37,7 +38,8 @@ const appRoutes: Routes = [
     AppComponent,
     AdminComponent,
     PaginaNaoEncontradaComponent,
-    CadastroComponent
+    CadastroComponent,
+    PaginacaoComponent
   ],
   imports: [
     BrowserModule,

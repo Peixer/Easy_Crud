@@ -14,8 +14,12 @@ export class CandidatoService {
         return this.httpService.get(environment.baseUrl + '/api/candidato/' + id).toPromise().then(response => response.json());
     }
 
-    todos(): Promise<Candidato[]> {
-        return this.httpService.get(environment.baseUrl + '/api/candidato').toPromise().then(response => response.json());
+    todos(): Promise<any> {
+        return this.httpService.get(environment.baseUrl + '/api/candidato').toPromise();
+    }
+
+    pagina(pagina: number): Promise<any> {
+        return this.httpService.get(environment.baseUrl + '/api/candidato?pagina=' + pagina).toPromise();
     }
 
     salvar(candidato): Promise<any> {

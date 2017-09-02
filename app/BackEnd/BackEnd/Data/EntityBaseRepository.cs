@@ -9,7 +9,7 @@ namespace BackEnd.Data
 {
     public class EntityBaseRepository<T> where T : class, IEntityBase
     {
-        private CandidatoContext context;
+        private readonly CandidatoContext context;
 
         public EntityBaseRepository(CandidatoContext context)
         {
@@ -30,9 +30,8 @@ namespace BackEnd.Data
         {
             IQueryable<T> query = context.Set<T>();
             foreach (var includeProperty in includeProperties)
-            {
                 query = query.Include(includeProperty);
-            }
+
             return query.AsEnumerable();
         }
 
