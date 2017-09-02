@@ -12,9 +12,10 @@ using System;
 namespace BackEnd.Migrations
 {
     [DbContext(typeof(CandidatoContext))]
-    partial class CandidatoContextModelSnapshot : ModelSnapshot
+    [Migration("20170822012828_SeedMigration")]
+    partial class SeedMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
